@@ -1,13 +1,15 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;500;600;700;900&display=swap");
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: "Helvetica", "Arial", "LiHei Pro", "Zen Old Mincho", "黑體-繁", "微軟正黑體" !important;
 }
 
 html,
 body {
   max-width: 100vw;
-  overflow-x: hidden;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -32,15 +34,15 @@ section header {
   align-items: center;
   padding: 1rem;
   color: #b37642;
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 1.75rem;
+  font-weight: 550;
 }
 
 nav ul {
   display: flex;
   list-style: none;
-  font-size: 1rem;
-  font-weight: 550;
+  font-size: 1.25rem;
+  font-weight: 500;
 }
 nav ul li {
   margin-left: 1rem;
