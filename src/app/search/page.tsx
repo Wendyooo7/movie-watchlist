@@ -216,10 +216,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react"; // 新增這行
 import styles from "../styles/searchMain.module.scss";
 
-export default function SearchPage() {
+const SearchPageContent = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
   const query = searchParams.get("query");
@@ -405,6 +405,14 @@ export default function SearchPage() {
         )}
       </main>
     </div>
+  );
+};
+
+export default function SearchPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <SearchPageContent />
+    </Suspense>
   );
 }
 
