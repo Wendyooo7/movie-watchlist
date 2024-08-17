@@ -15,19 +15,67 @@
     .mainTop {
       width: 100%;
       display: flex;
-      border: 1px solid black;
+      // border: 1px solid black;
     }
   }
 }
+
 .mainTop {
-  .movieDescription {
-    border: 1px solid red;
-    margin-left: 2.5%;
+  .movieBio {
+    width: 100%;
+    // border: 1px solid red;
+    margin-left: 2%;
 
     > * {
       margin: 2%;
-      border: 1px solid pink;
+      // border: 1px solid pink;
+      // padding-right: 2%;
     }
+
+    .movieBio__titleArea {
+      display: flex;
+      align-items: baseline;
+
+      > * {
+        margin-right: 2%;
+      }
+    }
+
+    .movieBio__detailArea {
+      display: flex;
+      // align-items: center; /* 垂直對齊 */
+      // gap: 1%; /* 可以使用 gap 來設置間距 */
+      > * {
+        margin-right: 1.5%;
+      }
+    }
+
+    .movieBio__overviewArea {
+      // border: 1px solid black;
+
+      > * {
+        margin-bottom: 3%;
+        // padding-right: 15%;
+      }
+
+      .movieBio__overviewArea__noOverview {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 200px;
+        font-size: 22px;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.movieBio__detailArea__trailerArea {
+  display: flex;
+  align-items: center; /* 垂直對齊 */
+
+  img {
+    margin-right: 1px;
   }
 }
 

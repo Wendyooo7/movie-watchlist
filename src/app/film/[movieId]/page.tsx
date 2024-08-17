@@ -4,13 +4,15 @@ import styles from "../../styles/movieMain.module.scss";
 // 使用 Server Components 的一個範例
 import { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 
-// 定義頁面的 metadata（選用）
-export const metadata: Metadata = {
-  title: "Movie Details",
-};
+// // 定義頁面的 metadata（選用）
+// export const metadata: Metadata = {
+//   title: "電影排片站",
+// };
 
 interface Movie {
+  id: number;
   title: string;
   overview: string;
   release_date: string;
@@ -21,8 +23,15 @@ interface Movie {
   original_title: string;
 }
 
+interface Video {
+  results: any[];
+  key: string;
+  site: string;
+}
+
 // 在 Server Components 中執行資料抓取
-async function getMovie(movieId: string): Promise<Movie> {
+
+async function getMovieDetail(movieId: string): Promise<Movie> {
   const API_ACCESS_TOKEN = process.env.TMDB_API_ACCESS_TOKEN!;
   const options = {
     method: "GET",
@@ -44,26 +53,51 @@ async function getMovie(movieId: string): Promise<Movie> {
   return res.json();
 }
 
+async function getMovieVideos(movieId: string): Promise<Video> {
+  const API_ACCESS_TOKEN = process.env.TMDB_API_ACCESS_TOKEN!;
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${API_ACCESS_TOKEN}`,
+    },
+  };
+
+  const res = await fetch(
+    `https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`,
+    options
+  );
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch movie videos");
+  }
+
+  return res.json();
+}
+
 // 動態路由處理和頁面渲染
 export default async function MoviePage({
   params,
 }: {
   params: { movieId: string };
 }) {
-  const movie = await getMovie(params.movieId);
+  const movie = await getMovieDetail(params.movieId);
+  const videos = await getMovieVideos(params.movieId); // 取得影片資料
+  const trailer = videos.results.find((result) => result.type === "Trailer");
+  const key = trailer ? trailer.key : "";
   const releaseYear = movie.release_date.split("-")[0];
+  const poster = movie.poster_path;
+  let posterPath = `https://image.tmdb.org/t/p/w780${movie.poster_path}`;
+  if (!poster) {
+    posterPath = "/no-poster-big.png";
+  }
 
   return (
     <div className={styles.mainWrapper}>
       <main className={styles.main}>
         <div className={styles.mainTop}>
           <div className={styles.imgWrapper}>
-            <Image
-              src={`https://image.tmdb.org/t/p/w780${movie.poster_path}`}
-              alt="電影海報"
-              width={250}
-              height={379}
-            />
+            <Image src={posterPath} alt="電影海報" width={250} height={379} />
           </div>
 
           {/* <div className={styles.imageContainer}>
@@ -74,21 +108,59 @@ export default async function MoviePage({
           objectFit="cover"
         />
       </div> */}
-          <div className={styles.movieDescription}>
-            <h2>{movie.title}</h2>
-            <p>
-              <i>{movie.tagline}</i>
-            </p>
-            <p>{movie.overview}</p>
+          <div className={styles.movieBio}>
+            <div className={styles.movieBio__titleArea}>
+              <h2>{movie.title}</h2>
+              {movie.title !== movie.original_title && (
+                <div>{movie.original_title}</div>
+              )}
+            </div>
+            <div className={styles.movieBio__detailArea}>
+              {releaseYear && <div>{releaseYear}年 </div>}
+
+              <div>{movie.runtime}分鐘 </div>
+
+              {key && (
+                <Link
+                  className={styles.movieBio__detailArea__trailerArea}
+                  href={`https://www.youtube.com/watch?v=${key}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image
+                    src="/play_circle_color.svg"
+                    alt="播放預告片"
+                    width={16}
+                    height={16}
+                  />
+                  播放預告片
+                </Link>
+              )}
+            </div>
+
+            {/* <Link href={`https://www.youtube.com/watch?v=${key}`}>
+              播放預告片
+            </Link> */}
+
+            <div className={styles.movieBio__overviewArea}>
+              {movie.tagline && (
+                <p>
+                  <i>
+                    <b>{movie.tagline}</b>
+                  </i>
+                </p>
+              )}
+
+              {movie.overview ? (
+                <p>{movie.overview}</p>
+              ) : (
+                <div className={styles.movieBio__overviewArea__noOverview}>
+                  無更多資料
+                </div>
+              )}
+            </div>
           </div>
         </div>
-        <div>{releaseYear} 年</div>
-        <div>{movie.runtime} 分鐘</div>
-        {!(movie.title === movie.original_title) ? (
-          <div>{movie.original_title}</div>
-        ) : (
-          <></>
-        )}
       </main>
     </div>
   );

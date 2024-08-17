@@ -1,0 +1,55 @@
+@charset "UTF-8";
+.mainWrapper {
+  margin-top: 1em;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.mainWrapper .main {
+  width: 100%;
+  max-width: 1200px;
+}
+.mainWrapper .main .mainTop {
+  width: 100%;
+  display: flex;
+}
+
+.mainTop .movieBio {
+  width: 100%;
+  margin-left: 2%;
+}
+.mainTop .movieBio > * {
+  margin: 2%;
+}
+.mainTop .movieBio .movieBio__titleArea {
+  display: flex;
+  align-items: baseline;
+}
+.mainTop .movieBio .movieBio__titleArea > * {
+  margin-right: 2%;
+}
+.mainTop .movieBio .movieBio__detailArea {
+  display: flex;
+}
+.mainTop .movieBio .movieBio__detailArea > * {
+  margin-right: 1.5%;
+}
+.mainTop .movieBio .movieBio__overviewArea > * {
+  margin-bottom: 3%;
+}
+.mainTop .movieBio .movieBio__overviewArea .movieBio__overviewArea__noOverview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.movieBio__detailArea__trailerArea {
+  display: flex;
+  align-items: center; /* 垂直對齊 */
+}
+.movieBio__detailArea__trailerArea img {
+  margin-right: 1px;
+}/*# sourceMappingURL=movieMain.module.css.map */

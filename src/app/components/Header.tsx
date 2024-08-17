@@ -8,7 +8,7 @@ export default function Header() {
         <nav>
           <ul>
             <li>
-              <a href="/wathclist">我的片單</a>
+              <a href="/watchlist">我的片單</a>
             </li>
             <li>登入／註冊</li>
           </ul>
