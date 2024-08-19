@@ -43,8 +43,8 @@
 
     .movieBio__detailArea {
       display: flex;
-      // align-items: center; /* 垂直對齊 */
-      // gap: 1%; /* 可以使用 gap 來設置間距 */
+      // align-items: center;
+      // gap: 1%; /* 設置間距 */
       > * {
         margin-right: 1.5%;
       }
@@ -52,7 +52,7 @@
 
     .movieBio__overviewArea {
       // border: 1px solid black;
-
+      line-height: 1.8em;
       > * {
         margin-bottom: 3%;
         // padding-right: 15%;
