@@ -4,7 +4,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: "Helvetica", "Arial", "LiHei Pro", "Zen Old Mincho", "黑體-繁", "微軟正黑體" !important;
+  font-family: "Helvetica", "Arial", "LiHei Pro", "Zen Old Mincho", "黑體-繁", "微軟正黑體";
 }
 
 html,
@@ -33,7 +33,7 @@ section header {
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  color: #b37642;
+  color: #8440f1;
   font-size: 1.75rem;
   font-weight: 550;
 }
@@ -62,7 +62,7 @@ main {
 
 footer {
   width: 100%;
-  background-color: rgba(179, 118, 66, 0.8);
+  background-color: #ae81ff;
   text-align: center;
   color: white;
   font-size: 16px;

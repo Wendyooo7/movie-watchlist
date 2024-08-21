@@ -370,7 +370,7 @@ const SearchPageContent = () => {
             {results.map((movie) => {
               const releaseYear = movie.release_date.split("-")[0];
               const poster = movie.poster_path;
-              let posterPath = `https://image.tmdb.org/t/p/w92${poster}`;
+              let posterPath = `https://image.tmdb.org/t/p/w154${poster}`;
               if (!poster) {
                 posterPath = "/no-poster.png";
               }

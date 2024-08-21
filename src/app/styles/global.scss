@@ -80,15 +80,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;500;600;700;900&display=swap");
 
 $footer-height: 115px;
-$theme-color: #b37642;
-$minor-color: #e6be98;
+// $theme-color: #b37642;
+$theme-color: #8440f1;
+// $theme-color-light: rgba(132, 64, 241, 0.8);
+$theme-color-light: #ae81ff;
+$minor-color: rgb(197, 177, 249);
+
+// $theme-color: rgba(255, 140, 0);
+// $theme-color: rgb(255, 165, 0);
+// $minor-color: #e6be98;
 
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
   font-family: "Helvetica", "Arial", "LiHei Pro", "Zen Old Mincho", "黑體-繁",
-    "微軟正黑體" !important;
+    "微軟正黑體";
 }
 
 html,
@@ -156,7 +163,9 @@ main {
 
 footer {
   width: 100%;
-  background-color: rgba(179, 118, 66, 0.8);
+  // background-color: rgba(179, 118, 66, 0.8);
+  background-color: $theme-color-light;
+
   text-align: center;
   color: white;
   font-size: 16px;
