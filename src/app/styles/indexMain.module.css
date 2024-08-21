@@ -14,6 +14,11 @@
   border: 1px solid #ae81ff;
   border-radius: 50px;
 }
+.searchArea:hover {
+  background-color: rgba(197, 177, 249, 0.2);
+  transition: background-color 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border: none;
+}
 .searchArea .input {
   all: unset;
   padding: 1rem 0 1rem 1.5rem;
@@ -29,4 +34,8 @@
   justify-content: center;
   border-radius: 0 50px 50px 0;
   cursor: pointer;
+}
+.searchArea .imgWrapper:hover {
+  transform: scale(1.2);
+  transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }/*# sourceMappingURL=indexMain.module.css.map */

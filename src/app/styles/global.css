@@ -62,10 +62,11 @@ main {
 
 footer {
   width: 100%;
-  background-color: #ae81ff;
+  background-color: rgb(197, 177, 249);
   text-align: center;
   color: white;
   font-size: 16px;
+  font-weight: 550;
   padding: 15px;
 }
 

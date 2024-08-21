@@ -164,11 +164,12 @@ main {
 footer {
   width: 100%;
   // background-color: rgba(179, 118, 66, 0.8);
-  background-color: $theme-color-light;
+  background-color: $minor-color;
 
   text-align: center;
   color: white;
   font-size: 16px;
+  font-weight: 550;
   padding: 15px;
 }
 
