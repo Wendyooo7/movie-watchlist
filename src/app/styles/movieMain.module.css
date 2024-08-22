@@ -49,6 +49,9 @@
   font-size: 22px;
   font-weight: bold;
 }
+.mainTop .movieBio .movieBio__otherMovieDBarea > * {
+  margin-right: 1.5%;
+}
 
 .movieBio__detailArea__trailerArea {
   display: flex;

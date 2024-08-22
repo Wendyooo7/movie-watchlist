@@ -21,6 +21,7 @@ interface Movie {
   tagline: string;
   runtime: number;
   original_title: string;
+  imdb_id: string;
 }
 
 interface Video {
@@ -91,6 +92,8 @@ export default async function MoviePage({
   if (!poster) {
     posterPath = "/no-poster-big.png";
   }
+  const linkToTMDB = `https://www.themoviedb.org/movie/${movie.id}`;
+  const linkToIMDB = `https://www.imdb.com/title/${movie.imdb_id}`;
 
   return (
     <div className={styles.mainWrapper}>
@@ -158,6 +161,16 @@ export default async function MoviePage({
                   無更多資料
                 </div>
               )}
+            </div>
+
+            <div className={styles.movieBio__otherMovieDBarea}>
+              {/* <label htmlFor="">在其他電影資料庫開啟：</label> */}
+              <Link href={linkToTMDB} target="_blank" rel="noopener noreferrer">
+                TMDB
+              </Link>
+              <Link href={linkToIMDB} target="_blank" rel="noopener noreferrer">
+                IMDB
+              </Link>
             </div>
           </div>
         </div>
