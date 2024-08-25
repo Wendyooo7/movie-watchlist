@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .mainWrapper {
   margin-top: 1em;
   width: 100%;
@@ -7,6 +8,14 @@
 .mainWrapper .main {
   width: 100%;
   max-width: 1200px;
+}
+.mainWrapper .main .searchResultSummary {
+  margin-bottom: 1.5rem;
+}
+.mainWrapper .main .keyword {
+  -webkit-text-decoration: underline #8440f1;
+          text-decoration: underline #8440f1;
+  text-underline-offset: 7px; /* 調整此值來改變底線與文字的距離 */
 }
 
 .eachMovieDiv {

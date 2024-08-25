@@ -360,11 +360,13 @@ const SearchPageContent = () => {
     <div className={styles.mainWrapper}>
       <main className={styles.main}>
         {isLoading ? (
-          <h2>搜尋中......</h2>
+          <h3>搜尋中......</h3>
         ) : (
           <>
-            <h3>
-              您搜尋了 {query} ，相符的結果共有 {totalResults} 筆
+            <h3 className={styles.searchResultSummary}>
+              您搜尋了 <span className={styles.keyword}>{query}</span>
+              ，相符的結果共有{" "}
+              <span className={styles.keyword}>{totalResults}</span> 筆
             </h3>
 
             {results.map((movie) => {
