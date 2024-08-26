@@ -241,7 +241,7 @@ const AuthModal = () => {
       signInEmailError ||
       signInPasswordError
     ) {
-      setSignUpFeedbackMessage("請確認所有欄位填寫正確");
+      setSignInFeedbackMessage("請確認所有欄位填寫正確");
       return;
     }
 
