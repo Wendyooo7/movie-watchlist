@@ -1,0 +1,120 @@
+$theme-color: #8440f1;
+$theme-color-light: #ae81ff;
+$minor-color: rgb(197, 177, 249);
+$theme-color-background: rgba(197, 177, 249, 0.2);
+
+.authContainer {
+  max-width: 300px;
+  border: 1.25px solid $minor-color;
+  margin: 0 auto;
+  // margin-top: 3rem;
+  padding: 2.5rem;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.authTabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.authTab {
+  width: 100%;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  background: none;
+  // 拿掉button灰色背景色
+  border: 1px solid $theme-color-light;
+  // border: none; 會取消button的醜border，或直接用其他屬性覆寫也可
+  border-radius: 2px;
+}
+
+.authTab.active {
+  font-weight: bold;
+  border-bottom: 3px solid $theme-color-light;
+}
+
+.authForm {
+  width: 100%;
+  font-size: 16px;
+
+  div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    h2 {
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+
+    .authForm__nonPassword__input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-top: 1.25rem;
+    }
+
+    button {
+      width: 30%;
+      padding: 10px;
+      background-color: $theme-color-light;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 1.5rem;
+    }
+  }
+}
+
+.authForm__instant__errMsg {
+  color: red;
+  font-size: 14px;
+  width: 100%;
+  margin-top: 0.2rem;
+}
+
+.authForm__afterSend__errMsg {
+  color: red;
+  font-size: 14px;
+  width: 100%;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.authForm__afterSend__successMsg {
+  color: green; // 設定成功訊息的顏色
+  font-size: 14px;
+  width: 100%;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.authForm__passwordContainer {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 1.25rem;
+
+  .authForm__passwordContainer__input {
+    width: 85%;
+    padding: 10px;
+    border: none;
+    border: none;
+    border-radius: 5px 0 0 5px;
+  }
+
+  .authForm__passwordContainer__visibility {
+    width: 15%;
+    cursor: pointer;
+  }
+}
