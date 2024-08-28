@@ -120,7 +120,12 @@ export default async function MoviePage({
               )}
 
               <div className={styles.movieBio__titleArea__bookmarkArea}>
-                <Bookmark movieId={params.movieId} />
+                <Bookmark
+                  movieId={params.movieId}
+                  title={movie.title}
+                  runtime={movie.runtime}
+                  originalTitle={movie.original_title}
+                />
               </div>
             </div>
 

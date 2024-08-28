@@ -28,20 +28,23 @@
 .mainTop .movieBio .movieBio__titleArea > * {
   margin-right: 2%;
 }
-.mainTop .movieBio .movieBio__detailArea {
+.mainTop .movieBio .movieBio__titleArea .movieBio__titleArea__bookmarkArea {
+  margin-left: 2%;
+}
+.mainTop .movieBio__detailArea {
   display: flex;
 }
-.mainTop .movieBio .movieBio__detailArea > * {
+.mainTop .movieBio__detailArea > * {
   margin-right: 1.5%;
 }
-.mainTop .movieBio .movieBio__overviewArea {
+.mainTop .movieBio__overviewArea {
   line-height: 1.8em;
 }
-.mainTop .movieBio .movieBio__overviewArea > * {
+.mainTop .movieBio__overviewArea > * {
   margin-bottom: 2%;
   padding-right: 20%;
 }
-.mainTop .movieBio .movieBio__overviewArea .movieBio__overviewArea__noOverview {
+.mainTop .movieBio__overviewArea .movieBio__overviewArea__noOverview {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -49,7 +52,7 @@
   font-size: 22px;
   font-weight: bold;
 }
-.mainTop .movieBio .movieBio__otherMovieDBarea > * {
+.mainTop .movieBio__otherMovieDBarea > * {
   margin-right: 1.5%;
 }
 
@@ -59,4 +62,8 @@
 }
 .movieBio__detailArea__trailerArea img {
   margin-right: 1px;
+}
+
+.bookmark__imgWapper {
+  cursor: pointer;
 }/*# sourceMappingURL=movieMain.module.css.map */
