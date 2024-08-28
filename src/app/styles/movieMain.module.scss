@@ -33,45 +33,51 @@
     }
 
     .movieBio__titleArea {
+      // border: 1px solid red;
       display: flex;
       align-items: baseline;
+      // white-space: nowrap;
 
       > * {
         margin-right: 2%;
       }
+
+      .movieBio__titleArea__bookmarkArea {
+        margin-left: 2%;
+      }
+    }
+  }
+
+  .movieBio__detailArea {
+    display: flex;
+    // align-items: center;
+    // gap: 1%; /* 設置間距 */
+    > * {
+      margin-right: 1.5%;
+    }
+  }
+
+  .movieBio__overviewArea {
+    // border: 1px solid black;
+    line-height: 1.8em;
+    > * {
+      margin-bottom: 2%;
+      padding-right: 20%;
     }
 
-    .movieBio__detailArea {
+    .movieBio__overviewArea__noOverview {
       display: flex;
-      // align-items: center;
-      // gap: 1%; /* 設置間距 */
-      > * {
-        margin-right: 1.5%;
-      }
+      justify-content: center;
+      align-items: center;
+      height: 200px;
+      font-size: 22px;
+      font-weight: bold;
     }
+  }
 
-    .movieBio__overviewArea {
-      // border: 1px solid black;
-      line-height: 1.8em;
-      > * {
-        margin-bottom: 2%;
-        padding-right: 20%;
-      }
-
-      .movieBio__overviewArea__noOverview {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 200px;
-        font-size: 22px;
-        font-weight: bold;
-      }
-    }
-
-    .movieBio__otherMovieDBarea {
-      > * {
-        margin-right: 1.5%;
-      }
+  .movieBio__otherMovieDBarea {
+    > * {
+      margin-right: 1.5%;
     }
   }
 }
@@ -85,6 +91,13 @@
   }
 }
 
+.bookmark__imgWapper {
+  cursor: pointer;
+
+  // &:hover {
+  //   opacity: 0.8;
+  // }
+}
 // .imageContainer {
 //   position: relative;
 //   width: 100%;

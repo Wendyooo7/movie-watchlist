@@ -5,6 +5,7 @@ import styles from "../../styles/movieMain.module.scss";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import Bookmark from "./Bookmark";
 
 // // 定義頁面的 metadata（選用）
 // export const metadata: Metadata = {
@@ -117,7 +118,12 @@ export default async function MoviePage({
               {movie.title !== movie.original_title && (
                 <div>{movie.original_title}</div>
               )}
+
+              <div className={styles.movieBio__titleArea__bookmarkArea}>
+                <Bookmark movieId={params.movieId} />
+              </div>
             </div>
+
             <div className={styles.movieBio__detailArea}>
               {releaseYear && <div>{releaseYear}年 </div>}
 
