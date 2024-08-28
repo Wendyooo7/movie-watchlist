@@ -91,7 +91,7 @@ export default async function MoviePage({
   const poster = movie.poster_path;
   let posterPath = `https://image.tmdb.org/t/p/w780${movie.poster_path}`;
   if (!poster) {
-    posterPath = "/no-poster-big.png";
+    posterPath = "/film/no-poster-big.png";
   }
   const linkToTMDB = `https://www.themoviedb.org/movie/${movie.id}`;
   const linkToIMDB = `https://www.imdb.com/title/${movie.imdb_id}`;
@@ -137,7 +137,7 @@ export default async function MoviePage({
                   rel="noopener noreferrer"
                 >
                   <Image
-                    src="/play_circle_color.svg"
+                    src="/film/play_circle_color.svg"
                     alt="播放預告片"
                     width={16}
                     height={16}

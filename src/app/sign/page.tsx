@@ -327,14 +327,14 @@ const AuthModal = () => {
                 >
                   {showSignInPassword ? (
                     <Image
-                      src="/visibility_off_24dp_8440F1.svg"
+                      src="/sign/visibility_off_24dp_8440F1.svg"
                       width={18}
                       height={18}
                       alt="隱藏密碼"
                     ></Image>
                   ) : (
                     <Image
-                      src="/visibility_24dp_8440F1.svg"
+                      src="/sign/visibility_24dp_8440F1.svg"
                       width={18}
                       height={18}
                       alt="查看密碼"
@@ -401,14 +401,14 @@ const AuthModal = () => {
                 >
                   {showSignUpPassword ? (
                     <Image
-                      src="/visibility_off_24dp_8440F1.svg"
+                      src="/sign/visibility_off_24dp_8440F1.svg"
                       width={18}
                       height={18}
                       alt="隱藏密碼"
                     ></Image>
                   ) : (
                     <Image
-                      src="/visibility_24dp_8440F1.svg"
+                      src="/sign/visibility_24dp_8440F1.svg"
                       width={18}
                       height={18}
                       alt="查看密碼"

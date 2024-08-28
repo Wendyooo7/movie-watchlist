@@ -285,7 +285,7 @@ const SearchPageContent = () => {
       pageButtons.push(
         <button key="first" onClick={() => handlePageChange(1)}>
           <Image
-            src="/first_page_icon.svg"
+            src="/search/first_page_icon.svg"
             width={20}
             height={20}
             alt="回到第一頁"
@@ -299,7 +299,7 @@ const SearchPageContent = () => {
       pageButtons.push(
         <button key="prev" onClick={() => handlePageChange(currentPage - 1)}>
           <Image
-            src="/chevron_left_icon.svg"
+            src="/search/chevron_left_icon.svg"
             width={20}
             height={20}
             alt="回到上一頁"
@@ -326,7 +326,7 @@ const SearchPageContent = () => {
       pageButtons.push(
         <button key="next" onClick={() => handlePageChange(currentPage + 1)}>
           <Image
-            src="/chevron_right_icon.svg"
+            src="/search/chevron_right_icon.svg"
             width={20}
             height={20}
             alt="前往下一頁"
@@ -340,7 +340,7 @@ const SearchPageContent = () => {
       pageButtons.push(
         <button key="last" onClick={() => handlePageChange(totalPages)}>
           <Image
-            src="/last_page_icon.svg"
+            src="/search/last_page_icon.svg"
             width={20}
             height={20}
             alt="回到第一頁"
@@ -374,7 +374,7 @@ const SearchPageContent = () => {
               const poster = movie.poster_path;
               let posterPath = `https://image.tmdb.org/t/p/w154${poster}`;
               if (!poster) {
-                posterPath = "/no-poster.png";
+                posterPath = "/search/no-poster.png";
               }
 
               return (
