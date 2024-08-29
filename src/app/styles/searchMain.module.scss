@@ -42,6 +42,10 @@ $theme-color-background: rgba(197, 177, 249, 0.2);
     > * {
       margin-bottom: 20px; // 設定每個子元素的下方距離
     }
+
+    .eachMovieDetailDiv__title:hover {
+      opacity: 0.6;
+    }
   }
 }
 

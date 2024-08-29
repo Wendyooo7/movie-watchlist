@@ -389,7 +389,9 @@ const SearchPageContent = () => {
                       />
                     </div>
                     <div className={styles.eachMovieDetailDiv}>
-                      <h3>{movie.title}</h3>
+                      <h3 className={styles.eachMovieDetailDiv__title}>
+                        {movie.title}
+                      </h3>
                       <h3>{releaseYear}</h3>
                     </div>
                   </div>

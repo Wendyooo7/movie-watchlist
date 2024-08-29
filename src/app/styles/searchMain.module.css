@@ -31,6 +31,9 @@
 .eachMovieDiv .eachMovieDetailDiv > * {
   margin-bottom: 20px;
 }
+.eachMovieDiv .eachMovieDetailDiv .eachMovieDetailDiv__title:hover {
+  opacity: 0.6;
+}
 
 .pageButtonsArea {
   display: flex;
