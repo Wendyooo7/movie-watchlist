@@ -86,10 +86,11 @@ export default function Bookmark({
             ? "/film/bookmark_solid_2XL_8440F1.svg"
             : "/film/bookmark_reqular_2XL_8440F1.svg"
         }
-        width={25}
-        height={25}
+        width={22}
+        height={22}
         alt="加入片單"
       ></Image>
+      <div>加入片單</div>
     </div>
   );
 }

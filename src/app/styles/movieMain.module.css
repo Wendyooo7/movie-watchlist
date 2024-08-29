@@ -16,6 +16,7 @@
 
 .mainTop .movieBio {
   width: 100%;
+  max-width: 875px;
   margin-left: 2%;
 }
 .mainTop .movieBio > * {
@@ -23,13 +24,15 @@
 }
 .mainTop .movieBio .movieBio__titleArea {
   display: flex;
+  justify-content: space-between;
+}
+.mainTop .movieBio .movieBio__titleArea .movieBio__titleArea__title {
+  display: flex;
   align-items: baseline;
+  white-space: nowrap;
 }
-.mainTop .movieBio .movieBio__titleArea > * {
-  margin-right: 2%;
-}
-.mainTop .movieBio .movieBio__titleArea .movieBio__titleArea__bookmarkArea {
-  margin-left: 2%;
+.mainTop .movieBio .movieBio__titleArea .movieBio__titleArea__title > * {
+  margin-right: 8%;
 }
 .mainTop .movieBio__detailArea {
   display: flex;
@@ -42,23 +45,38 @@
 }
 .mainTop .movieBio__overviewArea > * {
   margin-bottom: 2%;
-  padding-right: 20%;
 }
 .mainTop .movieBio__overviewArea .movieBio__overviewArea__noOverview {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 200px;
+  height: 230px;
   font-size: 22px;
   font-weight: bold;
 }
 .mainTop .movieBio__otherMovieDBarea > * {
   margin-right: 1.5%;
 }
+.mainTop .movieBio__otherMovieDBarea .movieBio__otherMovieDBarea__label {
+  color: #8440f1;
+  font-weight: 500;
+}
+.mainTop .movieBio__otherMovieDBarea .movieBio__otherMovieDBarea__link {
+  background-color: #ae81ff;
+  color: white;
+  padding: 0.15rem 0.3rem;
+}
+.mainTop .movieBio__otherMovieDBarea .movieBio__otherMovieDBarea__link:hover {
+  opacity: 0.9;
+}
 
 .movieBio__detailArea__trailerArea {
   display: flex;
   align-items: center; /* 垂直對齊 */
+  color: #8440f1;
+}
+.movieBio__detailArea__trailerArea:hover {
+  opacity: 0.8;
 }
 .movieBio__detailArea__trailerArea img {
   margin-right: 1px;
@@ -66,4 +84,14 @@
 
 .bookmark__imgWapper {
   cursor: pointer;
+  display: flex;
+  white-space: nowrap;
+  color: #8440f1;
+  font-size: 15px;
+}
+.bookmark__imgWapper > * {
+  margin-right: 10%;
+}
+.bookmark__imgWapper:hover {
+  opacity: 0.8;
 }/*# sourceMappingURL=movieMain.module.css.map */

@@ -114,10 +114,12 @@ export default async function MoviePage({
       </div> */}
           <div className={styles.movieBio}>
             <div className={styles.movieBio__titleArea}>
-              <h2>{movie.title}</h2>
-              {movie.title !== movie.original_title && (
-                <div>{movie.original_title}</div>
-              )}
+              <div className={styles.movieBio__titleArea__title}>
+                <h2>{movie.title}</h2>
+                {movie.title !== movie.original_title && (
+                  <div>{movie.original_title}</div>
+                )}
+              </div>
 
               <div className={styles.movieBio__titleArea__bookmarkArea}>
                 <Bookmark
@@ -142,10 +144,10 @@ export default async function MoviePage({
                   rel="noopener noreferrer"
                 >
                   <Image
-                    src="/film/play_circle_color.svg"
+                    src="/film/play_circle_30dp_8440F1.svg"
                     alt="播放預告片"
-                    width={16}
-                    height={16}
+                    width={22}
+                    height={22}
                   />
                   播放預告片
                 </Link>
@@ -175,11 +177,27 @@ export default async function MoviePage({
             </div>
 
             <div className={styles.movieBio__otherMovieDBarea}>
-              {/* <label htmlFor="">在其他電影資料庫開啟：</label> */}
-              <Link href={linkToTMDB} target="_blank" rel="noopener noreferrer">
+              <label
+                className={styles.movieBio__otherMovieDBarea__label}
+                htmlFor="otherMovieDB"
+              >
+                前往電影資料庫：
+              </label>
+              <Link
+                className={styles.movieBio__otherMovieDBarea__link}
+                href={linkToTMDB}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 TMDB
               </Link>
-              <Link href={linkToIMDB} target="_blank" rel="noopener noreferrer">
+
+              <Link
+                className={styles.movieBio__otherMovieDBarea__link}
+                href={linkToIMDB}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 IMDB
               </Link>
             </div>
