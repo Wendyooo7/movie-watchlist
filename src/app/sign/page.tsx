@@ -134,8 +134,10 @@ import {
   createUserWithEmailAndPassword,
 } from "firebase/auth";
 import { useAuth } from "../contexts/AuthContext";
+import { useRouter } from "next/navigation";
 
 const AuthModal = () => {
+  const router = useRouter();
   const { user, setUser } = useAuth();
   const [isSigningUp, setIsSigningUp] = useState(false);
 
@@ -248,6 +250,10 @@ const AuthModal = () => {
     try {
       await signInWithEmailAndPassword(auth, signInEmail, signInPassword);
       setSignInFeedbackMessage("登入成功！");
+
+      setTimeout(() => {
+        router.back();
+      }, 1000);
     } catch (error: any) {
       handleAuthErrors(error);
     }
