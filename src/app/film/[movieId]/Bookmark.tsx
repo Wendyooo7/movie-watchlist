@@ -43,9 +43,14 @@ export default function Bookmark({
     checkBookmarkStatus();
   }, [movieId, user]);
 
-  // TODO: 將新的收藏3狀態同步至 Firestore
+  // TODO: 將新的收藏狀態同步至 Firestore
   const toggleBookmark = async () => {
-    if (user) {
+    if (!user) {
+      console.log("使用者尚未登入");
+      return;
+    }
+
+    try {
       const userUid = user.uid;
       const docRef = doc(db, "users", userUid, "bookmarks", movieId);
 
@@ -56,30 +61,31 @@ export default function Bookmark({
         storeMovieDetail = { movieId, title, runtime };
       }
 
-      try {
-        if (!isBookmarked) {
-          // 如果該電影尚未收藏，將其詳細資訊存入 Firestore
-          await setDoc(docRef, storeMovieDetail);
-          setIsBookmarked(true); // 更新本地狀態
-          console.log("已將相關資料存進片單");
-        } else {
-          // 若已經收藏，則刪除該文件
-          await deleteDoc(docRef);
-          setIsBookmarked(false); // 更新本地狀態
-          console.log("已將電影刪除片單");
-        }
-      } catch (err) {
-        console.error("Error updating bookmark status:", err);
+      if (!isBookmarked) {
+        // 如果該電影尚未收藏，將其詳細資訊存入 Firestore
+        await setDoc(docRef, storeMovieDetail);
+        setIsBookmarked(true); // 更新本地狀態
+        console.log("將電影存入片單");
+      } else {
+        // 若已經收藏，則刪除該文件
+        await deleteDoc(docRef);
+        setIsBookmarked(false); // 更新本地狀態
+        console.log("將電影移除片單");
       }
-    } else {
-      console.log("使用者尚未登入");
+    } catch (err) {
+      console.error("Error updating bookmark status:", err);
     }
 
     setIsBookmarked(!isBookmarked);
   };
 
   return (
-    <div className={styles.bookmark__imgWapper} onClick={toggleBookmark}>
+    <div
+      className={`${styles.bookmark__imgWapper} ${
+        !user ? styles.disabled : ""
+      }`}
+      onClick={toggleBookmark}
+    >
       <Image
         src={
           isBookmarked
@@ -91,6 +97,8 @@ export default function Bookmark({
         alt="加入片單"
       ></Image>
       <div>加入片單</div>
+
+      {!user && <div className={styles.tooltip}>登入即可加入片單</div>}
     </div>
   );
 }

@@ -88,10 +88,39 @@
   white-space: nowrap;
   color: #8440f1;
   font-size: 15px;
+  position: relative;
 }
 .bookmark__imgWapper > * {
   margin-right: 10%;
 }
 .bookmark__imgWapper:hover {
   opacity: 0.8;
+}
+.bookmark__imgWapper.disabled {
+  cursor: not-allowed;
+  /* 將 pointer-events 移至 img 和文字 div 上，使 tooltip 顯示但無法點擊 */
+}
+.bookmark__imgWapper.disabled > img,
+.bookmark__imgWapper.disabled > div {
+  pointer-events: none;
+}
+
+.tooltip {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  top: 130%; /* 100%開始會顯示在元素的下方 */
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.bookmark__imgWapper:hover .tooltip {
+  opacity: 1;
 }/*# sourceMappingURL=movieMain.module.css.map */
