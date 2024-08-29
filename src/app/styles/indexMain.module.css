@@ -11,13 +11,14 @@
   display: flex;
   align-items: center;
   margin: 3rem 1rem;
-  border: 1px solid #ae81ff;
   border-radius: 50px;
+  justify-content: space-around;
+  background-color: rgba(197, 177, 249, 0.2);
 }
 .searchArea:hover {
-  background-color: rgba(197, 177, 249, 0.2);
+  background-color: white;
+  border: 1px solid #ae81ff;
   transition: background-color 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-  border: none;
 }
 .searchArea .input {
   all: unset;

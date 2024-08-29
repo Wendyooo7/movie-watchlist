@@ -16,14 +16,16 @@ $minor-color: rgb(197, 177, 249);
   display: flex;
   align-items: center;
   margin: 3rem 1rem;
-  border: 1px solid $theme-color-light;
   border-radius: 50px;
+  justify-content: space-around;
+  // 沒加上行到了1920px會變很搜尋框的位置會跑到太中間
   // box-shadow: 1px 3px rgba(0, 0, 0, 0.15);
+  background-color: rgba(197, 177, 249, 0.2);
 
   &:hover {
-    background-color: rgba(197, 177, 249, 0.2);
+    background-color: white;
+    border: 1px solid $theme-color-light;
     transition: background-color 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    border: none;
   }
 
   .input {
@@ -37,7 +39,6 @@ $minor-color: rgb(197, 177, 249);
 
   .imgWrapper {
     // background-color: $theme-color-light;
-
     height: 60px;
     width: 60px;
     display: flex;
