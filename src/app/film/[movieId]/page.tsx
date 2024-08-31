@@ -31,6 +31,15 @@ interface Video {
   site: string;
 }
 
+interface OTTlistTW {
+  results: {
+    // 加上? 比TW變成可選的
+    TW?: {
+      link: string;
+    };
+  };
+}
+
 // 在 Server Components 中執行資料抓取
 
 async function getMovieDetail(movieId: string): Promise<Movie> {
@@ -77,16 +86,38 @@ async function getMovieVideos(movieId: string): Promise<Video> {
   return res.json();
 }
 
+async function getMovieOTTlinkTW(movieId: string): Promise<OTTlistTW> {
+  const API_ACCESS_TOKEN = process.env.TMDB_API_ACCESS_TOKEN!;
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${API_ACCESS_TOKEN}`,
+    },
+  };
+
+  const res = await fetch(
+    // TODO:有時間試試能否運用Append To Response，和上面其中一個請求合併fetch
+    // https://developer.themoviedb.org/docs/append-to-response
+    `https://api.themoviedb.org/3/movie/${movieId}/watch/providers`,
+    options
+  );
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch movie OTT list");
+  }
+
+  return res.json();
+}
+
 // 動態路由處理和頁面渲染
 export default async function MoviePage({
   params,
 }: {
   params: { movieId: string };
 }) {
+  // 處理片介res
   const movie = await getMovieDetail(params.movieId);
-  const videos = await getMovieVideos(params.movieId); // 取得影片資料
-  const trailer = videos.results.find((result) => result.type === "Trailer");
-  const key = trailer ? trailer.key : "";
   const releaseYear = movie.release_date.split("-")[0];
   const poster = movie.poster_path;
   let posterPath = `https://image.tmdb.org/t/p/w780${movie.poster_path}`;
@@ -95,6 +126,16 @@ export default async function MoviePage({
   }
   const linkToTMDB = `https://www.themoviedb.org/movie/${movie.id}`;
   const linkToIMDB = `https://www.imdb.com/title/${movie.imdb_id}`;
+
+  // 處理預告片res
+  const videos = await getMovieVideos(params.movieId); // 取得影片資料
+  const trailer = videos.results.find((result) => result.type === "Trailer");
+  const key = trailer ? trailer.key : "";
+
+  // 處理OTT res，只抓取result中的TW的link部分
+  const OTTlist = await getMovieOTTlinkTW(params.movieId);
+  // const OTTlistresult = OTTlist.results;
+  const OTTlistTWlink = OTTlist.results.TW?.link;
 
   return (
     <div className={styles.mainWrapper}>
@@ -130,7 +171,6 @@ export default async function MoviePage({
                 />
               </div>
             </div>
-
             <div className={styles.movieBio__detailArea}>
               {releaseYear && <div>{releaseYear}年 </div>}
 
@@ -153,11 +193,9 @@ export default async function MoviePage({
                 </Link>
               )}
             </div>
-
             {/* <Link href={`https://www.youtube.com/watch?v=${key}`}>
               播放預告片
             </Link> */}
-
             <div className={styles.movieBio__overviewArea}>
               {movie.tagline && (
                 <p>
@@ -175,7 +213,6 @@ export default async function MoviePage({
                 </div>
               )}
             </div>
-
             <div className={styles.movieBio__otherMovieDBarea}>
               <label
                 className={styles.movieBio__otherMovieDBarea__label}
@@ -201,6 +238,25 @@ export default async function MoviePage({
                 IMDB
               </Link>
             </div>
+
+            {OTTlistTWlink && (
+              <div className={styles.movieBio__otherMovieDBarea}>
+                <label
+                  className={styles.movieBio__otherMovieDBarea__label}
+                  htmlFor="OTTlistTW"
+                >
+                  到影音串流平台上觀看：
+                </label>
+                <Link
+                  className={styles.movieBio__otherMovieDBarea__link}
+                  href={OTTlistTWlink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  JustWatch
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </main>
