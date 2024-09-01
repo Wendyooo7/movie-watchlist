@@ -2,21 +2,39 @@
 import styles from "../../styles/movieMain.module.scss";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
-import { db } from "@/app/firebase/config";
-import { doc, getDoc, setDoc, deleteDoc } from "firebase/firestore";
 import { useAuth } from "@/app/contexts/AuthContext";
+import { db } from "@/app/firebase/config";
+import {
+  doc,
+  getDoc,
+  setDoc,
+  collection,
+  getDocs,
+  updateDoc,
+  arrayUnion,
+  arrayRemove,
+  query,
+  where,
+} from "firebase/firestore";
+
+// 定義 Bookmark 元件的屬性
+interface BookmarkProps {
+  movieId: string;
+  title: string;
+  runtime: number;
+  originalTitle: string;
+  releaseYear: string;
+  OTTlistTWlink?: string;
+}
 
 export default function Bookmark({
   movieId,
   title,
   runtime,
   originalTitle,
-}: {
-  movieId: string;
-  title: string;
-  runtime: number;
-  originalTitle: string;
-}) {
+  releaseYear,
+  OTTlistTWlink,
+}: BookmarkProps) {
   const [isBookmarked, setIsBookmarked] = useState(false);
   const { user } = useAuth();
 
@@ -27,14 +45,19 @@ export default function Bookmark({
 
       try {
         const userUid = user.uid;
-        const docRef = doc(db, "users", userUid, "bookmarks", movieId);
-        const docSnap = await getDoc(docRef);
+        const listsCollectionRef = collection(db, "users", userUid, "lists");
+        const listsSnapshot = await getDocs(listsCollectionRef);
 
-        if (docSnap.exists()) {
-          setIsBookmarked(true);
-        } else {
-          setIsBookmarked(false);
-        }
+        let found = false;
+
+        listsSnapshot.forEach((listDoc) => {
+          const movies = listDoc.data().movies || [];
+          if (movies.some((movie: any) => movie.movieId === movieId)) {
+            found = true;
+          }
+        });
+
+        setIsBookmarked(found);
       } catch (err) {
         console.error("Error checking bookmark status:", err);
       }
@@ -52,25 +75,48 @@ export default function Bookmark({
 
     try {
       const userUid = user.uid;
-      const docRef = doc(db, "users", userUid, "bookmarks", movieId);
+      const defaultListRef = doc(db, "users", userUid, "lists", "default");
 
-      let storeMovieDetail;
-      if (originalTitle !== title) {
-        storeMovieDetail = { movieId, title, originalTitle, runtime };
-      } else {
-        storeMovieDetail = { movieId, title, runtime };
+      // 檢查 default 文件是否存在
+      const defaultListDoc = await getDoc(defaultListRef);
+      if (!defaultListDoc.exists()) {
+        // 如果 default 文件不存在，創建該文件
+        await setDoc(defaultListRef, { movies: [] });
       }
 
+      // 檢查 每個電影資訊 是否存在，只將存在的電影資訊加到 storeMovieDetail
+      const storeMovieDetail = {
+        movieId,
+        title,
+        ...(releaseYear && { releaseYear }),
+        ...(OTTlistTWlink && { OTTlistTWlink }),
+        ...(originalTitle && { originalTitle }),
+        ...(runtime && { runtime }),
+      };
+
       if (!isBookmarked) {
-        // 如果該電影尚未收藏，將其詳細資訊存入 Firestore
-        await setDoc(docRef, storeMovieDetail);
-        setIsBookmarked(true); // 更新本地狀態
-        console.log("將電影存入片單");
+        // 如果該電影尚未收藏，將其詳細資訊加入預設片單的 movies 陣列
+
+        await updateDoc(defaultListRef, {
+          movies: arrayUnion(storeMovieDetail),
+        });
+        setIsBookmarked(true);
+        console.log("將電影存入預設片單");
       } else {
-        // 若已經收藏，則刪除該文件
-        await deleteDoc(docRef);
-        setIsBookmarked(false); // 更新本地狀態
-        console.log("將電影移除片單");
+        // 若已經收藏，則從所有包含該電影的片單的 movies 陣列中移除該電影
+        const listsCollectionRef = collection(db, "users", userUid, "lists");
+        const listsSnapshot = await getDocs(listsCollectionRef);
+
+        listsSnapshot.forEach(async (listDoc) => {
+          const movies = listDoc.data().movies || [];
+          if (movies.some((movie: any) => movie.movieId === movieId)) {
+            await updateDoc(listDoc.ref, {
+              movies: arrayRemove(storeMovieDetail),
+            });
+          }
+        });
+        setIsBookmarked(false);
+        console.log("將電影從所有片單中移除");
       }
     } catch (err) {
       console.error("Error updating bookmark status:", err);
@@ -96,7 +142,7 @@ export default function Bookmark({
         height={22}
         alt="加入片單"
       ></Image>
-      <div>加入片單</div>
+      <div>{isBookmarked ? "已加入片單" : "加入片單"}</div>
 
       {!user && <div className={styles.tooltip}>登入即可加入片單</div>}
     </div>

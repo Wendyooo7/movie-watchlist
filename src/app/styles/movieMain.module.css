@@ -54,19 +54,23 @@
   font-size: 22px;
   font-weight: bold;
 }
-.mainTop .movieBio__otherMovieDBarea > * {
+.mainTop .movieBio__otherMovieDBarea > *,
+.mainTop .movieBio__OTTarea > * {
   margin-right: 1.5%;
 }
-.mainTop .movieBio__otherMovieDBarea .movieBio__otherMovieDBarea__label {
+.mainTop .movieBio__otherMovieDBarea .movieBio__linkToExternal__label,
+.mainTop .movieBio__OTTarea .movieBio__linkToExternal__label {
   color: #8440f1;
   font-weight: 500;
 }
-.mainTop .movieBio__otherMovieDBarea .movieBio__otherMovieDBarea__link {
+.mainTop .movieBio__otherMovieDBarea .movieBio__linkToExternal__link,
+.mainTop .movieBio__OTTarea .movieBio__linkToExternal__link {
   background-color: #ae81ff;
   color: white;
   padding: 0.15rem 0.3rem;
 }
-.mainTop .movieBio__otherMovieDBarea .movieBio__otherMovieDBarea__link:hover {
+.mainTop .movieBio__otherMovieDBarea .movieBio__linkToExternal__link:hover,
+.mainTop .movieBio__OTTarea .movieBio__linkToExternal__link:hover {
   opacity: 0.9;
 }
 

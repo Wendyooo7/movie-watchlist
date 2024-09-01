@@ -12,6 +12,7 @@ import Bookmark from "./Bookmark";
 //   title: "電影排片站",
 // };
 
+// 定義movie details API返回的電影資料結構
 interface Movie {
   id: number;
   title: string;
@@ -25,15 +26,17 @@ interface Movie {
   imdb_id: string;
 }
 
+// 定義movie videos API返回的電影資料結構
 interface Video {
   results: any[];
   key: string;
   site: string;
 }
 
+// 定義movie watch providers API返回的電影資料結構
 interface OTTlistTW {
   results: {
-    // 加上? 比TW變成可選的
+    // 加上? 讓TW變成可選的
     TW?: {
       link: string;
     };
@@ -41,7 +44,6 @@ interface OTTlistTW {
 }
 
 // 在 Server Components 中執行資料抓取
-
 async function getMovieDetail(movieId: string): Promise<Movie> {
   const API_ACCESS_TOKEN = process.env.TMDB_API_ACCESS_TOKEN!;
   const options = {
@@ -168,6 +170,8 @@ export default async function MoviePage({
                   title={movie.title}
                   runtime={movie.runtime}
                   originalTitle={movie.original_title}
+                  releaseYear={releaseYear}
+                  OTTlistTWlink={OTTlistTWlink}
                 />
               </div>
             </div>
@@ -213,15 +217,17 @@ export default async function MoviePage({
                 </div>
               )}
             </div>
+
+            {/* <div className={styles.movieBio__ExternalLinksArea}> */}
             <div className={styles.movieBio__otherMovieDBarea}>
               <label
-                className={styles.movieBio__otherMovieDBarea__label}
+                className={styles.movieBio__linkToExternal__label}
                 htmlFor="otherMovieDB"
               >
                 前往電影資料庫：
               </label>
               <Link
-                className={styles.movieBio__otherMovieDBarea__link}
+                className={styles.movieBio__linkToExternal__link}
                 href={linkToTMDB}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -230,7 +236,7 @@ export default async function MoviePage({
               </Link>
 
               <Link
-                className={styles.movieBio__otherMovieDBarea__link}
+                className={styles.movieBio__linkToExternal__link}
                 href={linkToIMDB}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -240,15 +246,15 @@ export default async function MoviePage({
             </div>
 
             {OTTlistTWlink && (
-              <div className={styles.movieBio__otherMovieDBarea}>
+              <div className={styles.movieBio__OTTarea}>
                 <label
-                  className={styles.movieBio__otherMovieDBarea__label}
+                  className={styles.movieBio__linkToExternal__label}
                   htmlFor="OTTlistTW"
                 >
-                  到影音串流平台上觀看：
+                  查看影音串流平台列表：
                 </label>
                 <Link
-                  className={styles.movieBio__otherMovieDBarea__link}
+                  className={styles.movieBio__linkToExternal__link}
                   href={OTTlistTWlink}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -257,6 +263,7 @@ export default async function MoviePage({
                 </Link>
               </div>
             )}
+            {/* </div> */}
           </div>
         </div>
       </main>

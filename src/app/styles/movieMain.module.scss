@@ -83,17 +83,24 @@ $theme-color-background: rgba(197, 177, 249, 0.2);
     }
   }
 
-  .movieBio__otherMovieDBarea {
+  // .movieBio__ExternalLinksArea {
+  //   display: flex;
+  //   justify-content: space-between;
+  //   align-items: center;
+  // }
+
+  .movieBio__otherMovieDBarea,
+  .movieBio__OTTarea {
     > * {
       margin-right: 1.5%;
     }
 
-    .movieBio__otherMovieDBarea__label {
+    .movieBio__linkToExternal__label {
       color: $theme-color;
       font-weight: 500;
     }
 
-    .movieBio__otherMovieDBarea__link {
+    .movieBio__linkToExternal__link {
       background-color: $theme-color-light;
       color: white;
       padding: 0.15rem 0.3rem;
