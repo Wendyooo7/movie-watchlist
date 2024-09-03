@@ -2,7 +2,7 @@
 import styles from "@/app/styles/watchlistMain.module.scss";
 import { useEffect, useState } from "react";
 import { useAuth } from "@/app/contexts/AuthContext";
-import { doc, getDocs, collection, query } from "firebase/firestore";
+import { doc, getDocs, updateDoc, collection, query } from "firebase/firestore";
 import { db } from "@/app/firebase/config";
 import {
   DragDropContext,
@@ -53,8 +53,58 @@ export default function MyLists() {
     fetchLists();
   }, [user]);
 
+  // 拖曳後將新的順序存入Firestore
+  const handleOnDragEnd = async (result: DropResult) => {
+    if (!user) return;
+    const userUid = user.uid;
+
+    const { destination, source } = result;
+
+    if (!destination) return;
+
+    // 只允許在相同的 droppableId 內拖曳
+    if (
+      destination.droppableId === source.droppableId &&
+      destination.index === source.index
+    ) {
+      return;
+    }
+
+    const sourceListIndex = lists.findIndex(
+      (list) => list.id === source.droppableId
+    );
+    const destListIndex = lists.findIndex(
+      (list) => list.id === destination.droppableId
+    );
+
+    if (sourceListIndex === -1 || destListIndex === -1) return;
+
+    const sourceList = lists[sourceListIndex];
+    const destList = lists[destListIndex];
+    const [movedMovie] = sourceList.movies.splice(source.index, 1);
+
+    destList.movies.splice(destination.index, 0, movedMovie);
+
+    const updatedLists = Array.from(lists);
+    updatedLists[sourceListIndex] = { ...sourceList };
+    updatedLists[destListIndex] = { ...destList };
+
+    setLists(updatedLists);
+
+    // 將更新後的順序存回 Firestore
+    try {
+      const sourceListRef = doc(db, "users", userUid, "lists", sourceList.id);
+      const destListRef = doc(db, "users", userUid, "lists", destList.id);
+
+      await updateDoc(sourceListRef, { movies: sourceList.movies });
+      await updateDoc(destListRef, { movies: destList.movies });
+    } catch (error) {
+      console.error("Error updating lists: ", error);
+    }
+  };
+
   return (
-    <main className={styles.main}>
+    <main>
       <DragDropContext onDragEnd={handleOnDragEnd}>
         <div>
           {lists.map((list) => (
@@ -66,6 +116,7 @@ export default function MyLists() {
                   ref={provided.innerRef}
                 >
                   <h2 className={styles.listTitle}>{list.title}</h2>
+
                   {list.movies.map((movie, index) => (
                     <Draggable
                       key={movie.movieId}
