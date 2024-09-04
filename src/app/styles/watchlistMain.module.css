@@ -1,0 +1,44 @@
+.listContainer {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 10px;
+  background-color: rgba(197, 177, 249, 0.1);
+  padding: 1rem 0.75rem;
+  border: 1px solid rgb(197, 177, 249);
+}
+.listContainer .listTitle {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #8440f1;
+}
+.listContainer .movieItem {
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  background-color: white;
+  border: 1px solid rgb(197, 177, 249);
+  border-radius: 5px;
+  display: flex;
+  justify-content: baseline;
+  align-items: center;
+}
+.listContainer .movieItem .movieItem__order {
+  background-color: white;
+  color: #8440f1;
+  border-radius: 50px;
+}
+.listContainer .movieItem .movieItem__title {
+  padding: 0 1rem;
+}
+.listContainer .movieItem .OTTlink {
+  color: #8440f1;
+  padding: 0.15rem 0.3rem;
+  height: 1.6rem;
+  border-radius: 3px;
+  border: 1px solid rgb(197, 177, 249);
+  background-color: rgba(197, 177, 249, 0.1);
+}
+.listContainer .movieItem .OTTlink:hover {
+  opacity: 0.8;
+}/*# sourceMappingURL=watchlistMain.module.css.map */
