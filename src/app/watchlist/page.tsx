@@ -132,9 +132,15 @@ export default function MyLists() {
                             snapshot.isDragging ? styles.dragging : ""
                           }`}
                         >
-                          {movie.title}
+                          <div className={styles.movieItem__serialNumber}>
+                            {index + 1}
+                          </div>
+                          <div className={styles.movieItem__title}>
+                            {movie.title}
+                          </div>
                           {movie.OTTlistTWlink && (
                             <Link
+                              className={styles.movieItem__OTTlink}
                               href={movie.OTTlistTWlink}
                               target="_blank"
                               rel="noopener noreferrer"
