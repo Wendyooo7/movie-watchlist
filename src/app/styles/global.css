@@ -9,8 +9,8 @@
 
 html,
 body {
-  max-width: 100vw;
   height: 100%;
+  max-width: 100vw;
   display: flex;
   flex-direction: column;
 }
@@ -58,7 +58,7 @@ main {
   width: 100%;
   margin-top: 4rem;
   padding: 1rem;
-  min-height: calc(100vh - 50px);
+  flex: 1;
 }
 
 footer {
@@ -69,6 +69,7 @@ footer {
   font-size: 16px;
   font-weight: 550;
   padding: 15px;
+  height: 50px;
 }
 
 /* @media (prefers-color-scheme: dark) {
