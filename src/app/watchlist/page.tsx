@@ -8,6 +8,7 @@ import {
   getDocs,
   setDoc,
   updateDoc,
+  deleteDoc,
   collection,
   query,
 } from "firebase/firestore";
@@ -42,7 +43,7 @@ export default function MyLists() {
 
   useEffect(() => {
     if (!user) {
-      router.push("/sign");
+      router.push("/");
       return;
     }
 
@@ -123,6 +124,7 @@ export default function MyLists() {
     setIsModalVisible(true);
   };
 
+  // 新增片單
   const handleCreateList = async () => {
     if (!user) return;
 
@@ -159,6 +161,58 @@ export default function MyLists() {
     setIsModalVisible(false);
   };
 
+  // 刪除片單
+  const handleDeleteList = async (listId: string) => {
+    if (!user) return;
+
+    try {
+      const userUid = user.uid;
+      const listRef = doc(db, "users", userUid, "lists", listId);
+
+      // 移除該片單，並更新本地state
+      const updatedLists = lists.filter((list) => {
+        return list.id !== listId;
+      });
+      setLists(updatedLists);
+
+      // 從 Firestore 中刪除該片單
+      await deleteDoc(listRef);
+    } catch (err) {
+      console.error("Error deleting list: ", err);
+    }
+  };
+
+  // 刪除電影項目
+  const handleDeleteMovieItem = async (listId: string, movieId: string) => {
+    if (!user) return;
+
+    try {
+      const userUid = user.uid;
+      const listRef = doc(db, "users", userUid, "lists", listId);
+
+      // 找到對應片單並移除電影，並更新本地狀態
+      const updatedLists = lists.map((list) => {
+        if (list.id === listId) {
+          return {
+            ...list,
+            movies: list.movies.filter((movie) => movie.movieId !== movieId),
+          };
+        }
+        return list;
+      });
+
+      setLists(updatedLists);
+
+      // 更新 Firestore 中的片單
+      const updatedMovies = updatedLists.find(
+        (list) => list.id === listId
+      )?.movies;
+      await updateDoc(listRef, { movies: updatedMovies });
+    } catch (err) {
+      console.error("Error deleting movie item: ", err);
+    }
+  };
+
   return (
     <main>
       <div className={styles.listsContainerContainer}>
@@ -172,7 +226,24 @@ export default function MyLists() {
                     {...provided.droppableProps}
                     ref={provided.innerRef}
                   >
-                    <h2 className={styles.listTitle}>{list.title}</h2>
+                    <div className={styles.listContainer__header}>
+                      <h2 className={styles.listContainer__header__title}>
+                        {list.title}
+                      </h2>
+                      <div
+                        className={styles.listContainer__header__deleteListBtn}
+                        onClick={() => {
+                          handleDeleteList(list.id);
+                        }}
+                      >
+                        <Image
+                          src="/watchlist/close_30dp_8440F1.svg"
+                          width={22}
+                          height={22}
+                          alt="刪除片單"
+                        ></Image>
+                      </div>
+                    </div>
 
                     {list.movies.map((movie, index) => (
                       <Draggable
@@ -182,29 +253,50 @@ export default function MyLists() {
                       >
                         {(provided, snapshot) => (
                           <div
-                            ref={provided.innerRef}
-                            {...provided.draggableProps}
-                            {...provided.dragHandleProps}
                             className={`${styles.movieItem} ${
                               snapshot.isDragging ? styles.dragging : ""
                             }`}
+                            ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
                           >
-                            <div className={styles.movieItem__serialNumber}>
-                              {index + 1}
-                            </div>
-                            <div className={styles.movieItem__title}>
-                              {movie.title}
-                            </div>
-                            {movie.OTTlistTWlink && (
-                              <Link
-                                className={styles.movieItem__OTTlink}
-                                href={movie.OTTlistTWlink}
-                                target="_blank"
-                                rel="noopener noreferrer"
+                            <div className={styles.movieItem__details}>
+                              <div
+                                className={
+                                  styles.movieItem__details__serialNumber
+                                }
                               >
-                                OTT
-                              </Link>
-                            )}
+                                {index + 1}
+                              </div>
+
+                              <div className={styles.movieItem__details__title}>
+                                {movie.title}
+                              </div>
+
+                              {movie.OTTlistTWlink && (
+                                <Link
+                                  className={styles.movieItem__details__OTTlink}
+                                  href={movie.OTTlistTWlink}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                >
+                                  OTT
+                                </Link>
+                              )}
+                            </div>
+                            <div
+                              className={styles.movieItem__delete}
+                              onClick={() => {
+                                handleDeleteMovieItem(list.id, movie.movieId);
+                              }}
+                            >
+                              <Image
+                                src="/watchlist/close_30dp_8440F1.svg"
+                                width={20}
+                                height={20}
+                                alt="刪除電影"
+                              ></Image>
+                            </div>
                           </div>
                         )}
                       </Draggable>

@@ -23,6 +23,7 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
   margin: 0 0.25rem;
   width: 100%;
   max-width: 300px;
+  min-width: 300px;
   position: relative;
   // border: 2px solid red;
 
@@ -96,12 +97,29 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
   border: 1px solid $minor-color;
   margin: 0 0.2rem;
 
-  .listTitle {
-    width: 100%;
-    text-align: center;
+  .listContainer__header {
+    display: flex;
+    align-items: center;
     margin-bottom: 1rem;
-    color: $theme-color;
-    // border: 1px solid $theme-color;
+    // border: 1px solid black;
+
+    .listContainer__header__title {
+      width: 100%;
+      text-align: center;
+
+      color: $theme-color;
+      // border: 1px solid $theme-color;
+    }
+
+    .listContainer__header__deleteListBtn {
+      opacity: 0;
+
+      &:hover {
+        opacity: 1;
+        cursor: pointer;
+        // background-color: $minor-color-background;
+      }
+    }
   }
 
   .movieItem {
@@ -113,34 +131,50 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
     border: 1px solid $minor-color;
     border-radius: 5px;
     display: flex;
-    justify-content: baseline;
-    // TODO:有空回來調整.movieItem內的元素布局，問題在上行
+    justify-content: space-between;
     align-items: center;
 
-    .movieItem__serialNumber {
-      background-color: white;
-      color: $theme-color;
-      //   padding: 0.3rem 0.6rem;
-      border-radius: 50px;
-      //   border: 1px solid $theme-color;
+    .movieItem__details {
+      display: flex;
+      align-items: center;
+      justify-content: baseline;
+      // TODO:是因為空間太窄了嗎？為什麼上行沒什麼用
+
+      .movieItem__details__serialNumber {
+        background-color: white;
+        color: $theme-color;
+        //   padding: 0.3rem 0.6rem;
+        border-radius: 50px;
+        //   border: 1px solid $theme-color;
+      }
+
+      .movieItem__details__title {
+        padding: 0 1rem;
+        //   text-align: start;
+        //   border: 1px solid black;
+      }
+
+      .movieItem__details__OTTlink {
+        color: $theme-color;
+        padding: 0.15rem 0.3rem;
+        height: 1.6rem;
+        border-radius: 3px;
+        border: 1px solid $minor-color;
+        background-color: $minor-color-background;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
     }
 
-    .movieItem__title {
-      padding: 0 1rem;
-      //   text-align: start;
-      //   border: 1px solid black;
-    }
-
-    .movieItem__OTTlink {
-      color: $theme-color;
-      padding: 0.15rem 0.3rem;
-      height: 1.6rem;
-      border-radius: 3px;
-      border: 1px solid $minor-color;
-      background-color: $minor-color-background;
+    .movieItem__delete {
+      opacity: 0;
 
       &:hover {
-        opacity: 0.8;
+        opacity: 1;
+        cursor: pointer;
+        // background-color: $minor-color-background;
       }
     }
   }
