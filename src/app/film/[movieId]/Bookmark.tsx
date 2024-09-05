@@ -13,8 +13,6 @@ import {
   updateDoc,
   arrayUnion,
   arrayRemove,
-  query,
-  where,
 } from "firebase/firestore";
 
 // 定義 Bookmark 元件的屬性
@@ -75,7 +73,7 @@ export default function Bookmark({
 
     try {
       const userUid = user.uid;
-      const defaultListRef = doc(db, "users", userUid, "lists", "default");
+      const defaultListRef = doc(db, "users", userUid, "lists", "預設片單");
 
       // 檢查 default 文件是否存在
       const defaultListDoc = await getDoc(defaultListRef);
