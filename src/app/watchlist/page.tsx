@@ -43,6 +43,7 @@ export default function MyLists() {
   useEffect(() => {
     if (!user) {
       router.push("/sign");
+      return;
     }
 
     const fetchLists = async () => {
