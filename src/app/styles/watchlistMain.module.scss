@@ -1,15 +1,100 @@
 $theme-color: #8440f1;
 $theme-color-light: #ae81ff;
 $minor-color: rgb(197, 177, 249);
-$theme-color-background: rgba(197, 177, 249, 0.1);
+$minor-color-background: rgba(197, 177, 249, 0.1);
+
+.listsContainerContainer {
+  display: flex;
+  justify-content: center;
+
+  .listsContainer {
+    display: flex;
+    // border: 2px solid green;
+    justify-content: center;
+    overflow-x: auto;
+    width: 100%;
+    max-width: 1500px;
+    // border: 1px solid black;
+    padding: 1rem 0;
+  }
+}
+
+.addNewlistArea {
+  margin: 0 0.25rem;
+  width: 100%;
+  max-width: 300px;
+  position: relative;
+  // border: 2px solid red;
+
+  .addNewlistArea__Img {
+    background-color: $minor-color-background;
+    padding: 0.2rem;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba(197, 177, 249, 0.3);
+    }
+  }
+
+  .addNewlistArea__modal {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 5px;
+    background-color: $minor-color-background;
+    padding: 1.25rem 2rem;
+    border: 1px solid $minor-color;
+    height: 100%;
+    position: absolute;
+    top: 0; // 根據實際需要調整
+    right: 0; // 根據實際需要調整
+    transform: translate(0, 0); // 可以用來進一步微調位置
+
+    .addNewListModal__TitleInput {
+      // all: unset;
+      width: 100%;
+      padding: 0.75rem 0.5rem;
+      font-size: 20px;
+      color: $theme-color;
+      font-weight: 550;
+      text-align: center;
+      // border: 1px solid $theme-color-light;
+      // border-radius: 5px;
+      // background-color: white;
+    }
+
+    .addNewListModal__afterTitleInput {
+      display: flex;
+      justify-content: end;
+
+      .addNewListModal__afterTitleInput__item {
+        // padding: 0.1rem;
+        background-color: white;
+        margin-left: 0.5rem;
+        margin-top: 0.5rem;
+        border: 1px solid $theme-color;
+        border-radius: 2px;
+
+        &:hover {
+          cursor: pointer;
+          background-color: rgba(0, 0, 0, 0.1);
+        }
+      }
+    }
+  }
+}
 
 .listContainer {
   width: 100%;
   max-width: 300px;
-  border-radius: 10px;
-  background-color: $theme-color-background;
-  padding: 1rem 0.75rem;
+  min-width: 300px;
+  // TODO:檢查一下可否最大和最小都設同一個尺寸
+  border-radius: 5px;
+  background-color: $minor-color-background;
+  padding: 1.5rem 1rem;
   border: 1px solid $minor-color;
+  margin: 0 0.2rem;
 
   .listTitle {
     width: 100%;
@@ -21,8 +106,9 @@ $theme-color-background: rgba(197, 177, 249, 0.1);
 
   .movieItem {
     width: 100%;
-    margin: 0.5rem 0;
+    margin: 0.6rem 0;
     padding: 0.5rem;
+    padding-left: 1rem;
     background-color: white;
     border: 1px solid $minor-color;
     border-radius: 5px;
@@ -51,7 +137,7 @@ $theme-color-background: rgba(197, 177, 249, 0.1);
       height: 1.6rem;
       border-radius: 3px;
       border: 1px solid $minor-color;
-      background-color: $theme-color-background;
+      background-color: $minor-color-background;
 
       &:hover {
         opacity: 0.8;

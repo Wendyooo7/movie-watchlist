@@ -1,10 +1,78 @@
+.listsContainerContainer {
+  display: flex;
+  justify-content: center;
+}
+.listsContainerContainer .listsContainer {
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+  width: 100%;
+  max-width: 1500px;
+  padding: 1rem 0;
+}
+
+.addNewlistArea {
+  margin: 0 0.25rem;
+  width: 100%;
+  max-width: 300px;
+  position: relative;
+}
+.addNewlistArea .addNewlistArea__Img {
+  background-color: rgba(197, 177, 249, 0.1);
+  padding: 0.2rem;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.addNewlistArea .addNewlistArea__Img:hover {
+  background-color: rgba(197, 177, 249, 0.3);
+}
+.addNewlistArea .addNewlistArea__modal {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 5px;
+  background-color: rgba(197, 177, 249, 0.1);
+  padding: 1.25rem 2rem;
+  border: 1px solid rgb(197, 177, 249);
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(0, 0);
+}
+.addNewlistArea .addNewlistArea__modal .addNewListModal__TitleInput {
+  width: 100%;
+  padding: 0.75rem 0.5rem;
+  font-size: 20px;
+  color: #8440f1;
+  font-weight: 550;
+  text-align: center;
+}
+.addNewlistArea .addNewlistArea__modal .addNewListModal__afterTitleInput {
+  display: flex;
+  justify-content: end;
+}
+.addNewlistArea .addNewlistArea__modal .addNewListModal__afterTitleInput .addNewListModal__afterTitleInput__item {
+  background-color: white;
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
+  border: 1px solid #8440f1;
+  border-radius: 2px;
+}
+.addNewlistArea .addNewlistArea__modal .addNewListModal__afterTitleInput .addNewListModal__afterTitleInput__item:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
 .listContainer {
   width: 100%;
   max-width: 300px;
-  border-radius: 10px;
+  min-width: 300px;
+  border-radius: 5px;
   background-color: rgba(197, 177, 249, 0.1);
-  padding: 1rem 0.75rem;
+  padding: 1.5rem 1rem;
   border: 1px solid rgb(197, 177, 249);
+  margin: 0 0.2rem;
 }
 .listContainer .listTitle {
   width: 100%;
@@ -14,8 +82,9 @@
 }
 .listContainer .movieItem {
   width: 100%;
-  margin: 0.5rem 0;
+  margin: 0.6rem 0;
   padding: 0.5rem;
+  padding-left: 1rem;
   background-color: white;
   border: 1px solid rgb(197, 177, 249);
   border-radius: 5px;
@@ -23,7 +92,7 @@
   justify-content: baseline;
   align-items: center;
 }
-.listContainer .movieItem .movieItem__order {
+.listContainer .movieItem .movieItem__serialNumber {
   background-color: white;
   color: #8440f1;
   border-radius: 50px;
@@ -31,7 +100,7 @@
 .listContainer .movieItem .movieItem__title {
   padding: 0 1rem;
 }
-.listContainer .movieItem .OTTlink {
+.listContainer .movieItem .movieItem__OTTlink {
   color: #8440f1;
   padding: 0.15rem 0.3rem;
   height: 1.6rem;
@@ -39,6 +108,6 @@
   border: 1px solid rgb(197, 177, 249);
   background-color: rgba(197, 177, 249, 0.1);
 }
-.listContainer .movieItem .OTTlink:hover {
+.listContainer .movieItem .movieItem__OTTlink:hover {
   opacity: 0.8;
 }/*# sourceMappingURL=watchlistMain.module.css.map */

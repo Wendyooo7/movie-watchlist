@@ -1,8 +1,16 @@
 "use client";
+import { useRouter } from "next/navigation";
 import styles from "@/app/styles/watchlistMain.module.scss";
 import { useEffect, useState } from "react";
 import { useAuth } from "@/app/contexts/AuthContext";
-import { doc, getDocs, updateDoc, collection, query } from "firebase/firestore";
+import {
+  doc,
+  getDocs,
+  setDoc,
+  updateDoc,
+  collection,
+  query,
+} from "firebase/firestore";
 import { db } from "@/app/firebase/config";
 import {
   DragDropContext,
@@ -10,6 +18,7 @@ import {
   Draggable,
   DropResult,
 } from "react-beautiful-dnd";
+import Image from "next/image";
 import Link from "next/link";
 
 interface List {
@@ -25,11 +34,16 @@ interface Movie {
 }
 
 export default function MyLists() {
+  const router = useRouter();
   const [lists, setLists] = useState<List[]>([]);
   const { user } = useAuth();
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [newListTitle, setNewListTitle] = useState("");
 
   useEffect(() => {
-    if (!user) return;
+    if (!user) {
+      router.push("/sign");
+    }
 
     const fetchLists = async () => {
       try {
@@ -103,62 +117,156 @@ export default function MyLists() {
     }
   };
 
+  // 彈出新增片單model
+  const handleAddNewList = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleCreateList = async () => {
+    if (!user) return;
+
+    if (!newListTitle.trim()) {
+      handleModalClose();
+      return;
+    }
+
+    try {
+      const userUid = user.uid;
+      const newListRef = doc(collection(db, "users", userUid, "lists"));
+      await setDoc(newListRef, {
+        title: newListTitle,
+        movies: [],
+      });
+
+      setLists([
+        ...lists,
+        { id: newListRef.id, title: newListTitle, movies: [] },
+      ]);
+
+      setNewListTitle("");
+      handleModalClose();
+    } catch (error) {
+      console.error("Error creating new list: ", error);
+    }
+  };
+
+  const handleNewListTitleChange = (e: any) => {
+    setNewListTitle(e.target.value);
+  };
+
+  const handleModalClose = () => {
+    setIsModalVisible(false);
+  };
+
   return (
     <main>
-      <DragDropContext onDragEnd={handleOnDragEnd}>
-        <div>
-          {lists.map((list) => (
-            <Droppable key={list.id} droppableId={list.id}>
-              {(provided) => (
-                <div
-                  className={styles.listContainer}
-                  {...provided.droppableProps}
-                  ref={provided.innerRef}
-                >
-                  <h2 className={styles.listTitle}>{list.title}</h2>
+      <div className={styles.listsContainerContainer}>
+        <DragDropContext onDragEnd={handleOnDragEnd}>
+          <div className={styles.listsContainer}>
+            {lists.map((list) => (
+              <Droppable key={list.id} droppableId={list.id}>
+                {(provided) => (
+                  <div
+                    className={styles.listContainer}
+                    {...provided.droppableProps}
+                    ref={provided.innerRef}
+                  >
+                    <h2 className={styles.listTitle}>{list.title}</h2>
 
-                  {list.movies.map((movie, index) => (
-                    <Draggable
-                      key={movie.movieId}
-                      draggableId={movie.movieId}
-                      index={index}
+                    {list.movies.map((movie, index) => (
+                      <Draggable
+                        key={movie.movieId}
+                        draggableId={movie.movieId}
+                        index={index}
+                      >
+                        {(provided, snapshot) => (
+                          <div
+                            ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
+                            className={`${styles.movieItem} ${
+                              snapshot.isDragging ? styles.dragging : ""
+                            }`}
+                          >
+                            <div className={styles.movieItem__serialNumber}>
+                              {index + 1}
+                            </div>
+                            <div className={styles.movieItem__title}>
+                              {movie.title}
+                            </div>
+                            {movie.OTTlistTWlink && (
+                              <Link
+                                className={styles.movieItem__OTTlink}
+                                href={movie.OTTlistTWlink}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                OTT
+                              </Link>
+                            )}
+                          </div>
+                        )}
+                      </Draggable>
+                    ))}
+                    {provided.placeholder}
+                  </div>
+                )}
+              </Droppable>
+            ))}
+
+            <div className={styles.addNewlistArea}>
+              <div
+                className={styles.addNewlistArea__Img}
+                onClick={handleAddNewList}
+              >
+                <Image
+                  src="/watchlist/add_30dp_8440F1.svg"
+                  width={25}
+                  height={25}
+                  alt="新增片單"
+                ></Image>
+              </div>
+
+              {/* 新增片單名稱用modal */}
+              {isModalVisible && (
+                <div className={styles.addNewlistArea__modal}>
+                  <input
+                    className={styles.addNewListModal__TitleInput}
+                    value={newListTitle}
+                    onChange={handleNewListTitleChange}
+                  ></input>
+
+                  <div className={styles.addNewListModal__afterTitleInput}>
+                    <div
+                      className={styles.addNewListModal__afterTitleInput__item}
+                      onClick={handleCreateList}
                     >
-                      {(provided, snapshot) => (
-                        <div
-                          ref={provided.innerRef}
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}
-                          className={`${styles.movieItem} ${
-                            snapshot.isDragging ? styles.dragging : ""
-                          }`}
-                        >
-                          <div className={styles.movieItem__serialNumber}>
-                            {index + 1}
-                          </div>
-                          <div className={styles.movieItem__title}>
-                            {movie.title}
-                          </div>
-                          {movie.OTTlistTWlink && (
-                            <Link
-                              className={styles.movieItem__OTTlink}
-                              href={movie.OTTlistTWlink}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              OTT
-                            </Link>
-                          )}
-                        </div>
-                      )}
-                    </Draggable>
-                  ))}
-                  {provided.placeholder}
+                      <Image
+                        src="/watchlist/check_30dp_8440F1.svg"
+                        width={25}
+                        height={25}
+                        alt="創建片單"
+                      ></Image>
+                    </div>
+
+                    <div
+                      className={styles.addNewListModal__afterTitleInput__item}
+                      onClick={handleModalClose}
+                    >
+                      <Image
+                        src="/watchlist/close_30dp_8440F1.svg"
+                        width={25}
+                        height={25}
+                        alt="取消創建片單"
+                      ></Image>
+                    </div>
+                  </div>
                 </div>
               )}
-            </Droppable>
-          ))}
-        </div>
-      </DragDropContext>
+            </div>
+          </div>
+        </DragDropContext>
+      </div>
     </main>
   );
 }
