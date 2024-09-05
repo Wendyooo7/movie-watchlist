@@ -26,13 +26,8 @@
   display: flex;
   justify-content: space-between;
 }
-.mainTop .movieBio .movieBio__titleArea .movieBio__titleArea__title {
-  display: flex;
-  align-items: baseline;
-  white-space: nowrap;
-}
 .mainTop .movieBio .movieBio__titleArea .movieBio__titleArea__title > * {
-  margin-right: 6%;
+  margin-bottom: 0.25%;
 }
 .mainTop .movieBio__detailArea {
   display: flex;

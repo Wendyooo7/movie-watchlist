@@ -44,12 +44,13 @@ $theme-color-background: rgba(197, 177, 249, 0.2);
       justify-content: space-between;
 
       .movieBio__titleArea__title {
-        display: flex;
-        align-items: baseline;
-        white-space: nowrap;
+        // display: flex;
+        // align-items: baseline;
+        // white-space: nowrap;
+        // TODO:有空回來再確認超長標題的斷行問題
 
         > * {
-          margin-right: 6%;
+          margin-bottom: 0.25%;
         }
       }
     }
