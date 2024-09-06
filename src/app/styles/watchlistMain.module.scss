@@ -13,8 +13,7 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
     justify-content: center;
     overflow-x: auto;
     width: 100%;
-    max-width: 1500px;
-    // border: 1px solid black;
+    // max-width: 1500px; 拿掉這行讓大螢幕能排下更多片單
     padding: 1rem 0;
   }
 }

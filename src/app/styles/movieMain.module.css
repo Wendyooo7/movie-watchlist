@@ -1,19 +1,19 @@
 @charset "UTF-8";
-.mainWrapper {
-  margin-top: 1em;
+.main__flexContainer {
   width: 100%;
   display: flex;
   justify-content: center;
+  padding-top: 1.5rem;
 }
-.mainWrapper .main {
+.main__flexContainer .main__flexItem {
   width: 100%;
   max-width: 1150px;
 }
-.mainWrapper .main .mainTop {
+
+.mainTop {
   width: 100%;
   display: flex;
 }
-
 .mainTop .movieBio {
   width: 100%;
   max-width: 800px;

@@ -3,12 +3,12 @@ $theme-color: #8440f1;
 $theme-color-light: #ae81ff;
 $minor-color: rgb(197, 177, 249);
 
-.main {
+.main__flexContainer {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 6rem;
+  padding: 7rem;
 }
 
 .searchArea {

@@ -3,29 +3,29 @@ $theme-color-light: #ae81ff;
 $minor-color: rgb(197, 177, 249);
 $theme-color-background: rgba(197, 177, 249, 0.2);
 
-.mainWrapper {
+.main__flexContainer {
   // border: 3px solid black;
-  margin-top: 1em;
   width: 100%;
   display: flex;
   justify-content: center;
+  // min-height: 100%;
+  // margin-top: 1.5em;
+  padding-top: 1.5rem;
+  // TODO:同樣是padding-top和margin-top的選擇
 
-  .main {
+  .main__flexItem {
     // border: 1px solid red;
     width: 100%;
     max-width: 1150px;
     // flex: 1; // 讓 main 填滿剩餘空間
     // min-height: calc(100vh - $footer-height);
-
-    .mainTop {
-      width: 100%;
-      display: flex;
-      // border: 1px solid black;
-    }
   }
 }
 
 .mainTop {
+  width: 100%;
+  display: flex;
+
   .movieBio {
     width: 100%;
     // border: 1px solid red;

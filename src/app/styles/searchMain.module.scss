@@ -3,28 +3,27 @@ $theme-color-light: #ae81ff;
 $minor-color: rgb(197, 177, 249);
 $theme-color-background: rgba(197, 177, 249, 0.2);
 
-.mainWrapper {
-  margin-top: 1em;
+.main__flexContainer {
   width: 100%;
   display: flex;
   justify-content: center;
+  padding-top: 1rem;
+  // TODO:同樣是padding-top和margin-top的選擇
 
-  .main {
+  .main__flexItem {
     width: 100%;
     max-width: 1150px;
-    // flex: 1; // 讓 main 填滿剩餘空間
-    // min-height: calc(100vh - $footer-height);
-
-    .searchResultSummary {
-      margin-bottom: 1.5rem;
-      // border: 1px solid black;
-    }
-
-    .keyword {
-      text-decoration: underline $theme-color;
-      text-underline-offset: 7px; /* 調整此值來改變底線與文字的距離 */
-    }
   }
+}
+
+.searchResultSummary {
+  margin-bottom: 1.5rem;
+  // border: 1px solid black;
+}
+
+.keyword {
+  text-decoration: underline $theme-color;
+  text-underline-offset: 7px; /* 調整此值來改變底線與文字的距離 */
 }
 
 .eachMovieDiv {

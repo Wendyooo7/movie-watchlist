@@ -143,58 +143,60 @@ const SearchPageContent = () => {
   }
 
   return (
-    <div className={styles.mainWrapper}>
-      <main className={styles.main}>
-        {isLoading ? (
-          <h3>搜尋中......</h3>
-        ) : (
-          <>
-            <h3 className={styles.searchResultSummary}>
-              您搜尋了 <span className={styles.keyword}>{query}</span>
-              ，相符的結果共有{" "}
-              <span className={styles.keyword}>{totalResults}</span> 筆
-            </h3>
+    <main>
+      <div className={styles.main__flexContainer}>
+        <div className={styles.main__flexItem}>
+          {isLoading ? (
+            <h3>搜尋中......</h3>
+          ) : (
+            <>
+              <h3 className={styles.searchResultSummary}>
+                您搜尋了 <span className={styles.keyword}>{query}</span>
+                ，相符的結果共有{" "}
+                <span className={styles.keyword}>{totalResults}</span> 筆
+              </h3>
 
-            {results.map((movie) => {
-              const releaseYear = movie.release_date.split("-")[0];
-              const poster = movie.poster_path;
-              let posterPath = `https://image.tmdb.org/t/p/w154${poster}`;
-              if (!poster) {
-                posterPath = "/search/no-poster.png";
-              }
+              {results.map((movie) => {
+                const releaseYear = movie.release_date.split("-")[0];
+                const poster = movie.poster_path;
+                let posterPath = `https://image.tmdb.org/t/p/w154${poster}`;
+                if (!poster) {
+                  posterPath = "/search/no-poster.png";
+                }
 
-              return (
-                <Link href={`/film/${movie.id}`} key={movie.id}>
-                  <div className={styles.eachMovieDiv}>
-                    <div>
-                      <Image
-                        src={posterPath}
-                        width={92}
-                        height={138}
-                        alt="海報"
-                      />
+                return (
+                  <Link href={`/film/${movie.id}`} key={movie.id}>
+                    <div className={styles.eachMovieDiv}>
+                      <div>
+                        <Image
+                          src={posterPath}
+                          width={92}
+                          height={138}
+                          alt="海報"
+                        />
+                      </div>
+                      <div className={styles.eachMovieDetailDiv}>
+                        <h3 className={styles.eachMovieDetailDiv__title}>
+                          {movie.title}
+                        </h3>
+                        <h3>{releaseYear}</h3>
+                      </div>
                     </div>
-                    <div className={styles.eachMovieDetailDiv}>
-                      <h3 className={styles.eachMovieDetailDiv__title}>
-                        {movie.title}
-                      </h3>
-                      <h3>{releaseYear}</h3>
-                    </div>
-                  </div>
-                </Link>
-              );
-            })}
+                  </Link>
+                );
+              })}
 
-            {/* 只有在 totalPages > 1 時才顯示頁數導航按鈕 */}
-            {totalPages > 1 && (
-              <div className={styles.pageButtonsArea}>
-                {renderPageButtons()}
-              </div>
-            )}
-          </>
-        )}
-      </main>
-    </div>
+              {/* 只有在 totalPages > 1 時才顯示頁數導航按鈕 */}
+              {totalPages > 1 && (
+                <div className={styles.pageButtonsArea}>
+                  {renderPageButtons()}
+                </div>
+              )}
+            </>
+          )}
+        </div>
+      </div>
+    </main>
   );
 };
 
