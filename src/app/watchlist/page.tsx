@@ -51,9 +51,6 @@ function EditableListTitle({
 }: EditableListTitleProps) {
   // console.log("onUpdateSuccess:", onUpdateSuccess);
   console.log("onUpdateError:", onUpdateError);
-  if (!userUid) {
-    return null; // 如果 userUid 為 undefined，則不渲染這個元件
-  }
 
   const [title, setTitle] = useState(initialTitle);
   const [isEditing, setIsEditing] = useState(false);
