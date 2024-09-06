@@ -112,6 +112,15 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
       // border: 1px solid $theme-color;
     }
 
+    .listContainer__header__title__editing {
+      width: 100%;
+      padding: 0.5rem 0;
+      font-size: 22px;
+      color: $theme-color;
+      font-weight: 550;
+      text-align: center;
+    }
+
     .listContainer__header__deleteListBtn {
       opacity: 0;
 

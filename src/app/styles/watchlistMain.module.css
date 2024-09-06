@@ -17,6 +17,7 @@
   max-width: 300px;
   min-width: 300px;
   position: relative;
+  min-height: 225px;
 }
 .addNewlistArea .addNewlistArea__Img {
   background-color: rgba(197, 177, 249, 0.1);
@@ -43,7 +44,7 @@
 }
 .addNewlistArea .addNewlistArea__modal .addNewListModal__TitleInput {
   width: 100%;
-  padding: 0.75rem 0.5rem;
+  padding: 0.65rem 0;
   font-size: 20px;
   color: #8440f1;
   font-weight: 550;
@@ -51,7 +52,7 @@
 }
 .addNewlistArea .addNewlistArea__modal .addNewListModal__afterTitleInput {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 .addNewlistArea .addNewlistArea__modal .addNewListModal__afterTitleInput .addNewListModal__afterTitleInput__item {
   background-color: white;
