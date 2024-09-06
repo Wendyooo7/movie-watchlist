@@ -92,7 +92,7 @@ function EditableListTitle({
 
   const updateListTitle = async () => {
     console.log("即將修改Firestore片名");
-    // if (title.trim() === initialTitle || isUpdating) return;
+    if (title.trim() === initialTitle || isUpdating) return;
     console.log("Current Title:", title.trim());
     console.log("Initial Title:", initialTitle);
     setIsUpdating(true);
@@ -187,7 +187,7 @@ export default function MyLists() {
     };
 
     fetchLists();
-  }, [user]);
+  }, [user, router]);
 
   // 拖曳後將新的順序存入Firestore
   const handleOnDragEnd = async (result: DropResult) => {
