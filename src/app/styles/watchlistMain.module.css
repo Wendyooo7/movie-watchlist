@@ -85,6 +85,15 @@
   width: 100%;
   text-align: center;
   color: #8440f1;
+  cursor: pointer;
+}
+.listContainer .listContainer__header .listContainer__header__title__editing {
+  width: 100%;
+  padding: 0.5rem 0;
+  font-size: 22px;
+  color: #8440f1;
+  font-weight: 550;
+  text-align: center;
 }
 .listContainer .listContainer__header .listContainer__header__deleteListBtn {
   opacity: 0;
@@ -131,6 +140,7 @@
 }
 .listContainer .movieItem .movieItem__delete {
   opacity: 0;
+  margin-left: 0.5rem;
 }
 .listContainer .movieItem .movieItem__delete:hover {
   opacity: 1;

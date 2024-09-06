@@ -110,6 +110,7 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
 
       color: $theme-color;
       // border: 1px solid $theme-color;
+      cursor: pointer;
     }
 
     .listContainer__header__title__editing {
@@ -180,6 +181,7 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
 
     .movieItem__delete {
       opacity: 0;
+      margin-left: 0.5rem;
 
       &:hover {
         opacity: 1;
