@@ -25,6 +25,7 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
   max-width: 300px;
   min-width: 300px;
   position: relative;
+  min-height: 225px;
   // border: 2px solid red;
 
   .addNewlistArea__Img {
@@ -55,7 +56,7 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
     .addNewListModal__TitleInput {
       // all: unset;
       width: 100%;
-      padding: 0.75rem 0.5rem;
+      padding: 0.65rem 0;
       font-size: 20px;
       color: $theme-color;
       font-weight: 550;
@@ -67,7 +68,7 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
 
     .addNewListModal__afterTitleInput {
       display: flex;
-      justify-content: end;
+      justify-content: flex-end;
 
       .addNewListModal__afterTitleInput__item {
         // padding: 0.1rem;
