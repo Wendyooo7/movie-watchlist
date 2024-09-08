@@ -3,6 +3,28 @@ $theme-color-light: #ae81ff;
 $minor-color: rgb(197, 177, 249);
 $minor-color-background: rgba(197, 177, 249, 0.1);
 
+.noList__flexContainer {
+  display: flex;
+  justify-content: center;
+
+  .noList__flexItem {
+    width: 1100px;
+    padding: 10rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .noList__text {
+    width: 100%;
+    color: $theme-color;
+    font-size: 1.75rem;
+    font-weight: 550;
+    text-align: center;
+    margin: 0.5rem 0;
+  }
+}
+
 .listsContainerContainer {
   display: flex;
   justify-content: center;

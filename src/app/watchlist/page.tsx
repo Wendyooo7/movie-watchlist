@@ -50,14 +50,14 @@ function EditableListTitle({
   onUpdateError,
 }: EditableListTitleProps) {
   // console.log("onUpdateSuccess:", onUpdateSuccess);
-  console.log("onUpdateError:", onUpdateError);
+  // console.log("onUpdateError:", onUpdateError);
 
   const [title, setTitle] = useState(initialTitle);
   const [isEditing, setIsEditing] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);
 
   useEffect(() => {
-    console.log("initialTitle updated:", initialTitle);
+    // console.log("initialTitle updated:", initialTitle);
     setTitle(initialTitle);
   }, [initialTitle]);
 
@@ -157,6 +157,7 @@ export default function MyLists() {
   const { user } = useAuth();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [newListTitle, setNewListTitle] = useState("");
+  const [isListExisting, setIsListExisting] = useState(false);
 
   useEffect(() => {
     if (!user) {
@@ -178,6 +179,8 @@ export default function MyLists() {
         }));
 
         setLists(listsData);
+
+        setIsListExisting(listsData.length > 0);
       } catch (error) {
         console.error("Error fetching lists: ", error);
       }
@@ -292,6 +295,8 @@ export default function MyLists() {
       });
       setLists(updatedLists);
 
+      setIsListExisting(updatedLists.length > 0);
+
       // 從 Firestore 中刪除該片單
       await deleteDoc(listRef);
     } catch (err) {
@@ -332,161 +337,182 @@ export default function MyLists() {
 
   return (
     <main>
-      <div className={styles.listsContainerContainer}>
-        <DragDropContext onDragEnd={handleOnDragEnd}>
-          <div className={styles.listsContainer}>
-            {lists.map((list) => (
-              <Droppable key={list.id} droppableId={list.id}>
-                {(provided) => (
-                  <div
-                    className={styles.listContainer}
-                    {...provided.droppableProps}
-                    ref={provided.innerRef}
-                  >
-                    <div className={styles.listContainer__header}>
-                      {user?.uid && (
-                        <EditableListTitle
-                          listId={list.id}
-                          userUid={user.uid}
-                          initialTitle={list.title}
-                          onUpdateSuccess={() =>
-                            console.log("Title updated successfully")
+      {isListExisting ? (
+        <div className={styles.listsContainerContainer}>
+          <DragDropContext onDragEnd={handleOnDragEnd}>
+            <div className={styles.listsContainer}>
+              {lists.map((list) => (
+                <Droppable key={list.id} droppableId={list.id}>
+                  {(provided) => (
+                    <div
+                      className={styles.listContainer}
+                      {...provided.droppableProps}
+                      ref={provided.innerRef}
+                    >
+                      <div className={styles.listContainer__header}>
+                        {user?.uid && (
+                          <EditableListTitle
+                            listId={list.id}
+                            userUid={user.uid}
+                            initialTitle={list.title}
+                            onUpdateSuccess={() =>
+                              console.log("Title updated successfully")
+                            }
+                            onUpdateError={(error) =>
+                              console.error("Update failed:", error)
+                            }
+                          />
+                        )}
+                        <div
+                          className={
+                            styles.listContainer__header__deleteListBtn
                           }
-                          onUpdateError={(error) =>
-                            console.error("Update failed:", error)
-                          }
-                        />
-                      )}
+                          onClick={() => {
+                            handleDeleteList(list.id);
+                          }}
+                        >
+                          <Image
+                            src="/watchlist/close_30dp_8440F1.svg"
+                            width={22}
+                            height={22}
+                            alt="刪除片單"
+                          ></Image>
+                        </div>
+                      </div>
+
+                      {list.movies.map((movie, index) => (
+                        <Draggable
+                          key={movie.movieId}
+                          draggableId={movie.movieId}
+                          index={index}
+                        >
+                          {(provided, snapshot) => (
+                            <div
+                              className={`${styles.movieItem} ${
+                                snapshot.isDragging ? styles.dragging : ""
+                              }`}
+                              ref={provided.innerRef}
+                              {...provided.draggableProps}
+                              {...provided.dragHandleProps}
+                            >
+                              <div className={styles.movieItem__details}>
+                                <div
+                                  className={
+                                    styles.movieItem__details__serialNumber
+                                  }
+                                >
+                                  {index + 1}
+                                </div>
+
+                                <div
+                                  className={styles.movieItem__details__title}
+                                >
+                                  {movie.title}
+                                </div>
+
+                                {movie.OTTlistTWlink && (
+                                  <Link
+                                    className={
+                                      styles.movieItem__details__OTTlink
+                                    }
+                                    href={movie.OTTlistTWlink}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                  >
+                                    OTT
+                                  </Link>
+                                )}
+                              </div>
+                              <div
+                                className={styles.movieItem__delete}
+                                onClick={() => {
+                                  handleDeleteMovieItem(list.id, movie.movieId);
+                                }}
+                              >
+                                <Image
+                                  src="/watchlist/close_30dp_8440F1.svg"
+                                  width={20}
+                                  height={20}
+                                  alt="刪除電影"
+                                ></Image>
+                              </div>
+                            </div>
+                          )}
+                        </Draggable>
+                      ))}
+                      {provided.placeholder}
+                    </div>
+                  )}
+                </Droppable>
+              ))}
+
+              <div className={styles.addNewlistArea}>
+                <div
+                  className={styles.addNewlistArea__Img}
+                  onClick={handleAddNewList}
+                >
+                  <Image
+                    src="/watchlist/add_30dp_8440F1.svg"
+                    width={25}
+                    height={25}
+                    alt="新增片單"
+                  ></Image>
+                </div>
+
+                {/* 新增片單名稱用modal */}
+                {isModalVisible && (
+                  <div className={styles.addNewlistArea__modal}>
+                    <input
+                      className={styles.addNewListModal__TitleInput}
+                      value={newListTitle}
+                      onChange={handleNewListTitleChange}
+                    ></input>
+
+                    <div className={styles.addNewListModal__afterTitleInput}>
                       <div
-                        className={styles.listContainer__header__deleteListBtn}
-                        onClick={() => {
-                          handleDeleteList(list.id);
-                        }}
+                        className={
+                          styles.addNewListModal__afterTitleInput__item
+                        }
+                        onClick={handleCreateList}
+                      >
+                        <Image
+                          src="/watchlist/check_30dp_8440F1.svg"
+                          width={25}
+                          height={25}
+                          alt="創建片單"
+                        ></Image>
+                      </div>
+
+                      <div
+                        className={
+                          styles.addNewListModal__afterTitleInput__item
+                        }
+                        onClick={handleModalClose}
                       >
                         <Image
                           src="/watchlist/close_30dp_8440F1.svg"
-                          width={22}
-                          height={22}
-                          alt="刪除片單"
+                          width={25}
+                          height={25}
+                          alt="取消創建片單"
                         ></Image>
                       </div>
                     </div>
-
-                    {list.movies.map((movie, index) => (
-                      <Draggable
-                        key={movie.movieId}
-                        draggableId={movie.movieId}
-                        index={index}
-                      >
-                        {(provided, snapshot) => (
-                          <div
-                            className={`${styles.movieItem} ${
-                              snapshot.isDragging ? styles.dragging : ""
-                            }`}
-                            ref={provided.innerRef}
-                            {...provided.draggableProps}
-                            {...provided.dragHandleProps}
-                          >
-                            <div className={styles.movieItem__details}>
-                              <div
-                                className={
-                                  styles.movieItem__details__serialNumber
-                                }
-                              >
-                                {index + 1}
-                              </div>
-
-                              <div className={styles.movieItem__details__title}>
-                                {movie.title}
-                              </div>
-
-                              {movie.OTTlistTWlink && (
-                                <Link
-                                  className={styles.movieItem__details__OTTlink}
-                                  href={movie.OTTlistTWlink}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                >
-                                  OTT
-                                </Link>
-                              )}
-                            </div>
-                            <div
-                              className={styles.movieItem__delete}
-                              onClick={() => {
-                                handleDeleteMovieItem(list.id, movie.movieId);
-                              }}
-                            >
-                              <Image
-                                src="/watchlist/close_30dp_8440F1.svg"
-                                width={20}
-                                height={20}
-                                alt="刪除電影"
-                              ></Image>
-                            </div>
-                          </div>
-                        )}
-                      </Draggable>
-                    ))}
-                    {provided.placeholder}
                   </div>
                 )}
-              </Droppable>
-            ))}
-
-            <div className={styles.addNewlistArea}>
-              <div
-                className={styles.addNewlistArea__Img}
-                onClick={handleAddNewList}
-              >
-                <Image
-                  src="/watchlist/add_30dp_8440F1.svg"
-                  width={25}
-                  height={25}
-                  alt="新增片單"
-                ></Image>
               </div>
-
-              {/* 新增片單名稱用modal */}
-              {isModalVisible && (
-                <div className={styles.addNewlistArea__modal}>
-                  <input
-                    className={styles.addNewListModal__TitleInput}
-                    value={newListTitle}
-                    onChange={handleNewListTitleChange}
-                  ></input>
-
-                  <div className={styles.addNewListModal__afterTitleInput}>
-                    <div
-                      className={styles.addNewListModal__afterTitleInput__item}
-                      onClick={handleCreateList}
-                    >
-                      <Image
-                        src="/watchlist/check_30dp_8440F1.svg"
-                        width={25}
-                        height={25}
-                        alt="創建片單"
-                      ></Image>
-                    </div>
-
-                    <div
-                      className={styles.addNewListModal__afterTitleInput__item}
-                      onClick={handleModalClose}
-                    >
-                      <Image
-                        src="/watchlist/close_30dp_8440F1.svg"
-                        width={25}
-                        height={25}
-                        alt="取消創建片單"
-                      ></Image>
-                    </div>
-                  </div>
-                </div>
-              )}
+            </div>
+          </DragDropContext>
+        </div>
+      ) : (
+        <div className={styles.noList__flexContainer}>
+          <div className={styles.noList__flexItem}>
+            <div className={styles.noList__text}>這裡空無一物(๑•́ ₃ •̀๑)</div>
+            <div className={styles.noList__text}>
+              把想看的電影加進片單再回來吧！
             </div>
           </div>
-        </DragDropContext>
-      </div>
+        </div>
+      )}
     </main>
   );
 }
