@@ -11,6 +11,9 @@ import {
   deleteDoc,
   collection,
   query,
+  serverTimestamp,
+  orderBy,
+  Timestamp,
 } from "firebase/firestore";
 import { db } from "@/app/firebase/config";
 import {
@@ -18,7 +21,7 @@ import {
   Droppable,
   Draggable,
   DropResult,
-} from "react-beautiful-dnd";
+} from "@hello-pangea/dnd";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -179,7 +182,6 @@ export default function MyLists() {
         }));
 
         setLists(listsData);
-
         setIsListExisting(listsData.length > 0);
       } catch (error) {
         console.error("Error fetching lists: ", error);
@@ -259,6 +261,7 @@ export default function MyLists() {
       await setDoc(newListRef, {
         title: newListTitle,
         movies: [],
+        createdAt: serverTimestamp(),
       });
 
       setLists([
