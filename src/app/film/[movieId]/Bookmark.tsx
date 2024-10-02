@@ -13,6 +13,7 @@ import {
   updateDoc,
   arrayUnion,
   arrayRemove,
+  serverTimestamp,
 } from "firebase/firestore";
 
 // 定義 Bookmark 元件的屬性
@@ -77,9 +78,13 @@ export default function Bookmark({
 
       // 檢查 default 文件是否存在
       const defaultListDoc = await getDoc(defaultListRef);
+
       if (!defaultListDoc.exists()) {
         // 如果 default 文件不存在，創建該文件
-        await setDoc(defaultListRef, { movies: [] });
+        await setDoc(defaultListRef, {
+          movies: [],
+          createdAt: serverTimestamp(),
+        });
       }
 
       // 檢查 每個電影資訊 是否存在，只將存在的電影資訊加到 storeMovieDetail

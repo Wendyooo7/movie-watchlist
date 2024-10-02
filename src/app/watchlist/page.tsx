@@ -172,13 +172,18 @@ export default function MyLists() {
       try {
         const userUid = user.uid;
         const listsRef = collection(db, "users", userUid, "lists");
-        const q = query(listsRef);
+        // const q = query(listsRef);
+        const q = query(listsRef, orderBy("createdAt", "asc"));
         const querySnapshot = await getDocs(q);
 
         const listsData = querySnapshot.docs.map((doc) => ({
           id: doc.id,
           title: doc.data().title || doc.id,
           movies: doc.data().movies || [],
+          createdAt:
+            doc.data().createdAt instanceof Timestamp
+              ? doc.data().createdAt.toMillis()
+              : Date.now(),
         }));
 
         setLists(listsData);
