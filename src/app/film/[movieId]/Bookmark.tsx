@@ -83,7 +83,7 @@ export default function Bookmark({
         // 如果 default 文件不存在，創建該文件
         await setDoc(defaultListRef, {
           movies: [],
-          createdAt: serverTimestamp(),
+          order: 0,
         });
       }
 
