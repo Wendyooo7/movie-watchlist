@@ -67,6 +67,10 @@ nav ul {
   li {
     margin-left: 1rem;
     cursor: pointer;
+
+    &:hover {
+      font-weight: 550;
+    }
   }
 }
 

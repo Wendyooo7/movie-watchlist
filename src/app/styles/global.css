@@ -45,6 +45,9 @@ nav ul li {
   margin-left: 1rem;
   cursor: pointer;
 }
+nav ul li:hover {
+  font-weight: 550;
+}
 
 a {
   color: inherit;
