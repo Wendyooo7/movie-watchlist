@@ -16,8 +16,8 @@ const AuthModal = () => {
   const { user, setUser } = useAuth();
   const [isSigningUp, setIsSigningUp] = useState(false);
 
-  const [signInEmail, setSignInEmail] = useState("");
-  const [signInPassword, setSignInPassword] = useState("");
+  const [signInEmail, setSignInEmail] = useState("test@gmail.com");
+  const [signInPassword, setSignInPassword] = useState("test1234");
   const [signUpEmail, setSignUpEmail] = useState("");
   const [signUpPassword, setSignUpPassword] = useState("");
   const [name, setName] = useState("");
