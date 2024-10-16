@@ -28,7 +28,6 @@
 }
 .listsContainerContainer .listsContainer {
   display: flex;
-  justify-content: center;
   overflow-x: auto;
   width: 100%;
   padding: 1rem 0;

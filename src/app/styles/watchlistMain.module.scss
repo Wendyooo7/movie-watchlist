@@ -36,8 +36,6 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
   .listsContainer {
     display: flex;
     // border: 2px solid green;
-    justify-content: center;
-    // 兇手就是上面這行！讓最左邊被遮住！！！
     overflow-x: auto;
     width: 100%;
     // max-width: 1500px;
