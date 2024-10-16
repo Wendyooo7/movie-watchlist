@@ -287,6 +287,7 @@ export default function List({
                       <Droppable droppableId={list.id} type="MOVIE">
                         {(provided, snapshot) => (
                           <div
+                            className={styles.MovieItemDroppable}
                             ref={provided.innerRef}
                             {...provided.droppableProps}
                           >

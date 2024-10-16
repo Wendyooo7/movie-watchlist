@@ -1,3 +1,7 @@
+.MovieItemDroppable {
+  height: 75%;
+}
+
 .noList__flexContainer {
   display: flex;
   justify-content: center;
