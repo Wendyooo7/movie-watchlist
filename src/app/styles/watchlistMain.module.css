@@ -1,91 +1,15 @@
-.MovieItemDroppable {
-  height: 75%;
-}
-
-.noList__flexContainer {
-  display: flex;
-  justify-content: center;
-}
-.noList__flexContainer .noList__flexItem {
-  width: 1100px;
-  padding: 10rem;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.noList__flexContainer .noList__text {
-  width: 100%;
-  color: #8440f1;
-  font-size: 1.75rem;
-  font-weight: 550;
-  text-align: center;
-  margin: 0.5rem 0;
-}
-
 .listsContainerContainer {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 1rem;
 }
 .listsContainerContainer .listsContainer {
   display: flex;
   overflow-x: auto;
   width: 100%;
-  padding: 1rem 0;
-}
-
-.addNewlistArea {
-  margin: 0 0.25rem;
-  width: 100%;
-  max-width: 300px;
-  min-width: 300px;
-  position: relative;
-  min-height: 225px;
-}
-.addNewlistArea .addNewlistArea__Img {
-  background-color: rgba(197, 177, 249, 0.1);
-  padding: 0.2rem;
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-}
-.addNewlistArea .addNewlistArea__Img:hover {
-  background-color: rgba(197, 177, 249, 0.3);
-}
-.addNewlistArea .addNewlistArea__modal {
-  width: 100%;
-  max-width: 300px;
-  border-radius: 5px;
-  background-color: rgba(197, 177, 249, 0.1);
-  padding: 1.25rem 2rem;
-  border: 1px solid rgb(197, 177, 249);
-  height: 100%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  transform: translate(0, 0);
-}
-.addNewlistArea .addNewlistArea__modal .addNewListModal__TitleInput {
-  width: 100%;
-  padding: 0.65rem 0;
-  font-size: 20px;
-  color: #8440f1;
-  font-weight: 550;
-  text-align: center;
-}
-.addNewlistArea .addNewlistArea__modal .addNewListModal__afterTitleInput {
-  display: flex;
-  justify-content: flex-end;
-}
-.addNewlistArea .addNewlistArea__modal .addNewListModal__afterTitleInput .addNewListModal__afterTitleInput__item {
-  background-color: white;
-  margin-left: 0.5rem;
-  margin-top: 0.5rem;
-  border: 1px solid #8440f1;
-  border-radius: 2px;
-}
-.addNewlistArea .addNewlistArea__modal .addNewListModal__afterTitleInput .addNewListModal__afterTitleInput__item:hover {
-  cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.1);
+  max-width: 1280px;
 }
 
 .listContainer {
@@ -108,6 +32,11 @@
   text-align: center;
   color: #8440f1;
   cursor: pointer;
+}
+.listContainer .listContainer__header .listContainer__header__title__noneditable {
+  width: 100%;
+  text-align: center;
+  color: #8440f1;
 }
 .listContainer .listContainer__header .listContainer__header__title__editing {
   width: 100%;
@@ -167,4 +96,122 @@
 .listContainer .movieItem .movieItem__delete:hover {
   opacity: 1;
   cursor: pointer;
+}
+
+.shareAllListsBtnContainer {
+  position: relative;
+}
+.shareAllListsBtnContainer .shareAllListsBtn {
+  margin-top: 2rem;
+  border: 1.5px solid #8440f1;
+  border-radius: 3px;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+}
+.shareAllListsBtnContainer .notification {
+  position: absolute;
+  background-color: #ae81ff;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 1rem;
+  top: 48%;
+  left: 100%;
+  margin-left: 1.25rem;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: opacity 0.2s ease-in-out;
+}
+.shareAllListsBtnContainer .error {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 1rem;
+  top: 22%;
+  left: 100%;
+  margin-left: 1.25rem;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.MovieItemDroppable {
+  height: 90%;
+}
+
+.addNewlistArea {
+  margin: 0 0.25rem;
+  width: 100%;
+  max-width: 300px;
+  min-width: 300px;
+  position: relative;
+  min-height: 225px;
+}
+.addNewlistArea .addNewlistArea__Img {
+  background-color: rgba(197, 177, 249, 0.1);
+  padding: 0.2rem;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.addNewlistArea .addNewlistArea__Img:hover {
+  background-color: rgba(197, 177, 249, 0.3);
+}
+.addNewlistArea .addNewlistArea__modal {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 5px;
+  background-color: rgba(197, 177, 249, 0.1);
+  padding: 1.25rem 2rem;
+  border: 1px solid rgb(197, 177, 249);
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(0, 0);
+}
+.addNewlistArea .addNewlistArea__modal .addNewListModal__TitleInput {
+  width: 100%;
+  padding: 0.65rem 0;
+  font-size: 20px;
+  color: #8440f1;
+  font-weight: 550;
+  text-align: center;
+}
+.addNewlistArea .addNewlistArea__modal .addNewListModal__afterTitleInput {
+  display: flex;
+  justify-content: flex-end;
+}
+.addNewlistArea .addNewlistArea__modal .addNewListModal__afterTitleInput .addNewListModal__afterTitleInput__item {
+  background-color: white;
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
+  border: 1px solid #8440f1;
+  border-radius: 2px;
+}
+.addNewlistArea .addNewlistArea__modal .addNewListModal__afterTitleInput .addNewListModal__afterTitleInput__item:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.noList__flexContainer {
+  display: flex;
+  justify-content: center;
+}
+.noList__flexContainer .noList__flexItem {
+  width: 1100px;
+  padding: 10rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.noList__flexContainer .noList__text {
+  width: 100%;
+  color: #8440f1;
+  font-size: 1.75rem;
+  font-weight: 550;
+  text-align: center;
+  margin: 0.5rem 0;
 }/*# sourceMappingURL=watchlistMain.module.css.map */

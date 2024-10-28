@@ -3,112 +3,21 @@ $theme-color-light: #ae81ff;
 $minor-color: rgb(197, 177, 249);
 $minor-color-background: rgba(197, 177, 249, 0.1);
 
-.MovieItemDroppable {
-  height: 75%;
-}
-
-.noList__flexContainer {
-  display: flex;
-  justify-content: center;
-
-  .noList__flexItem {
-    width: 1100px;
-    padding: 10rem;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .noList__text {
-    width: 100%;
-    color: $theme-color;
-    font-size: 1.75rem;
-    font-weight: 550;
-    text-align: center;
-    margin: 0.5rem 0;
-  }
-}
-
 .listsContainerContainer {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 1rem;
+  // border: 2px solid red;
 
   .listsContainer {
     display: flex;
-    // border: 2px solid green;
     overflow-x: auto;
     width: 100%;
-    // max-width: 1500px;
-    // 拿掉這行讓大螢幕能排下更多片單
-    padding: 1rem 0;
-  }
-}
-
-.addNewlistArea {
-  margin: 0 0.25rem;
-  width: 100%;
-  max-width: 300px;
-  min-width: 300px;
-  position: relative;
-  min-height: 225px;
-  // border: 2px solid red;
-
-  .addNewlistArea__Img {
-    background-color: $minor-color-background;
-    padding: 0.2rem;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-
-    &:hover {
-      background-color: rgba(197, 177, 249, 0.3);
-    }
-  }
-
-  .addNewlistArea__modal {
-    width: 100%;
-    max-width: 300px;
-    border-radius: 5px;
-    background-color: $minor-color-background;
-    padding: 1.25rem 2rem;
-    border: 1px solid $minor-color;
-    height: 100%;
-    position: absolute;
-    top: 0; // 根據實際需要調整
-    right: 0; // 根據實際需要調整
-    transform: translate(0, 0); // 可以用來進一步微調位置
-
-    .addNewListModal__TitleInput {
-      // all: unset;
-      width: 100%;
-      padding: 0.65rem 0;
-      font-size: 20px;
-      color: $theme-color;
-      font-weight: 550;
-      text-align: center;
-      // border: 1px solid $theme-color-light;
-      // border-radius: 5px;
-      // background-color: white;
-    }
-
-    .addNewListModal__afterTitleInput {
-      display: flex;
-      justify-content: flex-end;
-
-      .addNewListModal__afterTitleInput__item {
-        // padding: 0.1rem;
-        background-color: white;
-        margin-left: 0.5rem;
-        margin-top: 0.5rem;
-        border: 1px solid $theme-color;
-        border-radius: 2px;
-
-        &:hover {
-          cursor: pointer;
-          background-color: rgba(0, 0, 0, 0.1);
-        }
-      }
-    }
+    max-width: 1280px;
+    // 上行越寬，大螢幕就能排下更多片單
+    // border: 2px solid green;
   }
 }
 
@@ -132,10 +41,15 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
     .listContainer__header__title {
       width: 100%;
       text-align: center;
-
       color: $theme-color;
       // border: 1px solid $theme-color;
       cursor: pointer;
+    }
+
+    .listContainer__header__title__noneditable {
+      width: 100%;
+      text-align: center;
+      color: $theme-color;
     }
 
     .listContainer__header__title__editing {
@@ -214,5 +128,143 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
         // background-color: $minor-color-background;
       }
     }
+  }
+}
+
+.shareAllListsBtnContainer {
+  position: relative;
+  // border: 1px solid red;
+
+  .shareAllListsBtn {
+    margin-top: 2rem;
+    border: 1.5px solid $theme-color;
+    border-radius: 3px;
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+  }
+
+  .notification {
+    // letter-spacing: 0.2rem;
+    position: absolute;
+    background-color: $theme-color-light;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+    top: 48%;
+    left: 100%;
+    margin-left: 1.25rem;
+    white-space: nowrap;
+    pointer-events: none;
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  .error {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+    top: 22%;
+    left: 100%;
+    margin-left: 1.25rem;
+    white-space: nowrap;
+    pointer-events: none;
+    transition: opacity 0.2s ease-in-out;
+  }
+}
+
+.MovieItemDroppable {
+  height: 90%;
+}
+
+.addNewlistArea {
+  margin: 0 0.25rem;
+  width: 100%;
+  max-width: 300px;
+  min-width: 300px;
+  position: relative;
+  min-height: 225px;
+  // border: 2px solid red;
+
+  .addNewlistArea__Img {
+    background-color: $minor-color-background;
+    padding: 0.2rem;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba(197, 177, 249, 0.3);
+    }
+  }
+
+  .addNewlistArea__modal {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 5px;
+    background-color: $minor-color-background;
+    padding: 1.25rem 2rem;
+    border: 1px solid $minor-color;
+    height: 100%;
+    position: absolute;
+    top: 0; // 根據實際需要調整
+    right: 0; // 根據實際需要調整
+    transform: translate(0, 0); // 可以用來進一步微調位置
+
+    .addNewListModal__TitleInput {
+      // all: unset;
+      width: 100%;
+      padding: 0.65rem 0;
+      font-size: 20px;
+      color: $theme-color;
+      font-weight: 550;
+      text-align: center;
+      // border: 1px solid $theme-color-light;
+      // border-radius: 5px;
+      // background-color: white;
+    }
+
+    .addNewListModal__afterTitleInput {
+      display: flex;
+      justify-content: flex-end;
+
+      .addNewListModal__afterTitleInput__item {
+        // padding: 0.1rem;
+        background-color: white;
+        margin-left: 0.5rem;
+        margin-top: 0.5rem;
+        border: 1px solid $theme-color;
+        border-radius: 2px;
+
+        &:hover {
+          cursor: pointer;
+          background-color: rgba(0, 0, 0, 0.1);
+        }
+      }
+    }
+  }
+}
+
+.noList__flexContainer {
+  display: flex;
+  justify-content: center;
+
+  .noList__flexItem {
+    width: 1100px;
+    padding: 10rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .noList__text {
+    width: 100%;
+    color: $theme-color;
+    font-size: 1.75rem;
+    font-weight: 550;
+    text-align: center;
+    margin: 0.5rem 0;
   }
 }

@@ -84,6 +84,7 @@ export default function Bookmark({
         await setDoc(defaultListRef, {
           movies: [],
           order: 0,
+          title: "預設片單",
         });
       }
 

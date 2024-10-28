@@ -16,7 +16,7 @@ import { List } from "./types";
 
 // TODO:搞懂用userUid的邏輯
 interface AddListModalProps {
-  userUid: string | undefined;
+  userUid: string;
   lists: List[];
   setLists: (lists: List[]) => void;
 }

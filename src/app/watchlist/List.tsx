@@ -10,6 +10,7 @@ import {
   Draggable,
   DropResult,
 } from "@hello-pangea/dnd";
+import ShareAllListsButton from "./ShareAllListsButton";
 import EditableListTitle from "./EditableListTitle";
 import AddListModal from "./AddListModal";
 import MovieItem from "./MovieItem";
@@ -101,7 +102,6 @@ export default function List({
 
     // 建立更新後的片單副本
     const updatedLists = Array.from(lists);
-
     // 更新來源片單與目標片單
     updatedLists[sourceListIndex] = { ...sourceList };
     updatedLists[destListIndex] = { ...destList };
@@ -253,7 +253,7 @@ export default function List({
                       ref={provided.innerRef}
                     >
                       <div className={styles.listContainer__header}>
-                        {user?.uid && (
+                        {user && (
                           <EditableListTitle
                             listId={list.id}
                             userUid={user.uid}
@@ -310,15 +310,19 @@ export default function List({
               ))}
               {provided.placeholder}
 
-              <AddListModal
-                lists={lists}
-                setLists={setLists}
-                userUid={user?.uid}
-              />
+              {user && (
+                <AddListModal
+                  lists={lists}
+                  setLists={setLists}
+                  userUid={user.uid}
+                />
+              )}
             </div>
           )}
         </Droppable>
       </DragDropContext>
+
+      {user && <ShareAllListsButton userUid={user.uid} />}
     </div>
   );
 }
