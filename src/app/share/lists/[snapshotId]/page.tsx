@@ -1,5 +1,6 @@
 "use client";
 
+import styles from "@/app/styles/searchMain.module.scss";
 import { useEffect, useState } from "react";
 import { db } from "@/app/firebase/config";
 import { getDocs, query, orderBy, collection } from "firebase/firestore";
@@ -7,6 +8,7 @@ import SnapshotOfLists from "./SnapshotOfLists";
 import type { List as ListType } from "@/app/watchlist/types"; // 顯式地指定為型別並重新命名
 
 export default function Page({ params }: { params: { snapshotId: string } }) {
+  const [isLoading, setIsLoading] = useState(true);
   const { snapshotId } = params; // 從 params 取得 snapshotId
   console.log(snapshotId);
   const [lists, setLists] = useState<ListType[]>([]);
@@ -30,6 +32,8 @@ export default function Page({ params }: { params: { snapshotId: string } }) {
         console.log(listsData);
       } catch (error) {
         console.error("Error fetching snapshot: ", error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -38,7 +42,15 @@ export default function Page({ params }: { params: { snapshotId: string } }) {
 
   return (
     <main>
-      <SnapshotOfLists lists={lists} />
+      {isLoading ? (
+        <div className={styles.main__flexContainer}>
+          <div className={styles.main__flexItem}>
+            <h3>資料讀取中......</h3>
+          </div>
+        </div>
+      ) : (
+        <SnapshotOfLists lists={lists} />
+      )}
     </main>
   );
 }
