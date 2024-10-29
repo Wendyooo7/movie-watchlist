@@ -14,73 +14,74 @@ export default function ShareAllListsButton({ userUid }: { userUid: string }) {
     setNotification("連結生成中"); // 顯示"連結生成中"通知
 
     try {
-      // 從 Firestore 獲取當前用戶的全部片單
+      // 讀取所有片單
       const listsRef = collection(db, "users", userUid, "lists");
       const querySnapshot = await getDocs(listsRef);
 
-      if (!querySnapshot.empty) {
-        // 在 snapshots 集合中新建一個 snapshot 文件
-        const snapshotRef = doc(collection(db, "snapshots"));
-
-        // 取得 snapshotId，這個 snapshot 文件會成為片單的父文件
-        const snapshotId = snapshotRef.id;
-        console.log("快照已保存，ID:", snapshotId);
-
-        // 將快照資料寫入 Firestore 的 snapshots 集合
-        await setDoc(snapshotRef, {
-          createdAt: new Date().toISOString(),
-          userUid: userUid, // 可以追蹤是哪個用戶創建的快照
-        });
-
-        // 逐個保存每個 list 作為 snapshots/snapshotId/lists 集合中的文檔
-        const listsCollectionRef = collection(snapshotRef, "lists");
-
-        await Promise.all(
-          querySnapshot.docs.map((doc) => {
-            const data = doc.data();
-
-            // 準備要保存的每個 list 的資料
-            const listData = {
-              listTitle: data.title,
-              listOrder: data.order,
-              movies: Array.isArray(data.movies)
-                ? data.movies.map((movie: any) => {
-                    const movieData: any = {
-                      movieId: movie.movieId,
-                      title: movie.title,
-                    };
-                    if (movie.OTTlistTWlink) {
-                      movieData.OTTlistTWlink = movie.OTTlistTWlink;
-                    }
-                    return movieData;
-                  })
-                : [], // 如果 movies 不是陣列，回傳空陣列
-            };
-
-            // 將每個 list 存儲為一個文檔
-            return addDoc(listsCollectionRef, listData);
-          })
-        );
-
-        // 生成分享連結
-        const generatedLink = `https://movie-watchlist-sooty.vercel.app/share/lists/${snapshotId}`;
-        setShareLink(generatedLink); // 更新分享連結
-
-        // 自動複製連結到剪貼簿
-        await navigator.clipboard.writeText(generatedLink);
-
-        setNotification(null);
-
-        // 顯示“已複製分享連結”的通知
-        setNotification("已成功生成並複製分享連結！");
-      } else {
+      if (querySnapshot.empty) {
         throw new Error("沒有找到任何片單資料");
       }
+
+      // 篩選出所有完整的 listData
+      const validListData = querySnapshot.docs.filter((doc) => {
+        const data = doc.data();
+        return data.title && data.order != null;
+      });
+
+      // 如果任何一筆 listData 不完整，則中止生成
+      if (validListData.length !== querySnapshot.docs.length) {
+        throw new Error("有不完整的 listData，中止生成");
+      }
+
+      // 建立 snapshot 文件後，繼續存取
+      const snapshotRef = doc(collection(db, "snapshots"));
+
+      // 取得 snapshotRef的id(as snapshotId)
+      const snapshotId = snapshotRef.id;
+      console.log("快照已保存，ID:", snapshotId);
+
+      // 將快照建立相關資料寫入該snapshot文件
+      await setDoc(snapshotRef, {
+        createdAt: new Date().toISOString(),
+        userUid: userUid, // 可以追蹤是哪個用戶創建的快照
+      });
+
+      // 儲存有效的 listData
+      const listsCollectionRef = collection(snapshotRef, "lists");
+
+      await Promise.all(
+        validListData.map((doc) => {
+          const data = doc.data();
+          const listData = {
+            listTitle: data.title,
+            listOrder: data.order,
+            movies: Array.isArray(data.movies)
+              ? data.movies.map((movie: any) => ({
+                  movieId: movie.movieId,
+                  title: movie.title,
+                  OTTlistTWlink: movie.OTTlistTWlink || null,
+                }))
+              : [],
+          };
+          return addDoc(listsCollectionRef, listData);
+        })
+      );
+
+      // 生成分享連結
+      const generatedLink = `https://movie-watchlist-sooty.vercel.app/share/lists/${snapshotId}`;
+      setShareLink(generatedLink); // 更新分享連結
+
+      // 自動複製連結到剪貼簿
+      await navigator.clipboard.writeText(generatedLink);
+
+      setNotification(null);
+
+      // 顯示成功通知
+      setNotification("已成功生成並複製分享連結！");
     } catch (err) {
       setNotification(null);
-      console.error("生成快照時出錯: ", err);
       setError("Oops! 發生了點問題，請稍後再試。"); // 顯示錯誤訊息
-      setNotification("Oops! 發生了點問題，請稍後再試。");
+      console.error("生成快照時出錯: ", err);
     } finally {
       setIsLoading(false); // 停止載入狀態
     }
