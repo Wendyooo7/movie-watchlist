@@ -143,8 +143,8 @@ export default async function MoviePage({
     <main>
       <div className={styles.main__flexContainer}>
         <div className={styles.main__flexItem}>
-          <div className={styles.mainTop}>
-            <div className={styles.imgWrapper}>
+          <div className={styles.main__innerFlexItem}>
+            <div className={styles.innerFlexItem__posterWrapper}>
               <Image src={posterPath} alt="電影海報" width={250} height={379} />
             </div>
 
@@ -156,7 +156,7 @@ export default async function MoviePage({
           objectFit="cover"
         />
       </div> */}
-            <div className={styles.movieBio}>
+            <div className={styles.innerFlexItem__movieBio}>
               <div className={styles.movieBio__titleArea}>
                 <div className={styles.movieBio__titleArea__title}>
                   <h2>{movie.title}</h2>
