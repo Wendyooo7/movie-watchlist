@@ -8,10 +8,13 @@
 .main__flexContainer .main__flexItem {
   width: 100%;
   max-width: 1150px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .searchResultSummary {
-  margin-bottom: 1.5rem;
+  width: 100%;
+  margin-bottom: 1rem;
 }
 
 .keyword {
@@ -20,31 +23,46 @@
   text-underline-offset: 7px; /* 調整此值來改變底線與文字的距離 */
 }
 
-.eachMovieDiv {
+.eachMovieArea {
+  width: 100%;
+}
+.eachMovieArea .eachMovieDiv {
+  width: 100%;
   margin: 1rem 0;
   display: flex;
   padding-bottom: 1rem;
   border-bottom: 1px solid #ddd;
 }
-.eachMovieDiv .eachMovieDetailDiv {
+.eachMovieArea .eachMovieDiv .eachMovieDetailDiv {
+  width: 100%;
   margin: 0 1rem;
   padding: 0.5rem 0;
 }
-.eachMovieDiv .eachMovieDetailDiv > * {
+.eachMovieArea .eachMovieDiv .eachMovieDetailDiv > * {
   margin-bottom: 20px;
 }
-.eachMovieDiv .eachMovieDetailDiv .eachMovieDetailDiv__title:hover {
+.eachMovieArea .eachMovieDiv .eachMovieDetailDiv .eachMovieDetailDiv__title:hover {
   opacity: 0.6;
 }
 
 .pageButtonsArea {
+  width: 100%;
+}
+.pageButtonsArea .pageButtons {
+  width: 100%;
   display: flex;
   justify-content: center;
 }
-.pageButtonsArea > * {
+.pageButtonsArea .pageButtons > * {
   cursor: pointer;
-  margin: 0.3em;
-  padding: 0.5em;
+  margin: 0.3rem;
+  padding: 0.5rem;
   border: 1px solid #ddd;
-  font-size: 14px;
+  font-size: 1rem;
+}
+@media (max-width: 500px) {
+  .pageButtonsArea .pageButtons > * {
+    margin: 0.15rem;
+    padding: 0.2rem;
+  }
 }/*# sourceMappingURL=searchMain.module.css.map */

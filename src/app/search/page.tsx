@@ -156,42 +156,46 @@ const SearchPageContent = () => {
                 <span className={styles.keyword}>{totalResults}</span> 筆
               </h3>
 
-              {results.map((movie) => {
-                const releaseYear = movie.release_date.split("-")[0];
-                const poster = movie.poster_path;
-                let posterPath = `https://image.tmdb.org/t/p/w154${poster}`;
-                if (!poster) {
-                  posterPath = "/search/no-poster.png";
-                }
+              <div className={styles.eachMovieArea}>
+                {results.map((movie) => {
+                  const releaseYear = movie.release_date.split("-")[0];
+                  const poster = movie.poster_path;
+                  let posterPath = `https://image.tmdb.org/t/p/w154${poster}`;
+                  if (!poster) {
+                    posterPath = "/search/no-poster.png";
+                  }
 
-                return (
-                  <Link href={`/film/${movie.id}`} key={movie.id}>
-                    <div className={styles.eachMovieDiv}>
-                      <div>
-                        <Image
-                          src={posterPath}
-                          width={92}
-                          height={138}
-                          alt="海報"
-                        />
+                  return (
+                    <Link href={`/film/${movie.id}`} key={movie.id}>
+                      <div className={styles.eachMovieDiv}>
+                        <div>
+                          <Image
+                            src={posterPath}
+                            width={92}
+                            height={138}
+                            alt="海報"
+                          />
+                        </div>
+                        <div className={styles.eachMovieDetailDiv}>
+                          <h3 className={styles.eachMovieDetailDiv__title}>
+                            {movie.title}
+                          </h3>
+                          <h3>{releaseYear}</h3>
+                        </div>
                       </div>
-                      <div className={styles.eachMovieDetailDiv}>
-                        <h3 className={styles.eachMovieDetailDiv__title}>
-                          {movie.title}
-                        </h3>
-                        <h3>{releaseYear}</h3>
-                      </div>
-                    </div>
-                  </Link>
-                );
-              })}
+                    </Link>
+                  );
+                })}
+              </div>
 
-              {/* 只有在 totalPages > 1 時才顯示頁數導航按鈕 */}
-              {totalPages > 1 && (
-                <div className={styles.pageButtonsArea}>
-                  {renderPageButtons()}
-                </div>
-              )}
+              <div className={styles.pageButtonsArea}>
+                {/* 只有在 totalPages > 1 時才顯示頁數導航按鈕 */}
+                {totalPages > 1 && (
+                  <div className={styles.pageButtons}>
+                    {renderPageButtons()}
+                  </div>
+                )}
+              </div>
             </>
           )}
         </div>

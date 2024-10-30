@@ -13,11 +13,14 @@ $theme-color-background: rgba(197, 177, 249, 0.2);
   .main__flexItem {
     width: 100%;
     max-width: 1150px;
+    display: flex;
+    flex-wrap: wrap;
   }
 }
 
 .searchResultSummary {
-  margin-bottom: 1.5rem;
+  width: 100%;
+  margin-bottom: 1rem;
   // border: 1px solid black;
 }
 
@@ -25,42 +28,57 @@ $theme-color-background: rgba(197, 177, 249, 0.2);
   text-decoration: underline $theme-color;
   text-underline-offset: 7px; /* 調整此值來改變底線與文字的距離 */
 }
+.eachMovieArea {
+  width: 100%;
 
-.eachMovieDiv {
-  margin: 1rem 0;
-  display: flex;
-  // border: 1px solid red;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid #ddd;
+  .eachMovieDiv {
+    width: 100%;
+    margin: 1rem 0;
+    display: flex;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #ddd;
+    // border: 1px solid red;
 
-  .eachMovieDetailDiv {
-    margin: 0 1rem;
-    padding: 0.5rem 0;
-    // border: 1px solid black;
+    .eachMovieDetailDiv {
+      width: 100%;
+      margin: 0 1rem;
+      padding: 0.5rem 0;
+      // border: 1px solid black;
 
-    > * {
-      margin-bottom: 20px; // 設定每個子元素的下方距離
-    }
+      > * {
+        margin-bottom: 20px; // 設定每個子元素的下方距離
+      }
 
-    .eachMovieDetailDiv__title:hover {
-      opacity: 0.6;
+      .eachMovieDetailDiv__title:hover {
+        opacity: 0.6;
+      }
     }
   }
 }
 
 .pageButtonsArea {
-  display: flex;
-  justify-content: center;
-  // align-items: center;
-  // border: 1px solid black;
+  width: 100%;
 
-  > * {
-    cursor: pointer;
-    margin: 0.3em;
-    padding: 0.5em;
-    border: 1px solid #ddd;
-    font-size: 14px;
-    // background-color: rgba(179, 118, 66, 0.7);
-    // color: white;
+  .pageButtons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    // align-items: center;
+    // border: 1px solid black;
+
+    > * {
+      cursor: pointer;
+      margin: 0.3rem;
+      padding: 0.5rem;
+      border: 1px solid #ddd;
+      font-size: 1rem;
+      // background-color: rgba(179, 118, 66, 0.7);
+      // color: white;
+
+      @media (max-width: 500px) {
+        margin: 0.15rem;
+        padding: 0.2rem;
+      }
+    }
   }
 }
