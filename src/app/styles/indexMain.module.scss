@@ -9,6 +9,14 @@ $minor-color: rgb(197, 177, 249);
   align-items: center;
   flex-direction: column;
   padding: 7rem;
+
+  @media (max-width: 768px) {
+    padding: 5rem;
+  }
+
+  @media (max-width: 610px) {
+    padding: 1.75rem;
+  }
 }
 
 .searchArea {
@@ -21,6 +29,30 @@ $minor-color: rgb(197, 177, 249);
   // 沒加上行到了1920px會變很搜尋框的位置會跑到太中間
   // box-shadow: 1px 3px rgba(0, 0, 0, 0.15);
   background-color: rgba(197, 177, 249, 0.2);
+
+  @media (max-width: 930px) {
+    width: 45%;
+  }
+
+  @media (max-width: 830px) {
+    width: 50%;
+  }
+
+  @media (max-width: 710px) {
+    width: 55%;
+  }
+
+  @media (max-width: 600px) {
+    width: 60%;
+  }
+
+  @media (max-width: 500px) {
+    width: 65%;
+  }
+
+  @media (max-width: 400px) {
+    width: 100%;
+  }
 
   &:hover {
     background-color: white;

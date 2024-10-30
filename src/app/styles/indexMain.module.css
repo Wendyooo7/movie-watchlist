@@ -5,6 +5,16 @@
   flex-direction: column;
   padding: 7rem;
 }
+@media (max-width: 768px) {
+  .main__flexContainer {
+    padding: 5rem;
+  }
+}
+@media (max-width: 610px) {
+  .main__flexContainer {
+    padding: 1.75rem;
+  }
+}
 
 .searchArea {
   width: 38%;
@@ -14,6 +24,36 @@
   border-radius: 50px;
   justify-content: space-around;
   background-color: rgba(197, 177, 249, 0.2);
+}
+@media (max-width: 930px) {
+  .searchArea {
+    width: 45%;
+  }
+}
+@media (max-width: 830px) {
+  .searchArea {
+    width: 50%;
+  }
+}
+@media (max-width: 710px) {
+  .searchArea {
+    width: 55%;
+  }
+}
+@media (max-width: 600px) {
+  .searchArea {
+    width: 60%;
+  }
+}
+@media (max-width: 500px) {
+  .searchArea {
+    width: 65%;
+  }
+}
+@media (max-width: 400px) {
+  .searchArea {
+    width: 100%;
+  }
 }
 .searchArea:hover {
   background-color: white;
