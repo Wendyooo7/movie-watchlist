@@ -59,7 +59,7 @@ export default function ShareAllListsButton({ userUid }: { userUid: string }) {
               ? data.movies.map((movie: any) => ({
                   movieId: movie.movieId,
                   title: movie.title,
-                  OTTlistTWlink: movie.OTTlistTWlink || null,
+                  movieURL: movie.movieURL,
                 }))
               : [],
           };

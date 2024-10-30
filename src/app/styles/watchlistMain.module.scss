@@ -23,8 +23,8 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
 
 .listContainer {
   width: 100%;
-  max-width: 300px;
-  min-width: 300px;
+  max-width: 280px;
+  min-width: 280px;
   // TODO:檢查一下可否最大和最小都設同一個尺寸
   border-radius: 5px;
   background-color: $minor-color-background;
@@ -74,8 +74,8 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
 
   .movieItem {
     width: 100%;
-    margin: 0.6rem 0;
-    padding: 0.5rem;
+    margin: 0.5rem 0;
+    padding: 0.7rem 0.5rem;
     padding-left: 1rem;
     background-color: white;
     border: 1px solid $minor-color;
@@ -99,21 +99,15 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
       }
 
       .movieItem__details__title {
-        padding: 0 1rem;
+        margin-left: 1rem;
+        font-size: 1.02rem;
         //   text-align: start;
-        //   border: 1px solid black;
-      }
-
-      .movieItem__details__OTTlink {
-        color: $theme-color;
-        padding: 0.15rem 0.3rem;
-        height: 1.6rem;
-        border-radius: 3px;
-        border: 1px solid $minor-color;
-        background-color: $minor-color-background;
 
         &:hover {
-          opacity: 0.8;
+          font-weight: 550;
+          // background-color: $theme-color;
+          // color: white;
+          color: $theme-color;
         }
       }
     }
@@ -121,11 +115,13 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
     .movieItem__delete {
       opacity: 0;
       margin-left: 0.5rem;
+      display: flex;
+      // TODO:搞清楚為何加了上行，原本此元素下方多的4px（此元素變得跟Img一樣是20*20px）就消失的原理
 
       &:hover {
         opacity: 1;
         cursor: pointer;
-        // background-color: $minor-color-background;
+        background-color: $minor-color-background;
       }
     }
   }
@@ -182,8 +178,8 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
 .addNewlistArea {
   margin: 0 0.25rem;
   width: 100%;
-  max-width: 300px;
-  min-width: 300px;
+  max-width: 280px;
+  min-width: 280px;
   position: relative;
   min-height: 225px;
   // border: 2px solid red;
@@ -202,7 +198,7 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
 
   .addNewlistArea__modal {
     width: 100%;
-    max-width: 300px;
+    max-width: 280px;
     border-radius: 5px;
     background-color: $minor-color-background;
     padding: 1.25rem 2rem;

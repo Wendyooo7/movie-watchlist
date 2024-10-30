@@ -172,7 +172,6 @@ export default async function MoviePage({
                     runtime={movie.runtime}
                     originalTitle={movie.original_title}
                     releaseYear={releaseYear}
-                    OTTlistTWlink={OTTlistTWlink}
                   />
                 </div>
               </div>

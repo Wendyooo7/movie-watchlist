@@ -38,19 +38,14 @@ export default function MovieItem({
             </div>
 
             <div className={styles.movieItem__details__title}>
-              {movie.title}
-            </div>
-
-            {movie.OTTlistTWlink && (
               <Link
-                className={styles.movieItem__details__OTTlink}
-                href={movie.OTTlistTWlink}
+                href={movie.movieURL}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                OTT
+                {movie.title}
               </Link>
-            )}
+            </div>
           </div>
           <div
             className={styles.movieItem__delete}

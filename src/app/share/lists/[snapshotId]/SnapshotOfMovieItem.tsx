@@ -19,18 +19,15 @@ export default function SnapshotOfMovieItem({
             {movieIndex + 1}
           </div>
 
-          <div className={styles.movieItem__details__title}>{movie.title}</div>
-
-          {movie.OTTlistTWlink && (
+          <div className={styles.movieItem__details__title}>
             <Link
-              className={styles.movieItem__details__OTTlink}
-              href={movie.OTTlistTWlink}
+              href={movie.movieURL}
               target="_blank"
               rel="noopener noreferrer"
             >
-              OTT
+              {movie.title}
             </Link>
-          )}
+          </div>
         </div>
       </div>
     </div>

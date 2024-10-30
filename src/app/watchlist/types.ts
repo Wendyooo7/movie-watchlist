@@ -7,5 +7,5 @@ export interface List {
 export interface Movie {
   movieId: string;
   title: string;
-  OTTlistTWlink?: string;
+  movieURL: string;
 }

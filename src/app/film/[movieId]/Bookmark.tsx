@@ -23,7 +23,6 @@ interface BookmarkProps {
   runtime: number;
   originalTitle: string;
   releaseYear: string;
-  OTTlistTWlink?: string;
 }
 
 export default function Bookmark({
@@ -32,7 +31,6 @@ export default function Bookmark({
   runtime,
   originalTitle,
   releaseYear,
-  OTTlistTWlink,
 }: BookmarkProps) {
   const [isBookmarked, setIsBookmarked] = useState(false);
   const { user } = useAuth();
@@ -88,12 +86,14 @@ export default function Bookmark({
         });
       }
 
+      const movieURL = `https://movie-watchlist-sooty.vercel.app/film/${movieId}`;
+
       // 檢查 每個電影資訊 是否存在，只將存在的電影資訊加到 storeMovieDetail
       const storeMovieDetail = {
         movieId,
         title,
+        movieURL,
         ...(releaseYear && { releaseYear }),
-        ...(OTTlistTWlink && { OTTlistTWlink }),
         ...(originalTitle && { originalTitle }),
         ...(runtime && { runtime }),
       };
