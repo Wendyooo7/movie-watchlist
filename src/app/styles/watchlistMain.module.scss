@@ -63,11 +63,11 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
 
     .listContainer__header__deleteListBtn {
       opacity: 0;
+      display: flex;
 
       &:hover {
         opacity: 1;
         cursor: pointer;
-        // background-color: $minor-color-background;
       }
     }
   }
@@ -205,8 +205,8 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
     border: 1px solid $minor-color;
     height: 100%;
     position: absolute;
-    top: 0; // 根據實際需要調整
-    right: 0; // 根據實際需要調整
+    top: 0;
+    right: 0;
     transform: translate(0, 0); // 可以用來進一步微調位置
 
     .addNewListModal__TitleInput {
@@ -233,6 +233,7 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
         margin-top: 0.5rem;
         border: 1px solid $theme-color;
         border-radius: 2px;
+        display: flex;
 
         &:hover {
           cursor: pointer;
