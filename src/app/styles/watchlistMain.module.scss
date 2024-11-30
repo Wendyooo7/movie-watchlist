@@ -61,13 +61,44 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
       text-align: center;
     }
 
-    .listContainer__header__deleteListBtn {
-      opacity: 0;
-      display: flex;
+    .listContainer__header__ellipsis__root {
+      position: relative;
 
-      &:hover {
-        opacity: 1;
+      .listContainer__header__ellipsisIcon {
+        opacity: 0;
+        transition: opacity 0.2s;
+        display: flex;
         cursor: pointer;
+
+        &:hover {
+          opacity: 1;
+        }
+
+        &.visible {
+          opacity: 1; // 當 modal 開啟時，強制將 icon 設為可見
+        }
+      }
+
+      .listContainer__header__ellipsisModal {
+        width: 90px;
+        background-color: white;
+        // color: white;
+        position: absolute;
+        top: 200%;
+        right: 0;
+        border-radius: 5px;
+        border: 1px solid $minor-color;
+
+        .listContainer__header__ellipsisModalItem {
+          text-align: center;
+          padding: 0.4rem 0.1rem;
+          cursor: pointer;
+
+          &:hover {
+            color: white;
+            background-color: $theme-color-light;
+          }
+        }
       }
     }
   }

@@ -14,7 +14,7 @@ import ShareAllListsButton from "./ShareAllListsButton";
 import EditableListTitle from "./EditableListTitle";
 import AddListModal from "./AddListModal";
 import MovieItem from "./MovieItem";
-import Image from "next/image";
+import EllipsisIcon from "./EllipsisIcon";
 import type { List } from "./types"; // 顯式地指定為型別
 
 // TODO:搞懂React.Dispatch<React.SetStateAction<>
@@ -267,21 +267,10 @@ export default function List({
                           />
                         )}
 
-                        <div
-                          className={
-                            styles.listContainer__header__deleteListBtn
-                          }
-                          onClick={() => {
-                            handleDeleteList(list.id);
-                          }}
-                        >
-                          <Image
-                            src="/watchlist/close_30dp_8440F1.svg"
-                            width={22}
-                            height={22}
-                            alt="刪除片單"
-                          ></Image>
-                        </div>
+                        <EllipsisIcon
+                          handleDeleteList={handleDeleteList}
+                          listId={list.id}
+                        />
                       </div>
 
                       <Droppable droppableId={list.id} type="MOVIE">
