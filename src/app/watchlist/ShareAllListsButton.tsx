@@ -68,7 +68,7 @@ export default function ShareAllListsButton({ userUid }: { userUid: string }) {
       );
 
       // 生成分享連結
-      const generatedLink = `https://movie-watchlist-sooty.vercel.app/share/lists/${snapshotId}`;
+      const generatedLink = `https://movie-watchlist-sooty.vercel.app/share/list/${snapshotId}`;
       setShareLink(generatedLink); // 更新分享連結
 
       // 自動複製連結到剪貼簿

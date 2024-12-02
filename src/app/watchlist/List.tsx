@@ -267,10 +267,13 @@ export default function List({
                           />
                         )}
 
-                        <EllipsisIcon
-                          handleDeleteList={handleDeleteList}
-                          listId={list.id}
-                        />
+                        {user && (
+                          <EllipsisIcon
+                            userUid={user.uid}
+                            handleDeleteList={handleDeleteList}
+                            listId={list.id}
+                          />
+                        )}
                       </div>
 
                       <Droppable droppableId={list.id} type="MOVIE">

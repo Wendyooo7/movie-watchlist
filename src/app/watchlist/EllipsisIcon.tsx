@@ -1,13 +1,16 @@
 import styles from "@/app/styles/watchlistMain.module.scss";
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import ShareOneListButton from "./ShareOneListButton";
 
 interface EllipsisIconProps {
   handleDeleteList: (listId: string) => void;
   listId: string;
+  userUid: string;
 }
 
 export default function EllipsisIcon({
+  userUid,
   listId,
   handleDeleteList,
 }: EllipsisIconProps) {
@@ -31,7 +34,6 @@ export default function EllipsisIcon({
       ) {
         setIsModalVisible(false);
       }
-      console.log(modalRef.current);
     };
 
     document.addEventListener("mousedown", handleClickOutside);
@@ -71,9 +73,7 @@ export default function EllipsisIcon({
           >
             刪除片單
           </div>
-          <div className={styles.listContainer__header__ellipsisModalItem}>
-            分享片單
-          </div>
+          <ShareOneListButton userUid={userUid} listId={listId} />
         </div>
       )}
     </div>

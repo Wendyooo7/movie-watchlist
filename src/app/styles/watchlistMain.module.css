@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .listsContainerContainer {
   display: flex;
   flex-direction: column;
@@ -46,13 +47,38 @@
   font-weight: 550;
   text-align: center;
 }
-.listContainer .listContainer__header .listContainer__header__deleteListBtn {
-  opacity: 0;
-  display: flex;
+.listContainer .listContainer__header .listContainer__header__ellipsis__root {
+  position: relative;
 }
-.listContainer .listContainer__header .listContainer__header__deleteListBtn:hover {
-  opacity: 1;
+.listContainer .listContainer__header .listContainer__header__ellipsis__root .listContainer__header__ellipsisIcon {
+  opacity: 0;
+  transition: opacity 0.2s;
+  display: flex;
   cursor: pointer;
+}
+.listContainer .listContainer__header .listContainer__header__ellipsis__root .listContainer__header__ellipsisIcon:hover {
+  opacity: 1;
+}
+.listContainer .listContainer__header .listContainer__header__ellipsis__root .listContainer__header__ellipsisIcon.visible {
+  opacity: 1;
+}
+.listContainer .listContainer__header .listContainer__header__ellipsis__root .listContainer__header__ellipsisModal {
+  width: 90px;
+  background-color: white;
+  position: absolute;
+  top: 200%;
+  right: 0;
+  border-radius: 5px;
+  border: 1px solid rgb(197, 177, 249);
+}
+.listContainer .listContainer__header .listContainer__header__ellipsis__root .listContainer__header__ellipsisModal .listContainer__header__ellipsisModalItem {
+  text-align: center;
+  padding: 0.4rem 0.1rem;
+  cursor: pointer;
+}
+.listContainer .listContainer__header .listContainer__header__ellipsis__root .listContainer__header__ellipsisModal .listContainer__header__ellipsisModalItem:hover {
+  color: white;
+  background-color: #ae81ff;
 }
 .listContainer .movieItem {
   width: 100%;
@@ -105,21 +131,25 @@
   padding: 0.4rem 0.8rem;
   cursor: pointer;
 }
-.shareAllListsBtnContainer .notification {
-  position: absolute;
+
+.notification {
+  position: fixed;
   background-color: #ae81ff;
   color: #fff;
   padding: 5px 10px;
   border-radius: 5px;
   font-size: 1rem;
-  top: 48%;
-  left: 100%;
+  top: 70%;
+  left: 48%;
+  transform: translateX(-48%); /* 水平位移讓元素居中 */
   margin-left: 1.25rem;
   white-space: nowrap;
   pointer-events: none;
   transition: opacity 0.2s ease-in-out;
+  z-index: 100;
 }
-.shareAllListsBtnContainer .error {
+
+.error {
   position: absolute;
   background-color: rgba(0, 0, 0, 0.6);
   color: white;
@@ -132,6 +162,7 @@
   white-space: nowrap;
   pointer-events: none;
   transition: opacity 0.2s ease-in-out;
+  z-index: 100;
 }
 
 .MovieItemDroppable {
@@ -167,7 +198,6 @@
   position: absolute;
   top: 0;
   right: 0;
-  transform: translate(0, 0);
 }
 .addNewlistArea .addNewlistArea__modal .addNewListModal__TitleInput {
   width: 100%;
@@ -176,6 +206,8 @@
   color: #8440f1;
   font-weight: 550;
   text-align: center;
+  border: 1.5px solid #ae81ff;
+  border-radius: 5px;
 }
 .addNewlistArea .addNewlistArea__modal .addNewListModal__afterTitleInput {
   display: flex;
