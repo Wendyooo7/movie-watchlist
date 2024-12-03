@@ -11,6 +11,8 @@
   overflow-x: auto;
   width: 100%;
   max-width: 1280px;
+  scrollbar-width: thin;
+  scrollbar-color: rgb(197, 177, 249) #f1f1f1;
 }
 
 .listContainer {
@@ -46,6 +48,13 @@
   color: #8440f1;
   font-weight: 550;
   text-align: center;
+  border: none;
+  box-shadow: none; /* 移除陰影 */
+}
+.listContainer .listContainer__header .listContainer__header__title__editing:focus {
+  outline: 2px solid #ae81ff; /* 設置點擊時的外框 */
+  border-radius: 5px;
+  outline-offset: 1px; /* 外框與輸入框的距離 */
 }
 .listContainer .listContainer__header .listContainer__header__ellipsis__root {
   position: relative;
@@ -206,8 +215,13 @@
   color: #8440f1;
   font-weight: 550;
   text-align: center;
-  border: 1.5px solid #ae81ff;
+  border: 1px solid #8440f1;
   border-radius: 5px;
+  box-shadow: none;
+}
+.addNewlistArea .addNewlistArea__modal .addNewListModal__TitleInput:focus {
+  border: none;
+  outline: 2px solid #ae81ff;
 }
 .addNewlistArea .addNewlistArea__modal .addNewListModal__afterTitleInput {
   display: flex;

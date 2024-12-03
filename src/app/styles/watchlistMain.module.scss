@@ -18,6 +18,10 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
     max-width: 1280px;
     // 上行越寬，大螢幕就能排下更多片單
     // border: 2px solid green;
+
+    // 適用於Firefox
+    scrollbar-width: thin;
+    scrollbar-color: $minor-color #f1f1f1;
   }
 }
 
@@ -59,6 +63,15 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
       color: $theme-color;
       font-weight: 550;
       text-align: center;
+      border: none;
+      box-shadow: none; /* 移除陰影 */
+      // background: none; /* 移除背景，目測為白底 */
+
+      &:focus {
+        outline: 2px solid $theme-color-light; /* 設置點擊時的外框 */
+        border-radius: 5px;
+        outline-offset: 1px; /* 外框與輸入框的距離 */
+      }
     }
 
     .listContainer__header__ellipsis__root {
@@ -240,15 +253,20 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
     right: 0;
 
     .addNewListModal__TitleInput {
-      // all: unset;
       width: 100%;
       padding: 0.65rem 0;
       font-size: 20px;
       color: $theme-color;
       font-weight: 550;
       text-align: center;
-      border: 1.5px solid $theme-color-light;
+      border: 1px solid $theme-color;
       border-radius: 5px;
+      box-shadow: none;
+
+      &:focus {
+        border: none;
+        outline: 2px solid $theme-color-light;
+      }
     }
 
     .addNewListModal__afterTitleInput {
