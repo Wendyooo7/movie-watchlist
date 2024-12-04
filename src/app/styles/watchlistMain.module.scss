@@ -84,6 +84,10 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
         display: flex;
         cursor: pointer;
 
+        @media (max-width: 768px) {
+          opacity: 1;
+        }
+
         &:hover {
           opacity: 1;
         }
@@ -158,6 +162,10 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
       margin-left: 0.5rem;
       display: flex;
       // TODO:搞清楚為何加了上行，原本此元素下方多的4px（此元素變得跟Img一樣是20*20px）就消失的原理
+
+      @media (max-width: 768px) {
+        opacity: 1;
+      }
 
       &:hover {
         opacity: 1;
