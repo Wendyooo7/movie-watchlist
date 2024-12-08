@@ -13,7 +13,7 @@ interface ListProps {
 export default function SnapshotOfLists({ list }: ListProps) {
   return (
     <div className={styles.listsContainerContainer}>
-      <div className={styles.listsContainer}>
+      <div className={styles.sharelistsContainer}>
         <div className={styles.listContainer} key={list.id}>
           <div className={styles.listContainer__header}>
             <h2 className={styles.listContainer__header__title__noneditable}>
@@ -21,7 +21,7 @@ export default function SnapshotOfLists({ list }: ListProps) {
             </h2>
           </div>
 
-          <div className={styles.MovieItemDroppable}>
+          <div>
             {list.movies.map((movie, movieIndex) => (
               <SnapshotOfMovieItem
                 key={movie.movieId}

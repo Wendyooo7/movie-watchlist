@@ -34,12 +34,22 @@ section header {
   font-size: 1.6rem;
   font-weight: 550;
 }
+@media (max-width: 380px) {
+  section header {
+    font-size: 1.4rem;
+  }
+}
 
 nav ul {
   display: flex;
   list-style: none;
   font-size: 1.2rem;
   font-weight: 500;
+}
+@media (max-width: 380px) {
+  nav ul {
+    font-size: 1rem;
+  }
 }
 nav ul li {
   margin-left: 1rem;

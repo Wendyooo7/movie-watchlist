@@ -55,6 +55,10 @@ section {
 
     font-size: 1.6rem;
     font-weight: 550;
+
+    @media (max-width: 380px) {
+      font-size: 1.4rem;
+    }
   }
 }
 
@@ -63,6 +67,10 @@ nav ul {
   list-style: none;
   font-size: 1.2rem;
   font-weight: 500;
+
+  @media (max-width: 380px) {
+    font-size: 1rem;
+  }
 
   li {
     margin-left: 1rem;

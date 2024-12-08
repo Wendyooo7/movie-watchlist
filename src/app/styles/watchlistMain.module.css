@@ -15,6 +15,16 @@
   scrollbar-color: rgb(197, 177, 249) #f1f1f1;
 }
 
+.sharelistsContainer {
+  display: flex;
+  overflow-x: auto;
+  width: 100%;
+  max-width: 1280px;
+  justify-content: center;
+  scrollbar-width: thin;
+  scrollbar-color: rgb(197, 177, 249) #f1f1f1;
+}
+
 .listContainer {
   width: 100%;
   max-width: 280px;
@@ -24,6 +34,7 @@
   padding: 1.5rem 1rem;
   border: 1px solid rgb(197, 177, 249);
   margin: 0 0.2rem;
+  min-height: 225px;
 }
 .listContainer .listContainer__header {
   display: flex;
@@ -64,6 +75,11 @@
   transition: opacity 0.2s;
   display: flex;
   cursor: pointer;
+}
+@media (max-width: 768px) {
+  .listContainer .listContainer__header .listContainer__header__ellipsis__root .listContainer__header__ellipsisIcon {
+    opacity: 1;
+  }
 }
 .listContainer .listContainer__header .listContainer__header__ellipsis__root .listContainer__header__ellipsisIcon:hover {
   opacity: 1;
@@ -124,10 +140,75 @@
   margin-left: 0.5rem;
   display: flex;
 }
+@media (max-width: 768px) {
+  .listContainer .movieItem .movieItem__delete {
+    opacity: 1;
+  }
+}
 .listContainer .movieItem .movieItem__delete:hover {
   opacity: 1;
   cursor: pointer;
   background-color: rgba(197, 177, 249, 0.1);
+}
+
+.sharelistContainer {
+  width: 100%;
+  max-width: 320px;
+  min-width: 280px;
+  border-radius: 5px;
+  background-color: rgba(197, 177, 249, 0.1);
+  padding: 1.5rem 1.5rem;
+  border: 1px solid rgb(197, 177, 249);
+  margin: 0 0.2rem;
+  min-height: 225px;
+}
+.sharelistContainer .listContainer__header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.sharelistContainer .listContainer__header .listContainer__header__title {
+  width: 100%;
+  text-align: center;
+  color: #8440f1;
+  cursor: pointer;
+}
+.sharelistContainer .listContainer__header .listContainer__header__title__noneditable {
+  width: 100%;
+  text-align: center;
+  color: #8440f1;
+  padding: 0.25rem 0;
+}
+.sharelistContainer .movieItem {
+  width: 100%;
+  margin-bottom: 0.75rem;
+  padding: 1rem 0.75rem;
+  padding-left: 1rem;
+  background-color: white;
+  border: 1px solid rgb(197, 177, 249);
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.sharelistContainer .movieItem .movieItem__details {
+  display: flex;
+  align-items: center;
+  justify-content: baseline;
+}
+.sharelistContainer .movieItem .movieItem__details .movieItem__details__serialNumber {
+  background-color: white;
+  color: #8440f1;
+  border-radius: 50px;
+}
+.sharelistContainer .movieItem .movieItem__details .movieItem__details__title {
+  margin-left: 1rem;
+  font-size: 1.02rem;
+}
+.sharelistContainer .movieItem .movieItem__details .movieItem__details__title:hover {
+  font-weight: 550;
+  color: #8440f1;
 }
 
 .shareAllListsBtnContainer {
