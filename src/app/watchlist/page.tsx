@@ -17,7 +17,7 @@ export default function WatchListPage() {
 
   useEffect(() => {
     if (!user) {
-      router.push("/sign");
+      router.push("/");
       return;
     }
 
