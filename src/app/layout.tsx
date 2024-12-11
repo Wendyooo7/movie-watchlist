@@ -5,6 +5,7 @@ import "./styles/global.scss";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { AuthProvider } from "./contexts/AuthContext";
+import SuspenseWrapper from "@/app/components/SuspenseWrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,7 +23,9 @@ export default function RootLayout({
     <AuthProvider>
       <html lang="zh-hant">
         <body className={inter.className}>
-          <Header />
+          <SuspenseWrapper>
+            <Header />
+          </SuspenseWrapper>
           {children}
           <Footer />
         </body>

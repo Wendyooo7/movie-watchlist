@@ -6,7 +6,6 @@ import { db } from "@/app/firebase/config";
 import { getDocs, query, orderBy, collection } from "firebase/firestore";
 import SnapshotOfLists from "./SnapshotOfLists";
 import type { List as ListType } from "@/app/watchlist/types"; // 顯式地指定為型別並重新命名
-import SuspenseWrapper from "@/app/components/SuspenseWrapper";
 
 export default function Page({ params }: { params: { snapshotId: string } }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -39,21 +38,19 @@ export default function Page({ params }: { params: { snapshotId: string } }) {
     };
 
     fetchSnapshots();
-  }, []);
+  }, [snapshotId]);
 
   return (
-    <SuspenseWrapper>
-      <main>
-        {isLoading ? (
-          <div className={styles.main__flexContainer}>
-            <div className={styles.main__flexItem}>
-              <h3>資料讀取中......</h3>
-            </div>
+    <main>
+      {isLoading ? (
+        <div className={styles.main__flexContainer}>
+          <div className={styles.main__flexItem}>
+            <h3>資料讀取中......</h3>
           </div>
-        ) : (
-          <SnapshotOfLists lists={lists} />
-        )}
-      </main>
-    </SuspenseWrapper>
+        </div>
+      ) : (
+        <SnapshotOfLists lists={lists} />
+      )}
+    </main>
   );
 }

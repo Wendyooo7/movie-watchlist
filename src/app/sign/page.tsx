@@ -10,7 +10,6 @@ import {
 } from "firebase/auth";
 import { useAuth } from "../contexts/AuthContext";
 import { useRouter } from "next/navigation";
-import SuspenseWrapper from "@/app/components/SuspenseWrapper";
 
 const AuthModal = () => {
   const router = useRouter();
@@ -159,174 +158,168 @@ const AuthModal = () => {
   };
 
   return (
-    <SuspenseWrapper>
-      <main>
-        <div className={styles.authContainer}>
-          <div className={styles.authTabs}>
-            <button
-              className={`${styles.authTab} ${
-                !isSigningUp ? styles.active : ""
-              }`}
-              onClick={() => setIsSigningUp(false)}
-            >
-              登入
-            </button>
-            <button
-              className={`${styles.authTab} ${
-                isSigningUp ? styles.active : ""
-              }`}
-              onClick={() => setIsSigningUp(true)}
-            >
-              註冊
-            </button>
-          </div>
-
-          <div className={styles.authForm}>
-            {!isSigningUp ? (
-              <div>
-                <h2>登入系統</h2>
-                <input
-                  className={styles.authForm__nonPassword__input}
-                  type="email"
-                  placeholder="輸入電子信箱"
-                  value={signInEmail}
-                  onChange={handleSignInEmailChange}
-                  required
-                />
-                {signInEmailError && (
-                  <p className={styles.authForm__instant__errMsg}>
-                    {signInEmailError}
-                  </p>
-                )}
-
-                <div className={styles.authForm__passwordContainer}>
-                  <input
-                    className={styles.authForm__passwordContainer__input}
-                    type={showSignInPassword ? "text" : "password"}
-                    placeholder="輸入密碼（8 位英數組合）"
-                    value={signInPassword}
-                    onChange={handleSignInPasswordChange}
-                    required
-                  />
-                  <div
-                    onClick={() => setShowSignInPassword(!showSignInPassword)}
-                    className={styles.authForm__passwordContainer__visibility}
-                  >
-                    {showSignInPassword ? (
-                      <Image
-                        src="/sign/visibility_off_24dp_8440F1.svg"
-                        width={18}
-                        height={18}
-                        alt="隱藏密碼"
-                      ></Image>
-                    ) : (
-                      <Image
-                        src="/sign/visibility_24dp_8440F1.svg"
-                        width={18}
-                        height={18}
-                        alt="查看密碼"
-                      ></Image>
-                    )}
-                  </div>
-                </div>
-                {signInPasswordError && (
-                  <p className={styles.authForm__instant__errMsg}>
-                    {signInPasswordError}
-                  </p>
-                )}
-
-                <button onClick={handleSignInSubmit}>登入</button>
-                {signInFeedbackMessage && (
-                  <p
-                    className={
-                      signInFeedbackMessage === "登入成功！"
-                        ? styles.authForm__afterSend__successMsg
-                        : styles.authForm__afterSend__errMsg
-                    }
-                  >
-                    {signInFeedbackMessage}
-                  </p>
-                )}
-              </div>
-            ) : (
-              <div>
-                <h2>註冊帳號</h2>
-                <input
-                  className={styles.authForm__nonPassword__input}
-                  type="text"
-                  placeholder="輸入姓名"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  required
-                />
-                <input
-                  className={styles.authForm__nonPassword__input}
-                  type="email"
-                  placeholder="輸入常用信箱"
-                  value={signUpEmail}
-                  onChange={handleSignUpEmailChange}
-                  required
-                />
-                {signUpEmailError && (
-                  <p className={styles.authForm__instant__errMsg}>
-                    {signUpEmailError}
-                  </p>
-                )}
-
-                <div className={styles.authForm__passwordContainer}>
-                  <input
-                    className={styles.authForm__passwordContainer__input}
-                    type={showSignUpPassword ? "text" : "password"}
-                    placeholder="輸入 8 位英數組合"
-                    value={signUpPassword}
-                    onChange={handleSignUpPasswordChange}
-                    required
-                  />
-                  <div
-                    onClick={() => setShowSignUpPassword(!showSignUpPassword)}
-                    className={styles.authForm__passwordContainer__visibility}
-                  >
-                    {showSignUpPassword ? (
-                      <Image
-                        src="/sign/visibility_off_24dp_8440F1.svg"
-                        width={18}
-                        height={18}
-                        alt="隱藏密碼"
-                      ></Image>
-                    ) : (
-                      <Image
-                        src="/sign/visibility_24dp_8440F1.svg"
-                        width={18}
-                        height={18}
-                        alt="查看密碼"
-                      ></Image>
-                    )}
-                  </div>
-                </div>
-                {signUpPasswordError && (
-                  <p className={styles.authForm__instant__errMsg}>
-                    {signUpPasswordError}
-                  </p>
-                )}
-
-                <button onClick={handleSignUpSubmit}>註冊</button>
-                {signUpFeedbackMessage && (
-                  <p
-                    className={
-                      signUpFeedbackMessage === "註冊成功！"
-                        ? styles.authForm__afterSend__successMsg
-                        : styles.authForm__afterSend__errMsg
-                    }
-                  >
-                    {signUpFeedbackMessage}
-                  </p>
-                )}
-              </div>
-            )}
-          </div>
+    <main>
+      <div className={styles.authContainer}>
+        <div className={styles.authTabs}>
+          <button
+            className={`${styles.authTab} ${!isSigningUp ? styles.active : ""}`}
+            onClick={() => setIsSigningUp(false)}
+          >
+            登入
+          </button>
+          <button
+            className={`${styles.authTab} ${isSigningUp ? styles.active : ""}`}
+            onClick={() => setIsSigningUp(true)}
+          >
+            註冊
+          </button>
         </div>
-      </main>
-    </SuspenseWrapper>
+
+        <div className={styles.authForm}>
+          {!isSigningUp ? (
+            <div>
+              <h2>登入系統</h2>
+              <input
+                className={styles.authForm__nonPassword__input}
+                type="email"
+                placeholder="輸入電子信箱"
+                value={signInEmail}
+                onChange={handleSignInEmailChange}
+                required
+              />
+              {signInEmailError && (
+                <p className={styles.authForm__instant__errMsg}>
+                  {signInEmailError}
+                </p>
+              )}
+
+              <div className={styles.authForm__passwordContainer}>
+                <input
+                  className={styles.authForm__passwordContainer__input}
+                  type={showSignInPassword ? "text" : "password"}
+                  placeholder="輸入密碼（8 位英數組合）"
+                  value={signInPassword}
+                  onChange={handleSignInPasswordChange}
+                  required
+                />
+                <div
+                  onClick={() => setShowSignInPassword(!showSignInPassword)}
+                  className={styles.authForm__passwordContainer__visibility}
+                >
+                  {showSignInPassword ? (
+                    <Image
+                      src="/sign/visibility_off_24dp_8440F1.svg"
+                      width={18}
+                      height={18}
+                      alt="隱藏密碼"
+                    ></Image>
+                  ) : (
+                    <Image
+                      src="/sign/visibility_24dp_8440F1.svg"
+                      width={18}
+                      height={18}
+                      alt="查看密碼"
+                    ></Image>
+                  )}
+                </div>
+              </div>
+              {signInPasswordError && (
+                <p className={styles.authForm__instant__errMsg}>
+                  {signInPasswordError}
+                </p>
+              )}
+
+              <button onClick={handleSignInSubmit}>登入</button>
+              {signInFeedbackMessage && (
+                <p
+                  className={
+                    signInFeedbackMessage === "登入成功！"
+                      ? styles.authForm__afterSend__successMsg
+                      : styles.authForm__afterSend__errMsg
+                  }
+                >
+                  {signInFeedbackMessage}
+                </p>
+              )}
+            </div>
+          ) : (
+            <div>
+              <h2>註冊帳號</h2>
+              <input
+                className={styles.authForm__nonPassword__input}
+                type="text"
+                placeholder="輸入姓名"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+              <input
+                className={styles.authForm__nonPassword__input}
+                type="email"
+                placeholder="輸入常用信箱"
+                value={signUpEmail}
+                onChange={handleSignUpEmailChange}
+                required
+              />
+              {signUpEmailError && (
+                <p className={styles.authForm__instant__errMsg}>
+                  {signUpEmailError}
+                </p>
+              )}
+
+              <div className={styles.authForm__passwordContainer}>
+                <input
+                  className={styles.authForm__passwordContainer__input}
+                  type={showSignUpPassword ? "text" : "password"}
+                  placeholder="輸入 8 位英數組合"
+                  value={signUpPassword}
+                  onChange={handleSignUpPasswordChange}
+                  required
+                />
+                <div
+                  onClick={() => setShowSignUpPassword(!showSignUpPassword)}
+                  className={styles.authForm__passwordContainer__visibility}
+                >
+                  {showSignUpPassword ? (
+                    <Image
+                      src="/sign/visibility_off_24dp_8440F1.svg"
+                      width={18}
+                      height={18}
+                      alt="隱藏密碼"
+                    ></Image>
+                  ) : (
+                    <Image
+                      src="/sign/visibility_24dp_8440F1.svg"
+                      width={18}
+                      height={18}
+                      alt="查看密碼"
+                    ></Image>
+                  )}
+                </div>
+              </div>
+              {signUpPasswordError && (
+                <p className={styles.authForm__instant__errMsg}>
+                  {signUpPasswordError}
+                </p>
+              )}
+
+              <button onClick={handleSignUpSubmit}>註冊</button>
+              {signUpFeedbackMessage && (
+                <p
+                  className={
+                    signUpFeedbackMessage === "註冊成功！"
+                      ? styles.authForm__afterSend__successMsg
+                      : styles.authForm__afterSend__errMsg
+                  }
+                >
+                  {signUpFeedbackMessage}
+                </p>
+              )}
+            </div>
+          )}
+        </div>
+      </div>
+    </main>
   );
 };
 

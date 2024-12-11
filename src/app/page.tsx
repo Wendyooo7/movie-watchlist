@@ -3,7 +3,6 @@ import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./styles/indexMain.module.scss";
-import SuspenseWrapper from "@/app/components/SuspenseWrapper";
 
 export default function Main() {
   const [query, setQuery] = useState(""); // 用來追蹤使用者輸入的電影名稱
@@ -18,29 +17,27 @@ export default function Main() {
   };
 
   return (
-    <SuspenseWrapper>
-      <main>
-        <div className={styles.main__flexContainer}>
-          <h1>你想將哪部電影加入片單呢？</h1>
-          <div className={styles.searchArea}>
-            <input
-              type="text"
-              className={styles.input}
-              value={query} // 綁定 input 的值
-              onChange={(e) => setQuery(e.target.value)} // 當輸入變化時更新狀態
-              onKeyDown={(e) => e.key === "Enter" && handleSearch()} // 當使用者按下 Enter 時觸發搜索
+    <main>
+      <div className={styles.main__flexContainer}>
+        <h1>你想將哪部電影加入片單呢？</h1>
+        <div className={styles.searchArea}>
+          <input
+            type="text"
+            className={styles.input}
+            value={query} // 綁定 input 的值
+            onChange={(e) => setQuery(e.target.value)} // 當輸入變化時更新狀態
+            onKeyDown={(e) => e.key === "Enter" && handleSearch()} // 當使用者按下 Enter 時觸發搜索
+          />
+          <div className={styles.imgWrapper} onClick={handleSearch}>
+            <Image
+              src="/index/search_30dp_AE81FF.svg"
+              width={30}
+              height={30}
+              alt="點擊以檢索片名"
             />
-            <div className={styles.imgWrapper} onClick={handleSearch}>
-              <Image
-                src="/index/search_30dp_AE81FF.svg"
-                width={30}
-                height={30}
-                alt="點擊以檢索片名"
-              />
-            </div>
           </div>
         </div>
-      </main>
-    </SuspenseWrapper>
+      </div>
+    </main>
   );
 }

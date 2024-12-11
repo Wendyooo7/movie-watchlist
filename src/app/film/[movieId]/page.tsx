@@ -1,6 +1,5 @@
 import "../../styles/global.scss";
 import styles from "../../styles/movieMain.module.scss";
-import SuspenseWrapper from "@/app/components/SuspenseWrapper";
 
 // 使用 Server Components 的一個範例
 import { Metadata } from "next";
@@ -141,21 +140,15 @@ export default async function MoviePage({
   const OTTlistTWlink = OTTlist.results.TW?.link;
 
   return (
-    <SuspenseWrapper>
-      <main>
-        <div className={styles.main__flexContainer}>
-          <div className={styles.main__flexItem}>
-            <div className={styles.main__innerFlexItem}>
-              <div className={styles.innerFlexItem__posterWrapper}>
-                <Image
-                  src={posterPath}
-                  alt="電影海報"
-                  width={250}
-                  height={379}
-                />
-              </div>
+    <main>
+      <div className={styles.main__flexContainer}>
+        <div className={styles.main__flexItem}>
+          <div className={styles.main__innerFlexItem}>
+            <div className={styles.innerFlexItem__posterWrapper}>
+              <Image src={posterPath} alt="電影海報" width={250} height={379} />
+            </div>
 
-              {/* <div className={styles.imageContainer}>
+            {/* <div className={styles.imageContainer}>
         <Image
           src={`https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`}
           alt="電影劇照"
@@ -163,119 +156,118 @@ export default async function MoviePage({
           objectFit="cover"
         />
       </div> */}
-              <div className={styles.innerFlexItem__movieBio}>
-                <div className={styles.movieBio__titleArea}>
-                  <div className={styles.movieBio__titleArea__title}>
-                    <h2>{movie.title}</h2>
-                    {movie.title !== movie.original_title && (
-                      <div>{movie.original_title}</div>
-                    )}
-                  </div>
-
-                  <div className={styles.movieBio__titleArea__bookmarkArea}>
-                    <Bookmark
-                      movieId={params.movieId}
-                      title={movie.title}
-                      runtime={movie.runtime}
-                      originalTitle={movie.original_title}
-                      releaseYear={releaseYear}
-                    />
-                  </div>
-                </div>
-                <div className={styles.movieBio__detailArea}>
-                  {releaseYear && <div>{releaseYear}年 </div>}
-
-                  <div>{movie.runtime}分鐘 </div>
-
-                  {key && (
-                    <Link
-                      className={styles.movieBio__detailArea__trailerArea}
-                      href={`https://www.youtube.com/watch?v=${key}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Image
-                        src="/film/play_circle_30dp_8440F1.svg"
-                        alt="播放預告片"
-                        width={22}
-                        height={22}
-                      />
-                      播放預告片
-                    </Link>
+            <div className={styles.innerFlexItem__movieBio}>
+              <div className={styles.movieBio__titleArea}>
+                <div className={styles.movieBio__titleArea__title}>
+                  <h2>{movie.title}</h2>
+                  {movie.title !== movie.original_title && (
+                    <div>{movie.original_title}</div>
                   )}
                 </div>
-                {/* <Link href={`https://www.youtube.com/watch?v=${key}`}>
+
+                <div className={styles.movieBio__titleArea__bookmarkArea}>
+                  <Bookmark
+                    movieId={params.movieId}
+                    title={movie.title}
+                    runtime={movie.runtime}
+                    originalTitle={movie.original_title}
+                    releaseYear={releaseYear}
+                  />
+                </div>
+              </div>
+              <div className={styles.movieBio__detailArea}>
+                {releaseYear && <div>{releaseYear}年 </div>}
+
+                <div>{movie.runtime}分鐘 </div>
+
+                {key && (
+                  <Link
+                    className={styles.movieBio__detailArea__trailerArea}
+                    href={`https://www.youtube.com/watch?v=${key}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Image
+                      src="/film/play_circle_30dp_8440F1.svg"
+                      alt="播放預告片"
+                      width={22}
+                      height={22}
+                    />
+                    播放預告片
+                  </Link>
+                )}
+              </div>
+              {/* <Link href={`https://www.youtube.com/watch?v=${key}`}>
               播放預告片
             </Link> */}
-                <div className={styles.movieBio__overviewArea}>
-                  {movie.tagline && (
-                    <p>
-                      <i>
-                        <b>{movie.tagline}</b>
-                      </i>
-                    </p>
-                  )}
+              <div className={styles.movieBio__overviewArea}>
+                {movie.tagline && (
+                  <p>
+                    <i>
+                      <b>{movie.tagline}</b>
+                    </i>
+                  </p>
+                )}
 
-                  {movie.overview ? (
-                    <p>{movie.overview}</p>
-                  ) : (
-                    <div className={styles.movieBio__overviewArea__noOverview}>
-                      無更多資料
-                    </div>
-                  )}
-                </div>
+                {movie.overview ? (
+                  <p>{movie.overview}</p>
+                ) : (
+                  <div className={styles.movieBio__overviewArea__noOverview}>
+                    無更多資料
+                  </div>
+                )}
+              </div>
 
-                {/* <div className={styles.movieBio__ExternalLinksArea}> */}
-                <div className={styles.movieBio__otherMovieDBarea}>
+              {/* <div className={styles.movieBio__ExternalLinksArea}> */}
+              <div className={styles.movieBio__otherMovieDBarea}>
+                <label
+                  className={styles.movieBio__linkToExternal__label}
+                  htmlFor="otherMovieDB"
+                >
+                  前往電影資料庫：
+                </label>
+                <Link
+                  className={styles.movieBio__linkToExternal__link}
+                  href={linkToTMDB}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  TMDB
+                </Link>
+
+                <Link
+                  className={styles.movieBio__linkToExternal__link}
+                  href={linkToIMDB}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  IMDB
+                </Link>
+              </div>
+
+              {OTTlistTWlink && (
+                <div className={styles.movieBio__OTTarea}>
                   <label
                     className={styles.movieBio__linkToExternal__label}
-                    htmlFor="otherMovieDB"
+                    htmlFor="OTTlistTW"
                   >
-                    前往電影資料庫：
+                    查看影音串流平台列表：
                   </label>
                   <Link
                     className={styles.movieBio__linkToExternal__link}
-                    href={linkToTMDB}
+                    href={OTTlistTWlink}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    TMDB
-                  </Link>
-
-                  <Link
-                    className={styles.movieBio__linkToExternal__link}
-                    href={linkToIMDB}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    IMDB
+                    JustWatch
                   </Link>
                 </div>
-
-                {OTTlistTWlink && (
-                  <div className={styles.movieBio__OTTarea}>
-                    <label
-                      className={styles.movieBio__linkToExternal__label}
-                      htmlFor="OTTlistTW"
-                    >
-                      查看影音串流平台列表：
-                    </label>
-                    <Link
-                      className={styles.movieBio__linkToExternal__link}
-                      href={OTTlistTWlink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      JustWatch
-                    </Link>
-                  </div>
-                )}
-                {/* </div> */}
-              </div>
+              )}
+              {/* </div> */}
             </div>
           </div>
         </div>
-      </main>
-    </SuspenseWrapper>
+      </div>
+    </main>
   );
 }
