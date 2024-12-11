@@ -8,6 +8,7 @@ import { getDocs, collection, query, orderBy } from "firebase/firestore";
 import List from "./List";
 import NoList from "./NoList";
 import type { List as ListType } from "./types"; // 顯式地指定為型別並重新命名
+import SuspenseWrapper from "@/app/components/SuspenseWrapper";
 
 export default function WatchListPage() {
   const { user } = useAuth();
@@ -46,16 +47,18 @@ export default function WatchListPage() {
   }, [user, router]);
 
   return (
-    <main>
-      {isListExisting ? (
-        <List
-          lists={lists}
-          setLists={setLists}
-          setIsListExisting={setIsListExisting}
-        />
-      ) : (
-        <NoList />
-      )}
-    </main>
+    <SuspenseWrapper>
+      <main>
+        {isListExisting ? (
+          <List
+            lists={lists}
+            setLists={setLists}
+            setIsListExisting={setIsListExisting}
+          />
+        ) : (
+          <NoList />
+        )}
+      </main>
+    </SuspenseWrapper>
   );
 }

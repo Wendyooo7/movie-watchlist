@@ -2,10 +2,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams, useRouter } from "next/navigation";
-import { useEffect, useState, Suspense } from "react"; // 新增這行
+import { useEffect, useState } from "react";
 import styles from "../styles/searchMain.module.scss";
+import SuspenseWrapper from "@/app/components/SuspenseWrapper";
 
-const SearchPageContent = () => {
+export default function SearchPage() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const query = searchParams.get("query");
@@ -143,72 +144,66 @@ const SearchPageContent = () => {
   }
 
   return (
-    <main>
-      <div className={styles.main__flexContainer}>
-        <div className={styles.main__flexItem}>
-          {isLoading ? (
-            <h3>搜尋中......</h3>
-          ) : (
-            <>
-              <h3 className={styles.searchResultSummary}>
-                您搜尋了 <span className={styles.keyword}>{query}</span>
-                ，相符的結果共有{" "}
-                <span className={styles.keyword}>{totalResults}</span> 筆
-              </h3>
+    <SuspenseWrapper>
+      <main>
+        <div className={styles.main__flexContainer}>
+          <div className={styles.main__flexItem}>
+            {isLoading ? (
+              <h3>搜尋中......</h3>
+            ) : (
+              <>
+                <h3 className={styles.searchResultSummary}>
+                  您搜尋了 <span className={styles.keyword}>{query}</span>
+                  ，相符的結果共有{" "}
+                  <span className={styles.keyword}>{totalResults}</span> 筆
+                </h3>
 
-              <div className={styles.eachMovieArea}>
-                {results.map((movie) => {
-                  const releaseYear = movie.release_date.split("-")[0];
-                  const poster = movie.poster_path;
-                  let posterPath = `https://image.tmdb.org/t/p/w154${poster}`;
-                  if (!poster) {
-                    posterPath = "/search/no-poster.png";
-                  }
+                <div className={styles.eachMovieArea}>
+                  {results.map((movie) => {
+                    const releaseYear = movie.release_date.split("-")[0];
+                    const poster = movie.poster_path;
+                    let posterPath = `https://image.tmdb.org/t/p/w154${poster}`;
+                    if (!poster) {
+                      posterPath = "/search/no-poster.png";
+                    }
 
-                  return (
-                    <Link href={`/film/${movie.id}`} key={movie.id}>
-                      <div className={styles.eachMovieDiv}>
-                        <div>
-                          <Image
-                            src={posterPath}
-                            width={92}
-                            height={138}
-                            alt="海報"
-                          />
+                    return (
+                      <Link href={`/film/${movie.id}`} key={movie.id}>
+                        <div className={styles.eachMovieDiv}>
+                          <div>
+                            <Image
+                              src={posterPath}
+                              width={92}
+                              height={138}
+                              alt="海報"
+                            />
+                          </div>
+                          <div className={styles.eachMovieDetailDiv}>
+                            <h3 className={styles.eachMovieDetailDiv__title}>
+                              {movie.title}
+                            </h3>
+                            <h3>{releaseYear}</h3>
+                          </div>
                         </div>
-                        <div className={styles.eachMovieDetailDiv}>
-                          <h3 className={styles.eachMovieDetailDiv__title}>
-                            {movie.title}
-                          </h3>
-                          <h3>{releaseYear}</h3>
-                        </div>
-                      </div>
-                    </Link>
-                  );
-                })}
-              </div>
+                      </Link>
+                    );
+                  })}
+                </div>
 
-              <div className={styles.pageButtonsArea}>
-                {/* 只有在 totalPages > 1 時才顯示頁數導航按鈕 */}
-                {totalPages > 1 && (
-                  <div className={styles.pageButtons}>
-                    {renderPageButtons()}
-                  </div>
-                )}
-              </div>
-            </>
-          )}
+                <div className={styles.pageButtonsArea}>
+                  {/* 只有在 totalPages > 1 時才顯示頁數導航按鈕 */}
+                  {totalPages > 1 && (
+                    <div className={styles.pageButtons}>
+                      {renderPageButtons()}
+                    </div>
+                  )}
+                </div>
+              </>
+            )}
+          </div>
         </div>
-      </div>
-    </main>
-  );
-};
-
-export default function SearchPage() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <SearchPageContent />
-    </Suspense>
+      </main>
+    </SuspenseWrapper>
   );
 }
 
