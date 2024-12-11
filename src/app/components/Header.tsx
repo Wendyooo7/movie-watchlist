@@ -39,7 +39,7 @@ export default function Header() {
   return (
     <section>
       <header>
-        <Link href="/">電影排片站</Link>
+        <Link href="/">影迷的計畫</Link>
         <nav>
           <ul>
             <li>

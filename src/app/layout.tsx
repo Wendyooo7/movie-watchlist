@@ -10,8 +10,8 @@ import SuspenseWrapper from "@/app/components/SuspenseWrapper";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "電影排片站",
-  description: "提供影展愛好者便利的選片、排片服務",
+  title: "影迷的計畫",
+  description: "一個提供電影愛好者便利的選片、排片服務的網站",
 };
 
 export default function RootLayout({
