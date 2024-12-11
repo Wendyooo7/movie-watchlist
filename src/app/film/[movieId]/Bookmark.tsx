@@ -86,7 +86,7 @@ export default function Bookmark({
         });
       }
 
-      const movieURL = `https://movie-watchlist-sooty.vercel.app/film/${movieId}`;
+      const movieURL = `https://cinephileslists.vercel.app/film/${movieId}`;
 
       // 檢查 每個電影資訊 是否存在，只將存在的電影資訊加到 storeMovieDetail
       const storeMovieDetail = {
