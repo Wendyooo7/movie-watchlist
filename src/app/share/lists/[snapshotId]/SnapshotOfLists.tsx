@@ -22,7 +22,7 @@ export default function SnapshotOfLists({ lists }: ListProps) {
               </h2>
             </div>
 
-            <div className={styles.MovieItemDroppable}>
+            <div>
               {list.movies.map((movie, movieIndex) => (
                 <SnapshotOfMovieItem
                   key={movie.movieId}
