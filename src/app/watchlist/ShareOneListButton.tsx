@@ -55,7 +55,7 @@ export default function ShareOneListButton({
       });
 
       // 3. 生成分享連結
-      const generatedLink = `https://movie-watchlist-sooty.vercel.app/share/list/${snapshotId}`;
+      const generatedLink = `https://cinephileslists.vercel.app/share/list/${snapshotId}`;
       setShareLink(generatedLink);
       // 自動複製連結到剪貼簿
       await navigator.clipboard.writeText(generatedLink);
