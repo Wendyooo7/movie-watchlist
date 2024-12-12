@@ -278,12 +278,6 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
     border-radius: 3px;
     padding: 0.4rem 0.8rem;
     cursor: pointer;
-
-    &:hover {
-      border: none;
-      color: white;
-      background-color: $theme-color-light;
-    }
   }
 }
 
