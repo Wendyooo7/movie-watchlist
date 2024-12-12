@@ -278,6 +278,12 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
     border-radius: 3px;
     padding: 0.4rem 0.8rem;
     cursor: pointer;
+
+    &:hover {
+      border: none;
+      color: white;
+      background-color: $theme-color-light;
+    }
   }
 }
 
@@ -286,7 +292,7 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
   position: fixed;
   background-color: $theme-color-light;
   color: #fff;
-  padding: 5px 10px;
+  padding: 8px 16px;
   border-radius: 5px;
   font-size: 1rem;
   top: 70%;
@@ -297,6 +303,7 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
   pointer-events: none;
   transition: opacity 0.2s ease-in-out;
   z-index: 100;
+  text-align: center;
 }
 
 .error {
@@ -313,6 +320,7 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
   pointer-events: none;
   transition: opacity 0.2s ease-in-out;
   z-index: 100;
+  text-align: center;
 }
 
 .MovieItemDroppable {

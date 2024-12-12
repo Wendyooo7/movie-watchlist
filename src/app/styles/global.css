@@ -64,6 +64,19 @@ a {
   text-decoration: none;
 }
 
+.alertForUnauthenticatedUser {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* 把位置移到正中間 */
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 1rem;
+  border-radius: 5px;
+  z-index: 100;
+  text-align: center;
+}
+
 main {
   width: 100%;
   padding: 1rem;
