@@ -50,7 +50,6 @@ $footer-height: 50px;
 
 .searchArea__slogan {
   font-size: 2.5rem;
-  min-height: 3rem;
   color: rgb(42, 32, 50);
   // color: rgb(45, 13, 45);
   // border: 1px solid black;
@@ -71,7 +70,7 @@ $footer-height: 50px;
         width: 23.5ch; // 根據文字長度調整
 
         @media (max-width: 650px) {
-          width: 21.5ch;
+          width: 20.5ch;
         }
       }
     }
@@ -259,7 +258,7 @@ $footer-height: 50px;
   .introArea__1__text__detail {
     color: white;
     font-size: 1.5rem;
-    font-weight: 700;
+    font-weight: 650;
     // border: 1px solid blue;
 
     @media (max-width: 1200px) {
@@ -312,7 +311,7 @@ $footer-height: 50px;
 
     .introArea__2__text__slogan {
       font-size: 2.5rem;
-      font-weight: 700;
+      font-weight: 650;
       margin-bottom: 1.5rem;
       // border: 1px solid black;
 
@@ -331,13 +330,14 @@ $footer-height: 50px;
 
       @media (max-width: 464px) {
         font-size: 2.5rem;
+        font-weight: 650;
       }
     }
   }
 
   .introArea__2__video {
     width: 58%;
-    font-weight: 700;
+    font-weight: 650;
     padding: 2rem;
     display: flex;
     flex-direction: column;
@@ -364,7 +364,7 @@ $footer-height: 50px;
   gap: 7px;
 
   .tab {
-    font-weight: 700;
+    font-weight: 650;
     padding-left: 0.75rem;
     cursor: pointer;
     transition: background 0.3s;
@@ -383,7 +383,7 @@ $footer-height: 50px;
     }
 
     @media (max-width: 464px) {
-      font-size: 1.65rem;
+      font-size: 1.5rem;
     }
 
     &.active {
@@ -398,7 +398,7 @@ $footer-height: 50px;
 
   .tabInfo__title {
     font-size: 1.5rem;
-    font-weight: 700;
+    font-weight: 650;
     color: #8440f1;
     margin-bottom: 0.25rem;
 
@@ -407,7 +407,7 @@ $footer-height: 50px;
     }
 
     @media (max-width: 464px) {
-      font-size: 1.65rem;
+      font-size: 1.5rem;
     }
   }
 
@@ -422,7 +422,7 @@ $footer-height: 50px;
     }
 
     @media (max-width: 464px) {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
     }
   }
 }
@@ -507,7 +507,7 @@ $footer-height: 50px;
   .introArea__3__text__slogan {
     color: white;
     font-size: 2.5rem;
-    font-weight: 700;
+    font-weight: 650;
     margin-bottom: 1.5rem;
     // border: 1px solid black;
 
@@ -532,7 +532,7 @@ $footer-height: 50px;
   .introArea__3__text__detail {
     color: white;
     font-size: 1.5rem;
-    font-weight: 700;
+    font-weight: 650;
     padding-left: 0.75rem;
     // border: 1px solid blue;
 
