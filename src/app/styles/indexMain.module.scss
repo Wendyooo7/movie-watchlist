@@ -69,6 +69,10 @@ $footer-height: 50px;
       }
       to {
         width: 23.5ch; // 根據文字長度調整
+
+        @media (max-width: 650px) {
+          width: 21.5ch;
+        }
       }
     }
 
@@ -308,7 +312,7 @@ $footer-height: 50px;
 
     .introArea__2__text__slogan {
       font-size: 2.5rem;
-      font-weight: 600;
+      font-weight: 700;
       margin-bottom: 1.5rem;
       // border: 1px solid black;
 
@@ -333,6 +337,7 @@ $footer-height: 50px;
 
   .introArea__2__video {
     width: 58%;
+    font-weight: 700;
     padding: 2rem;
     display: flex;
     flex-direction: column;
@@ -356,10 +361,10 @@ $footer-height: 50px;
 .tabs {
   display: flex;
   flex-direction: column;
-  font-weight: 600;
   gap: 7px;
 
   .tab {
+    font-weight: 700;
     padding-left: 0.75rem;
     cursor: pointer;
     transition: background 0.3s;
@@ -393,7 +398,7 @@ $footer-height: 50px;
 
   .tabInfo__title {
     font-size: 1.5rem;
-    font-weight: 600;
+    font-weight: 700;
     color: #8440f1;
     margin-bottom: 0.25rem;
 
