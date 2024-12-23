@@ -47,6 +47,10 @@ $footer-height: 50px;
   padding-top: 4rem;
   // border: 1px solid black;
 
+  @media (max-width: 768px) {
+    height: 70vh;
+  }
+
   @media (max-width: 320px) {
     height: 60vh;
   }
@@ -223,7 +227,7 @@ $footer-height: 50px;
       width: 100%;
     }
 
-    @media (max-width: 320px) {
+    @media (max-width: 768px) {
       height: 60vh;
     }
 
@@ -310,6 +314,10 @@ $footer-height: 50px;
 
     @media (max-width: 1200px) {
       width: 100%;
+    }
+
+    @media (max-width: 768px) {
+      height: 75vh;
     }
 
     @media (max-width: 320px) {
@@ -504,8 +512,8 @@ $footer-height: 50px;
       width: 100%;
     }
 
-    @media (max-width: 320px) {
-      height: 55vh;
+    @media (max-width: 768px) {
+      height: 60vh;
     }
 
     &.hidden {
