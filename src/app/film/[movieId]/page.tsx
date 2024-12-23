@@ -112,14 +112,14 @@ async function getMovieOTTlinkTW(movieId: string): Promise<OTTlistTW> {
   return res.json();
 }
 
+type Params = Promise<{ movieId: string }>;
+
 // 動態路由處理和頁面渲染
-export default async function MoviePage({
-  params,
-}: {
-  params: { movieId: string };
-}) {
+export default async function MoviePage(props: { params: Params }) {
   // 處理片介res
-  const movie = await getMovieDetail(params.movieId);
+  const params = await props.params;
+  const { movieId } = params;
+  const movie = await getMovieDetail(movieId);
   const releaseYear = movie.release_date.split("-")[0];
   const poster = movie.poster_path;
   let posterPath = `https://image.tmdb.org/t/p/w780${movie.poster_path}`;
@@ -130,12 +130,12 @@ export default async function MoviePage({
   const linkToIMDB = `https://www.imdb.com/title/${movie.imdb_id}`;
 
   // 處理預告片res
-  const videos = await getMovieVideos(params.movieId); // 取得影片資料
+  const videos = await getMovieVideos(movieId); // 取得影片資料
   const trailer = videos.results.find((result) => result.type === "Trailer");
   const key = trailer ? trailer.key : "";
 
   // 處理OTT res，只抓取result中的TW的link部分
-  const OTTlist = await getMovieOTTlinkTW(params.movieId);
+  const OTTlist = await getMovieOTTlinkTW(movieId);
   // const OTTlistresult = OTTlist.results;
   const OTTlistTWlink = OTTlist.results.TW?.link;
 
@@ -167,7 +167,7 @@ export default async function MoviePage({
 
                 <div className={styles.movieBio__titleArea__bookmarkArea}>
                   <Bookmark
-                    movieId={params.movieId}
+                    movieId={movieId}
                     title={movie.title}
                     runtime={movie.runtime}
                     originalTitle={movie.original_title}

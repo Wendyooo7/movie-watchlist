@@ -6,11 +6,14 @@ import { db } from "@/app/firebase/config";
 import { doc, getDoc } from "firebase/firestore";
 import SnapshotOfList from "./SnapshotOfList";
 import type { List as ListType } from "@/app/watchlist/types"; // 顯式地指定為型別並重新命名
+import { use } from "react";
 
-export default function Page({ params }: { params: { snapshotId: string } }) {
+type Params = Promise<{ snapshotId: string }>;
+
+export default function Page(props: { params: Params }) {
   const [isLoading, setIsLoading] = useState(true);
-  const { snapshotId } = params; // 從 params 取得 snapshotId
-  console.log(snapshotId);
+  const params = use(props.params);
+  const { snapshotId } = params;
   const [list, setList] = useState<ListType | null>(null);
 
   useEffect(() => {
