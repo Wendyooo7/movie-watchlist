@@ -4,7 +4,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: "Bellefair", "Helvetica", "Arial", "LiHei Pro", "Zen Old Mincho", "黑體-繁", "微軟正黑體";
+  font-family: "Zen Old Mincho", "Bellefair", "Helvetica", "Arial", "LiHei Pro", "黑體-繁", "微軟正黑體";
 }
 
 html,
@@ -86,7 +86,7 @@ main {
 
 footer {
   width: 100%;
-  background-color: rgb(197, 177, 249);
+  background: linear-gradient(to right, rgb(200, 170, 255), rgba(132, 64, 241, 0.7));
   text-align: center;
   color: white;
   font-size: 16px;

@@ -6,6 +6,7 @@ $theme-color: #8440f1;
 // $theme-color-light: rgba(132, 64, 241, 0.8);
 $theme-color-light: #ae81ff;
 $minor-color: rgb(197, 177, 249);
+$index-background: rgb(200, 170, 255);
 
 // $theme-color: rgba(255, 140, 0);
 // $theme-color: rgb(255, 165, 0);
@@ -15,7 +16,7 @@ $minor-color: rgb(197, 177, 249);
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: "Bellefair", "Helvetica", "Arial", "LiHei Pro", "Zen Old Mincho",
+  font-family: "Zen Old Mincho", "Bellefair", "Helvetica", "Arial", "LiHei Pro",
     "黑體-繁", "微軟正黑體";
 }
 
@@ -117,7 +118,12 @@ main {
 footer {
   width: 100%;
   // background-color: rgba(179, 118, 66, 0.8);
-  background-color: $minor-color;
+  // background-color: $minor-color;
+  background: linear-gradient(
+    to right,
+    $index-background,
+    rgba(132, 64, 241, 0.7)
+  );
 
   text-align: center;
   color: white;

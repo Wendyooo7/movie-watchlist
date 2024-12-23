@@ -1,26 +1,97 @@
+$index-background: rgb(200, 170, 255);
 $theme-color: #8440f1;
-// $theme-color-light: rgba(132, 64, 241, 0.8);
+$theme-color-lighter: rgba(132, 64, 241, 0.8);
 $theme-color-light: #ae81ff;
 $minor-color: rgb(197, 177, 249);
+$minor-color-background: rgba(197, 177, 249, 0.1);
+$footer-height: 50px;
 
-.main__flexContainer {
+.indexMain {
+  width: 100%;
+  padding-top: 4.25rem;
+  // margin-top: 4rem;
+  // TODO:搞清楚到底要用margin-top(以初始畫面來說，一開始就不出現footer，較穩定)還是padding-top(初始畫面比較協調，較彈性)來做與header的間隔
+  min-height: calc(100% - $footer-height);
+  // border: 1px solid blue;
+}
+
+.indexMain__flexContainer {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  padding: 7rem;
+  align-items: center;
+  // border: 1px solid red;
+}
 
-  @media (max-width: 768px) {
-    padding: 5rem;
-  }
+.iconWrapper {
+  display: flex;
+}
 
-  @media (max-width: 610px) {
-    padding: 1.75rem;
+.gifWrapper {
+  display: flex;
+
+  .demoGIF {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
   }
 }
 
-.searchArea {
-  width: 38%;
+.flexContainer__searchArea {
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  padding-top: 3.5rem;
+  // border: 1px solid black;
+}
+
+.searchArea__slogan {
+  font-size: 2.5rem;
+  min-height: 3rem;
+  color: rgb(42, 32, 50);
+  // color: rgb(45, 13, 45);
+  // border: 1px solid black;
+
+  &.typing_animation {
+    display: inline-block;
+    overflow: hidden; // 確保動畫時文字不會超出範圍
+    white-space: nowrap; // 預設單行顯示
+    border-right: 2px solid black; // 模擬游標
+    animation: typing 7s steps(13, end), blink 0.6s step-end infinite;
+    animation-fill-mode: forwards; // 保持動畫結束後的狀態
+
+    @keyframes typing {
+      from {
+        width: 0;
+      }
+      to {
+        width: 23.5ch; // 根據文字長度調整
+      }
+    }
+
+    @keyframes blink {
+      from {
+        border-color: gray; // 初始顏色
+      }
+      to {
+        border-color: transparent; // 閃爍時變為透明
+      }
+    }
+
+    /* 動畫結束後的樣式 */
+    &.typing_animation_done {
+      white-space: normal; // 自動換行
+      overflow: visible; // 恢復正常顯示
+      border-right: none;
+    }
+  }
+}
+
+.searchArea__input {
+  width: 32%;
   display: flex;
   align-items: center;
   margin: 3rem 1rem;
@@ -30,27 +101,27 @@ $minor-color: rgb(197, 177, 249);
   // box-shadow: 1px 3px rgba(0, 0, 0, 0.15);
   background-color: rgba(197, 177, 249, 0.2);
 
-  @media (max-width: 930px) {
-    width: 45%;
+  @media (max-width: 1150px) {
+    width: 40%;
   }
 
-  @media (max-width: 830px) {
+  @media (max-width: 900px) {
     width: 50%;
   }
 
-  @media (max-width: 710px) {
-    width: 55%;
-  }
-
-  @media (max-width: 600px) {
+  @media (max-width: 750px) {
     width: 60%;
   }
 
-  @media (max-width: 500px) {
-    width: 65%;
+  @media (max-width: 650px) {
+    width: 70%;
   }
 
-  @media (max-width: 400px) {
+  @media (max-width: 550px) {
+    width: 80%;
+  }
+
+  @media (max-width: 480px) {
     width: 100%;
   }
 
@@ -84,6 +155,409 @@ $minor-color: rgb(197, 177, 249);
       transform: scale(1.2);
       transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
       // filter: drop-shadow(0px 0px 10px rgba(0, 0, 0));
+    }
+  }
+}
+
+.flexContainer__introArea__1 {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  // background-color: rgb(200, 170, 255);
+  // // 柔和紫，上面更柔
+  // background-color: rgb(195, 167, 251);
+  // // 柔和紫，上面更沉穩
+  // background-color: rgb(180, 150, 240);
+  // background-color: rgb(170, 140, 230);
+  // background-color: rgb(190, 160, 245);
+  background: linear-gradient(
+    85deg,
+    $index-background,
+    rgba(132, 64, 241, 0.7)
+  );
+  // background-image: linear-gradient(to top, #cd9cf2 0%, #f6f3ff 100%);
+  // background-image: linear-gradient(
+  //   -225deg,
+  //   #2cd8d5 0%,
+  //   #c5c1ff 56%,
+  //   #ffbac3 100%
+  // );
+
+  .introArea__1__video {
+    width: 55%;
+    padding: 4rem;
+    // border: 1px solid black;
+
+    @media (max-width: 1200px) {
+      width: 100%;
+    }
+
+    @media (max-width: 768px) {
+      padding: 3rem;
+    }
+
+    @media (max-width: 464px) {
+      padding: 1rem;
+    }
+  }
+
+  .introArea__1__text {
+    width: 45%;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    // border: 1px solid red;
+
+    @media (max-width: 1200px) {
+      width: 100%;
+    }
+
+    &.hidden {
+      opacity: 0;
+      transform: translateY(50px); // 向下偏移
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    &.visible {
+      opacity: 1;
+      transform: translateY(0); // 移動到最終位置
+    }
+  }
+
+  .introArea__1__text__slogan {
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    // border: 1px solid black;
+
+    @media (max-width: 1200px) {
+      font-size: 3.5rem;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 3.25rem;
+    }
+
+    @media (max-width: 600px) {
+      font-size: 3rem;
+    }
+
+    @media (max-width: 464px) {
+      font-size: 2.5rem;
+    }
+  }
+
+  .introArea__1__text__detail {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    // border: 1px solid blue;
+
+    @media (max-width: 1200px) {
+      font-size: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 1.75rem;
+    }
+
+    @media (max-width: 464px) {
+      font-size: 1.5rem;
+    }
+    //     @media (max-width: 600px) {
+    //   font-size: 3rem;
+    // }
+  }
+}
+
+.flexContainer__introArea__2 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: #e9e9e9;
+  //#f4f4f4 備選
+
+  .introArea__2__text {
+    width: 42%;
+    // 用 flex: 1;可能不會等比
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+
+    opacity: 0;
+    transform: translateY(50px); // 初始位置向下偏移
+    transition: all 1.5s ease-in-out;
+
+    @media (max-width: 1200px) {
+      width: 100%;
+    }
+
+    &.animateUp {
+      opacity: 1;
+      transform: translateY(0); // 回到原位
+    }
+
+    .introArea__2__text__slogan {
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      // border: 1px solid black;
+
+      @media (max-width: 1200px) {
+        font-size: 3.5rem;
+      }
+
+      @media (max-width: 768px) {
+        font-size: 3.25rem;
+      }
+
+      @media (max-width: 600px) {
+        font-size: 3rem;
+        white-space: normal;
+      }
+
+      @media (max-width: 464px) {
+        font-size: 2.5rem;
+      }
+    }
+  }
+
+  .introArea__2__video {
+    width: 58%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    // border: 1px solid black;
+
+    @media (max-width: 1200px) {
+      width: 100%;
+    }
+
+    opacity: 0;
+    transform: translateY(-50px); // 初始位置向上偏移
+    transition: all 1.5s ease-in-out;
+
+    &.animateDown {
+      opacity: 1;
+      transform: translateY(0); // 回到原位
+    }
+  }
+}
+
+.tabs {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  gap: 7px;
+
+  .tab {
+    padding-left: 0.75rem;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 1.5rem;
+
+    @media (max-width: 1200px) {
+      font-size: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 1.9rem;
+    }
+
+    @media (max-width: 600px) {
+      font-size: 1.8rem;
+    }
+
+    @media (max-width: 464px) {
+      font-size: 1.65rem;
+    }
+
+    &.active {
+      color: $theme-color;
+    }
+  }
+}
+
+.tabInfo {
+  // flex: 1; /* 填滿剩餘空間 */
+  margin-bottom: 1.2rem;
+
+  .tabInfo__title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #8440f1;
+    margin-bottom: 0.25rem;
+
+    @media (max-width: 1200px) {
+      font-size: 1.8rem;
+    }
+
+    @media (max-width: 464px) {
+      font-size: 1.65rem;
+    }
+  }
+
+  .tabInfo__description {
+    font-size: 1.1rem;
+    font-weight: 550;
+    color: gray;
+    padding-left: 0.2rem;
+
+    @media (max-width: 1200px) {
+      font-size: 1.4rem;
+    }
+
+    @media (max-width: 464px) {
+      font-size: 1.25rem;
+    }
+  }
+}
+
+.flexContainer__introArea__3 {
+  width: 100%;
+  display: flex;
+  justify-self: center;
+  flex-wrap: wrap;
+  overflow: hidden;
+
+  background-color: $index-background;
+  // 柔和紫，上面更柔
+  // background-color: rgb(195, 167, 251);
+  // // 柔和紫，上面更沉穩
+  // background-color: rgb(180, 150, 240);
+  // background-color: rgb(170, 140, 230);
+  // background-color: rgb(190, 160, 245);
+
+  background: linear-gradient(
+    85deg,
+    $index-background,
+    rgba(132, 64, 241, 0.7)
+  );
+
+  .introArea__3__video {
+    width: 55%;
+    padding: 3rem;
+    // border: 1px solid black;
+
+    @media (max-width: 1200px) {
+      width: 100%;
+    }
+
+    @media (max-width: 768px) {
+      padding: 2rem;
+    }
+
+    @media (max-width: 464px) {
+      padding: 1rem;
+    }
+
+    &.hidden {
+      opacity: 0;
+      transform: translateX(-50px); // 向右偏移
+      transition: opacity 1.5s ease, transform 1.5s ease;
+    }
+
+    &.visible {
+      opacity: 1;
+      transform: translateX(0); // 移動到最終位置
+    }
+  }
+
+  .introArea__3__text {
+    width: 45%;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    padding: 1.5rem;
+    // border: 1px solid red;
+
+    @media (max-width: 1200px) {
+      width: 100%;
+    }
+
+    &.hidden {
+      opacity: 0;
+      transform: translateX(50px); // 向左偏移
+      transition: opacity 1.5s ease, transform 1.5s ease;
+    }
+
+    &.visible {
+      opacity: 1;
+      transform: translateX(0); // 移動到最終位置
+    }
+  }
+
+  .introArea__3__text__slogan {
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    // border: 1px solid black;
+
+    @media (max-width: 1200px) {
+      font-size: 3.5rem;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 3rem;
+    }
+
+    @media (max-width: 600px) {
+      font-size: 2.75rem;
+      white-space: normal;
+    }
+
+    @media (max-width: 464px) {
+      font-size: 2.5rem;
+    }
+  }
+
+  .introArea__3__text__detail {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding-left: 0.75rem;
+    // border: 1px solid blue;
+
+    @media (max-width: 1200px) {
+      font-size: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 1.75rem;
+    }
+
+    @media (max-width: 600px) {
+      font-size: 1.5rem;
+    }
+
+    @media (max-width: 450px) {
+      font-size: 1.25rem;
+    }
+
+    @media (max-width: 375px) {
+      font-size: 1.05rem;
+    }
+
+    .introArea__3__text__detail__item {
+      display: flex;
+      align-items: center;
+    }
+
+    .marginBottom {
+      margin-bottom: 0.5rem;
     }
   }
 }

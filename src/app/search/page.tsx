@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useSearchParams, useRouter } from "next/navigation";
 import { useEffect, useState, Suspense } from "react"; // 新增這行
 import styles from "../styles/searchMain.module.scss";
-import SuspenseWrapper from "@/app/components/SuspenseWrapper";
+import SuspenseWrapper from "@/app/shared_components/SuspenseWrapper";
 
 export default function SearchPage() {
   return (
