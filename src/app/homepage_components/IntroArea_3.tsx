@@ -33,7 +33,17 @@ export default function IntroArea_3() {
       <div
         ref={containerRefVideo}
         className={`${styles.introArea__3__video} ${styles.hidden}`}
-      ></div>
+      >
+        <div className={styles.gifWrapper}>
+          <Image
+            className={styles.demoGIF}
+            src="/index/share.gif"
+            width={640}
+            height={360}
+            alt="分享片單demo"
+          />
+        </div>
+      </div>
       <div
         ref={containerRefText}
         className={`${styles.introArea__3__text} ${styles.hidden}`}
