@@ -361,15 +361,14 @@ $footer-height: 50px;
     padding: 2rem;
     display: flex;
     flex-direction: column;
+    opacity: 0;
+    transform: translateY(-50px); // 初始位置向上偏移
+    transition: all 1.5s ease-in-out;
     // border: 1px solid black;
 
     @media (max-width: 1200px) {
       width: 100%;
     }
-
-    opacity: 0;
-    transform: translateY(-50px); // 初始位置向上偏移
-    transition: all 1.5s ease-in-out;
 
     &.animateDown {
       opacity: 1;
