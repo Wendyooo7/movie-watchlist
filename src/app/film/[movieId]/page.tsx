@@ -1,16 +1,28 @@
+import type { Metadata } from "next";
 import "../../styles/global.scss";
 import styles from "../../styles/movieMain.module.scss";
-
-// 使用 Server Components 的一個範例
-import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Bookmark from "./Bookmark";
 
-// // 定義頁面的 metadata（選用）
-// export const metadata: Metadata = {
-//   title: "電影排片站",
-// };
+type Params = Promise<{ movieId: string }>;
+// 動態生成 Metadata
+export async function generateMetadata({
+  params,
+}: {
+  params: Params;
+}): Promise<Metadata> {
+  const { movieId } = await params;
+  const movie = await getMovieDetail(movieId);
+
+  return {
+    title: `${movie.title} | 影迷的計畫`,
+    description: movie.overview
+      ? movie.overview.substring(0, 154) +
+        (movie.overview.length > 154 ? "......" : "")
+      : `在《影迷的計畫》網站上，探索更多和${movie.title}有關的電影資訊`,
+  };
+}
 
 // 定義movie details API返回的電影資料結構
 interface Movie {
@@ -111,8 +123,6 @@ async function getMovieOTTlinkTW(movieId: string): Promise<OTTlistTW> {
 
   return res.json();
 }
-
-type Params = Promise<{ movieId: string }>;
 
 // 動態路由處理和頁面渲染
 export default async function MoviePage(props: { params: Params }) {

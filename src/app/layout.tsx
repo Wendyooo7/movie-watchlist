@@ -10,7 +10,25 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "影迷的計畫",
-  description: "你的年度十大愛片出爐了嗎？",
+  description: "你的選片、排片好夥伴",
+  keywords: [
+    "電影",
+    "movie",
+    "觀影清單",
+    "片單",
+    "watchlist",
+    "favorite movies",
+    "movie collection",
+    "影展",
+    "film festival",
+    "選片",
+    "排片",
+    "影迷",
+    "cinephile",
+    "影癡",
+    "moviegoer",
+    "filmgoer",
+  ],
 };
 
 export default function RootLayout({

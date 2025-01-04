@@ -1,61 +1,14 @@
-"use client";
+import type { Metadata } from "next";
+import SharedList from "./SharedList";
 
-import styles from "@/app/styles/searchMain.module.scss";
-import { useEffect, useState } from "react";
-import { db } from "@/app/firebase/config";
-import { doc, getDoc } from "firebase/firestore";
-import SnapshotOfList from "./SnapshotOfList";
-import type { List as ListType } from "@/app/watchlist/types"; // 顯式地指定為型別並重新命名
-import { use } from "react";
+export const metadata: Metadata = {
+  title: "分享的片單 | 影迷的計畫",
+  description: "在《影迷的計畫》網站上，瀏覽影友和你分享的片單",
+};
 
 type Params = Promise<{ snapshotId: string }>;
 
-export default function Page(props: { params: Params }) {
-  const [isLoading, setIsLoading] = useState(true);
-  const params = use(props.params);
-  const { snapshotId } = params;
-  const [list, setList] = useState<ListType | null>(null);
-
-  useEffect(() => {
-    const fetchSnapshots = async () => {
-      try {
-        // 從 Firestore 中取得單一文件的資料
-        const listRef = doc(db, "snapshot", snapshotId);
-        const listSnapshot = await getDoc(listRef);
-
-        if (listSnapshot.exists()) {
-          const listData = {
-            id: listSnapshot.id,
-            title: listSnapshot.data()?.listTitle || listSnapshot.id,
-            movies: listSnapshot.data()?.movies || [],
-            order: listSnapshot.data()?.listOrder || 0,
-          };
-          setList(listData); // 設定單一片單的資料
-          console.log(listData);
-        } else {
-          console.error("該 snapshot 不存在");
-        }
-      } catch (error) {
-        console.error("Error fetching snapshot: ", error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchSnapshots();
-  }, [snapshotId]);
-
-  return (
-    <main>
-      {isLoading ? (
-        <div className={styles.main__flexContainer}>
-          <div className={styles.main__flexItem}>
-            <h3>資料讀取中......</h3>
-          </div>
-        </div>
-      ) : (
-        list && <SnapshotOfList list={list} />
-      )}
-    </main>
-  );
+export default async function SharedListPage({ params }: { params: Params }) {
+  const { snapshotId } = await params;
+  return <SharedList snapshotId={snapshotId} />;
 }
