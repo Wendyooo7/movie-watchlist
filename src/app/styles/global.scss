@@ -51,14 +51,22 @@ section {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
+    padding: 1rem 0;
     color: $theme-color;
 
     font-size: 1.6rem;
     font-weight: 550;
 
-    @media (max-width: 380px) {
+    @media (max-width: 1280px) {
+      padding: 1rem 1rem;
+    }
+
+    @media (max-width: 420px) {
       font-size: 1.4rem;
+    }
+
+    @media (max-width: 376px) {
+      font-size: 1.2rem;
     }
   }
 }
@@ -69,7 +77,7 @@ nav ul {
   font-size: 1.2rem;
   font-weight: 500;
 
-  @media (max-width: 380px) {
+  @media (max-width: 420px) {
     font-size: 1rem;
   }
 
@@ -106,7 +114,7 @@ main {
   // margin-top: 4rem;
   // padding-top: 100vh; 蘇有效但我反而無效，why?
   padding: 1rem;
-  padding-top: 5rem;
+  padding-top: 6rem;
   // TODO:搞清楚到底要用margin-top(以初始畫面來說，一開始就不出現footer，較穩定)還是padding-top(初始畫面比較協調，較彈性)來做與header的間隔
 
   // min-height: 100%;

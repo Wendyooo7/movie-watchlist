@@ -11,6 +11,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "影迷的計畫",
   description: "你的選片、排片好夥伴",
+  icons: {
+    icon: "/favicon.ico", // 指向 public 資料夾的 favicon 路徑
+  },
   keywords: [
     "電影",
     "movie",

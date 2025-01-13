@@ -39,6 +39,11 @@ section header {
     font-size: 1.4rem;
   }
 }
+@media (max-width: 330px) {
+  section header {
+    font-size: 1.2rem;
+  }
+}
 
 nav ul {
   display: flex;

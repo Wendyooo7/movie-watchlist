@@ -1,4 +1,14 @@
 @charset "UTF-8";
+.logoTitleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logoTitleContainer .logoContainer {
+  display: flex;
+  margin-right: 0.5rem;
+}
+
 .indexMain {
   width: 100%;
   padding-top: 4.25rem;

@@ -1,4 +1,6 @@
 "use client";
+import Image from "next/image";
+import styles from "@/app/styles/indexMain.module.scss";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -39,7 +41,12 @@ export default function Header() {
   return (
     <section>
       <header>
-        <Link href="/">影迷的計畫</Link>
+        <Link href="/" className={styles.logoTitleContainer}>
+          <div className={styles.logoContainer}>
+            <Image src="/logo_64x64.png" width={48} height={48} alt="logo" />
+          </div>
+          影迷的計畫
+        </Link>
         <nav>
           <ul>
             <li>

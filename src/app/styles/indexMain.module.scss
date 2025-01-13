@@ -6,6 +6,18 @@ $minor-color: rgb(197, 177, 249);
 $minor-color-background: rgba(197, 177, 249, 0.1);
 $footer-height: 50px;
 
+.logoTitleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .logoContainer {
+    display: flex;
+    margin-right: 0.5rem;
+    // border: 1px solid black;
+  }
+}
+
 .indexMain {
   width: 100%;
   padding-top: 4.25rem;
