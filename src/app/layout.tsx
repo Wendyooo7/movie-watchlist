@@ -32,6 +32,23 @@ export const metadata: Metadata = {
     "moviegoer",
     "filmgoer",
   ],
+  openGraph: {
+    url: "https://cinephileslists.vercel.app/",
+    images: [
+      {
+        url: "https://cinephileslists.vercel.app/open-graph-img.png",
+        width: 300,
+        height: 157,
+        // 寬高應該要1200*630，但logo製作網站最大只提供上面尺寸
+        alt: "logo",
+      },
+    ],
+  },
+  twitter: {
+    // 小型卡片，僅包含標題、描述和縮圖
+    card: "summary",
+    images: ["https://cinephileslists.vercel.app/open-graph-img.png"],
+  },
 };
 
 export default function RootLayout({
