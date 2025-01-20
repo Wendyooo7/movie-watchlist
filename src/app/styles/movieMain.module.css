@@ -3,7 +3,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  padding-top: 1.5rem;
+  padding-top: 0.5rem;
 }
 .main__flexContainer .main__flexItem {
   width: 100%;
@@ -45,8 +45,12 @@
   display: flex;
   justify-content: space-between;
 }
-.main__innerFlexItem .innerFlexItem__movieBio .movieBio__titleArea .movieBio__titleArea__title > * {
+.main__innerFlexItem .innerFlexItem__movieBio .movieBio__titleArea .movieBio__titleArea__titles > * {
   margin-bottom: 0.25%;
+}
+.main__innerFlexItem .innerFlexItem__movieBio .movieBio__titleArea .movieBio__titleArea__titles .movieBio__titleArea__title {
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 .main__innerFlexItem .movieBio__detailArea {
   display: flex;
@@ -61,17 +65,24 @@
 }
 .main__innerFlexItem .movieBio__overviewArea {
   line-height: 1.8rem;
+  font-size: 1.05rem;
 }
 .main__innerFlexItem .movieBio__overviewArea > * {
   margin-bottom: 2%;
+}
+.main__innerFlexItem .movieBio__overviewArea .movieBio__overviewArea__tagline {
+  font-weight: 600;
+}
+.main__innerFlexItem .movieBio__overviewArea .movieBio__overviewArea__overview {
+  font-weight: 325;
 }
 .main__innerFlexItem .movieBio__overviewArea .movieBio__overviewArea__noOverview {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 240px;
-  font-size: 22px;
-  font-weight: bold;
+  height: 250px;
+  font-size: 1.5rem;
+  font-weight: 500;
 }
 .main__innerFlexItem .movieBio__otherMovieDBarea > *,
 .main__innerFlexItem .movieBio__OTTarea > * {

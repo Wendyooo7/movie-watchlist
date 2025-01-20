@@ -11,6 +11,10 @@
   display: flex;
   flex-wrap: wrap;
 }
+.main__flexContainer .main__flexItem .main__flexItem__h3 {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
 
 .searchResultSummary {
   width: 100%;

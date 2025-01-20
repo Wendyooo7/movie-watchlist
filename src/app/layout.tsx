@@ -1,12 +1,21 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Noto_Sans_TC, Inter, Zen_Old_Mincho } from "next/font/google";
 import "./styles/global.scss";
 import Header from "./shared_components/Header";
 import Footer from "./shared_components/Footer";
 import { AuthProvider } from "./contexts/AuthContext";
 import SuspenseWrapper from "@/app/shared_components/SuspenseWrapper";
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
+
+const notoSansTC = Noto_Sans_TC({
+  subsets: ["latin"], // 支援英文
+});
+
+const zenOldMincho = Zen_Old_Mincho({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "900"],
+});
 
 export const metadata: Metadata = {
   title: "影迷的計畫",
@@ -59,12 +68,12 @@ export default function RootLayout({
   return (
     <AuthProvider>
       <html lang="zh-hant">
-        <body className={inter.className}>
+        <body className={notoSansTC.className}>
           <SuspenseWrapper>
-            <Header />
+            <Header fontClass={zenOldMincho.className} />
           </SuspenseWrapper>
           {children}
-          <Footer />
+          <Footer fontClass={zenOldMincho.className} />
         </body>
       </html>
     </AuthProvider>

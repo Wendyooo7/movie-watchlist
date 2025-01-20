@@ -59,7 +59,7 @@ $theme-color-background: rgba(197, 177, 249, 0.2);
       display: flex;
       justify-content: space-between;
 
-      .movieBio__titleArea__title {
+      .movieBio__titleArea__titles {
         // display: flex;
         // align-items: baseline;
         // white-space: nowrap;
@@ -67,6 +67,11 @@ $theme-color-background: rgba(197, 177, 249, 0.2);
 
         > * {
           margin-bottom: 0.25%;
+        }
+
+        .movieBio__titleArea__title {
+          font-size: 1.5rem;
+          font-weight: 600;
         }
       }
     }
@@ -88,19 +93,28 @@ $theme-color-background: rgba(197, 177, 249, 0.2);
   .movieBio__overviewArea {
     // border: 1px solid black;
     line-height: 1.8rem;
+    font-size: 1.05rem;
 
     > * {
       margin-bottom: 2%;
       // padding-right: 20%;
     }
 
+    .movieBio__overviewArea__tagline {
+      font-weight: 600;
+    }
+
+    .movieBio__overviewArea__overview {
+      font-weight: 325;
+    }
+
     .movieBio__overviewArea__noOverview {
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 240px;
-      font-size: 22px;
-      font-weight: bold;
+      height: 250px;
+      font-size: 1.5rem;
+      font-weight: 500;
     }
   }
 

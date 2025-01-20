@@ -9,7 +9,7 @@ import { auth } from "@/app/firebase/config";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { signOut } from "firebase/auth";
 
-export default function Header() {
+export default function Header({ fontClass }: { fontClass: string }) {
   const { user, setUser } = useAuth();
   const [showAlert, setShowAlert] = useState(false);
 
@@ -41,7 +41,7 @@ export default function Header() {
   return (
     <section>
       <header>
-        <Link href="/" className={styles.logoTitleContainer}>
+        <Link href="/" className={`${styles.logoTitleContainer} ${fontClass}`}>
           <div className={styles.logoContainer}>
             <Image src="/logo_64x64.png" width={48} height={48} alt="logo" />
           </div>

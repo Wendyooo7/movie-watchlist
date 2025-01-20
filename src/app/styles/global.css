@@ -1,10 +1,19 @@
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;500;600;700;900&display=swap");
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: "Zen Old Mincho", "Bellefair", "Helvetica", "Arial", "LiHei Pro", "黑體-繁", "微軟正黑體";
+  font-family: "Noto Sans TC", "Helvetica", "Arial", "LiHei Pro", "黑體-繁", "微軟正黑體", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: initial;
+  font-weight: normal;
 }
 
 html,
@@ -14,6 +23,7 @@ body {
 
 section {
   width: 100%;
+  padding: 0 2.5rem;
   display: flex;
   justify-content: center;
   border-bottom: 1px solid #ddd;
@@ -23,23 +33,48 @@ section {
   top: 0;
   left: 0;
 }
+@media (max-width: 1366px) {
+  section {
+    padding: 0 1.9rem;
+  }
+}
+@media (max-width: 768px) {
+  section {
+    padding: 0 1rem;
+  }
+}
+@media (max-width: 414px) {
+  section {
+    padding: 0;
+  }
+}
 section header {
   width: 100%;
-  max-width: 1200px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding: 1.5rem 0;
   color: #8440f1;
-  font-size: 1.6rem;
-  font-weight: 550;
+  font-size: 2.1rem;
+  font-weight: 700;
 }
-@media (max-width: 380px) {
+@media (max-width: 1366px) {
+  section header {
+    font-size: 1.65rem;
+    padding: 1rem;
+  }
+}
+@media (max-width: 768px) {
+  section header {
+    font-size: 1.5rem;
+  }
+}
+@media (max-width: 420px) {
   section header {
     font-size: 1.4rem;
   }
 }
-@media (max-width: 330px) {
+@media (max-width: 376px) {
   section header {
     font-size: 1.2rem;
   }
@@ -48,20 +83,35 @@ section header {
 nav ul {
   display: flex;
   list-style: none;
-  font-size: 1.2rem;
-  font-weight: 500;
+  font-size: 1.6rem;
+  font-weight: 450;
 }
-@media (max-width: 380px) {
+@media (max-width: 1366px) {
+  nav ul {
+    font-size: 1.2rem;
+  }
+}
+@media (max-width: 768px) {
+  nav ul {
+    font-size: 1.1rem;
+  }
+}
+@media (max-width: 414px) {
   nav ul {
     font-size: 1rem;
   }
 }
 nav ul li {
-  margin-left: 1rem;
+  margin-left: 1.25rem;
   cursor: pointer;
 }
+@media (max-width: 414px) {
+  nav ul li {
+    margin-left: 1rem;
+  }
+}
 nav ul li:hover {
-  font-weight: 550;
+  font-weight: 600;
 }
 
 a {
@@ -85,7 +135,7 @@ a {
 main {
   width: 100%;
   padding: 1rem;
-  padding-top: 5rem;
+  padding-top: 6rem;
   min-height: calc(100% - 50px);
 }
 

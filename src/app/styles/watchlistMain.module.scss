@@ -55,29 +55,33 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
   .listContainer__header {
     display: flex;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
     // border: 1px solid black;
 
     .listContainer__header__title {
       width: 100%;
       text-align: center;
       color: $theme-color;
-      // border: 1px solid $theme-color;
       cursor: pointer;
+      font-size: 1.5rem;
+      font-weight: 550;
+      // border: 1px solid $theme-color;
     }
 
     .listContainer__header__title__noneditable {
       width: 100%;
       text-align: center;
       color: $theme-color;
+      font-size: 1.5rem;
+      font-weight: 550;
     }
 
     .listContainer__header__title__editing {
       width: 100%;
       padding: 0.5rem 0;
-      font-size: 22px;
+      font-size: 1.4rem;
       color: $theme-color;
-      font-weight: 550;
+      font-weight: 500;
       text-align: center;
       border: none;
       box-shadow: none; /* 移除陰影 */
@@ -163,7 +167,7 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
 
       .movieItem__details__title {
         margin-left: 1rem;
-        font-size: 1.02rem;
+        font-size: 1.05rem;
         //   text-align: start;
 
         &:hover {
@@ -269,6 +273,7 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
     }
   }
 }
+
 .shareAllListsBtnContainer {
   position: relative;
   // border: 1px solid red;
@@ -279,6 +284,11 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
     border-radius: 3px;
     padding: 0.4rem 0.8rem;
     cursor: pointer;
+
+    &:hover {
+      color: $theme-color;
+      font-weight: 550;
+    }
   }
 }
 
@@ -319,7 +329,8 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
 }
 
 .MovieItemDroppable {
-  height: 86%;
+  height: 80%;
+  // border: 1px solid green;
 }
 
 .addNewlistArea {

@@ -2,6 +2,7 @@
   max-width: 300px;
   border: 1.25px solid rgb(197, 177, 249);
   margin: 0 auto;
+  margin-top: 0.5rem;
   padding: 2.5rem;
   background-color: white;
   border-radius: 10px;
@@ -25,7 +26,7 @@
 }
 
 .authTab.active {
-  font-weight: bold;
+  font-weight: 600;
   border-bottom: 3px solid #ae81ff;
 }
 
@@ -42,6 +43,8 @@
 .authForm div h2 {
   margin-bottom: 0.5rem;
   text-align: center;
+  font-size: 1.5rem;
+  font-weight: 550;
 }
 .authForm div .authForm__nonPassword__input {
   width: 100%;

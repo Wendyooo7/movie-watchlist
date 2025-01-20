@@ -168,8 +168,10 @@ export default async function MoviePage(props: { params: Params }) {
       </div> */}
             <div className={styles.innerFlexItem__movieBio}>
               <div className={styles.movieBio__titleArea}>
-                <div className={styles.movieBio__titleArea__title}>
-                  <h2>{movie.title}</h2>
+                <div className={styles.movieBio__titleArea__titles}>
+                  <h2 className={styles.movieBio__titleArea__title}>
+                    {movie.title}
+                  </h2>
                   {movie.title !== movie.original_title && (
                     <div>{movie.original_title}</div>
                   )}
@@ -185,6 +187,7 @@ export default async function MoviePage(props: { params: Params }) {
                   />
                 </div>
               </div>
+
               <div className={styles.movieBio__detailArea}>
                 {releaseYear && <div>{releaseYear}年 </div>}
 
@@ -212,15 +215,15 @@ export default async function MoviePage(props: { params: Params }) {
             </Link> */}
               <div className={styles.movieBio__overviewArea}>
                 {movie.tagline && (
-                  <p>
-                    <i>
-                      <b>{movie.tagline}</b>
-                    </i>
+                  <p className={styles.movieBio__overviewArea__tagline}>
+                    <i>{movie.tagline}</i>
                   </p>
                 )}
 
                 {movie.overview ? (
-                  <p>{movie.overview}</p>
+                  <p className={styles.movieBio__overviewArea__overview}>
+                    {movie.overview}
+                  </p>
                 ) : (
                   <div className={styles.movieBio__overviewArea__noOverview}>
                     無更多資料

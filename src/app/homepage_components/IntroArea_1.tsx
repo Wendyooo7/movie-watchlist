@@ -52,11 +52,9 @@ export default function IntroArea_1() {
           盡情探索感興趣的電影
         </div>
         <div className={styles.introArea__1__text__detail}>
-          Step 1 : 搜尋並選擇感興趣的電影
-          <br />
-          Step 2 : 瀏覽電影介紹
-          <br />
-          Step 3 : 喜歡的話，就加入片單！
+          <div>Step 1 : 搜尋並選擇感興趣的電影</div>
+          <div>Step 2 : 瀏覽電影介紹</div>
+          <div>Step 3 : 喜歡的話，就加入片單！</div>
         </div>
       </div>
     </div>

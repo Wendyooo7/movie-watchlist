@@ -147,10 +147,12 @@ export default function SearchResult() {
       <div className={styles.main__flexContainer}>
         <div className={styles.main__flexItem}>
           {isLoading ? (
-            <h3>搜尋中......</h3>
+            <h3 className={styles.main__flexItem__h3}>搜尋中......</h3>
           ) : (
             <>
-              <h3 className={styles.searchResultSummary}>
+              <h3
+                className={`${styles.searchResultSummary} ${styles.main__flexItem__h3}`}
+              >
                 您搜尋了 <span className={styles.keyword}>{query}</span>
                 ，相符的結果共有{" "}
                 <span className={styles.keyword}>{totalResults}</span> 筆
@@ -177,10 +179,14 @@ export default function SearchResult() {
                           />
                         </div>
                         <div className={styles.eachMovieDetailDiv}>
-                          <h3 className={styles.eachMovieDetailDiv__title}>
+                          <h3
+                            className={`${styles.eachMovieDetailDiv__title} ${styles.main__flexItem__h3}`}
+                          >
                             {movie.title}
                           </h3>
-                          <h3>{releaseYear}</h3>
+                          <h3 className={styles.main__flexItem__h3}>
+                            {releaseYear}
+                          </h3>
                         </div>
                       </div>
                     </Link>

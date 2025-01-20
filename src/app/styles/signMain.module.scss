@@ -33,7 +33,7 @@ $theme-color-background: rgba(197, 177, 249, 0.2);
 }
 
 .authTab.active {
-  font-weight: bold;
+  font-weight: 600;
   border-bottom: 3px solid $theme-color-light;
 }
 
@@ -50,6 +50,8 @@ $theme-color-background: rgba(197, 177, 249, 0.2);
     h2 {
       margin-bottom: 0.5rem;
       text-align: center;
+      font-size: 1.5rem;
+      font-weight: 550;
     }
 
     .authForm__nonPassword__input {
