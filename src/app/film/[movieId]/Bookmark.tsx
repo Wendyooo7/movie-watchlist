@@ -146,7 +146,9 @@ export default function Bookmark({
         height={22}
         alt="加入片單"
       ></Image>
-      <div>{isBookmarked ? "已加入片單" : "加入片單"}</div>
+      <div className={styles.fontSizeNormal}>
+        {isBookmarked ? "已加入片單" : "加入片單"}
+      </div>
 
       {!user && <div className={styles.tooltip}>登入即可加入片單</div>}
     </div>

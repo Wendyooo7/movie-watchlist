@@ -173,7 +173,9 @@ export default async function MoviePage(props: { params: Params }) {
                     {movie.title}
                   </h2>
                   {movie.title !== movie.original_title && (
-                    <div>{movie.original_title}</div>
+                    <div className={styles.fontSizeNormal}>
+                      {movie.original_title}
+                    </div>
                   )}
                 </div>
 
@@ -188,7 +190,9 @@ export default async function MoviePage(props: { params: Params }) {
                 </div>
               </div>
 
-              <div className={styles.movieBio__detailArea}>
+              <div
+                className={`${styles.movieBio__detailArea} ${styles.fontSizeNormal}`}
+              >
                 {releaseYear && <div>{releaseYear}年 </div>}
 
                 <div>{movie.runtime}分鐘 </div>
@@ -200,12 +204,18 @@ export default async function MoviePage(props: { params: Params }) {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <Image
-                      src="/film/play_circle_30dp_8440F1.svg"
-                      alt="播放預告片"
-                      width={22}
-                      height={22}
-                    />
+                    <div
+                      className={
+                        styles.movieBio__detailArea__trailerArea__imgWrapper
+                      }
+                    >
+                      <Image
+                        src="/film/play_circle_30dp_8440F1.svg"
+                        alt="播放預告片"
+                        width={22}
+                        height={22}
+                      />
+                    </div>
                     播放預告片
                   </Link>
                 )}
@@ -232,7 +242,9 @@ export default async function MoviePage(props: { params: Params }) {
               </div>
 
               {/* <div className={styles.movieBio__ExternalLinksArea}> */}
-              <div className={styles.movieBio__otherMovieDBarea}>
+              <div
+                className={`${styles.movieBio__otherMovieDBarea} ${styles.fontSizeNormal}`}
+              >
                 <label
                   className={styles.movieBio__linkToExternal__label}
                   htmlFor="otherMovieDB"
@@ -259,7 +271,9 @@ export default async function MoviePage(props: { params: Params }) {
               </div>
 
               {OTTlistTWlink && (
-                <div className={styles.movieBio__OTTarea}>
+                <div
+                  className={`${styles.movieBio__OTTarea} ${styles.fontSizeNormal}`}
+                >
                   <label
                     className={styles.movieBio__linkToExternal__label}
                     htmlFor="OTTlistTW"

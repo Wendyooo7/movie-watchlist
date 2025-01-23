@@ -3,13 +3,19 @@ $theme-color-light: #ae81ff;
 $minor-color: rgb(197, 177, 249);
 $theme-color-background: rgba(197, 177, 249, 0.2);
 
+.fontSizeNormal {
+  font-size: 1.2rem;
+
+  @media (max-width: 1366px) {
+    font-size: 1rem;
+  }
+}
+
 .main__flexContainer {
   width: 100%;
   display: flex;
   justify-content: center;
-  // margin-top: 0.5em;
   padding-top: 0.5rem;
-  // TODO:同樣是padding-top和margin-top的選擇
   // border: 1px solid black;
 
   .main__flexItem {
@@ -70,8 +76,12 @@ $theme-color-background: rgba(197, 177, 249, 0.2);
         }
 
         .movieBio__titleArea__title {
-          font-size: 1.5rem;
+          font-size: 2rem;
           font-weight: 600;
+
+          @media (max-width: 1366px) {
+            font-size: 1.5rem;
+          }
         }
       }
     }
@@ -92,8 +102,13 @@ $theme-color-background: rgba(197, 177, 249, 0.2);
 
   .movieBio__overviewArea {
     // border: 1px solid black;
-    line-height: 1.8rem;
-    font-size: 1.05rem;
+    line-height: 2.25rem;
+    font-size: 1.25rem;
+
+    @media (max-width: 1366px) {
+      line-height: 1.8rem;
+      font-size: 1.05rem;
+    }
 
     > * {
       margin-bottom: 2%;
@@ -113,8 +128,12 @@ $theme-color-background: rgba(197, 177, 249, 0.2);
       justify-content: center;
       align-items: center;
       height: 250px;
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       font-weight: 500;
+
+      @media (max-width: 1366px) {
+        font-size: 1.25rem;
+      }
     }
   }
 
@@ -136,7 +155,7 @@ $theme-color-background: rgba(197, 177, 249, 0.2);
 
     .movieBio__linkToExternal__label {
       color: $theme-color;
-      font-weight: 500;
+      font-weight: 450;
     }
 
     .movieBio__linkToExternal__link {
@@ -155,22 +174,25 @@ $theme-color-background: rgba(197, 177, 249, 0.2);
   display: flex;
   align-items: center;
   color: $theme-color;
+  // border: 1px solid red;
 
   &:hover {
     opacity: 0.8;
   }
 
-  img {
-    margin-right: 1px;
+  .movieBio__detailArea__trailerArea__imgWrapper {
+    display: flex;
+    margin-right: 5px;
+    // border: 1px solid black;
   }
 }
 
 .bookmark__imgWapper {
   cursor: pointer;
   display: flex;
+  align-items: center;
   white-space: nowrap;
   color: $theme-color;
-  font-size: 1rem;
   position: relative;
   // 上行是為了給未登入使用者顯示hover訊息而設置的
 
