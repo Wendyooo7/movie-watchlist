@@ -154,13 +154,17 @@ main {
   // margin-top: 4rem;
   // padding-top: 100vh; 蘇有效但我反而無效，why?
   padding: 1rem;
-  padding-top: 6rem;
+  padding-top: 7.5rem;
   // TODO:搞清楚到底要用margin-top(以初始畫面來說，一開始就不出現footer，較穩定)還是padding-top(初始畫面比較協調，較彈性)來做與header的間隔
 
   // min-height: 100%;
   min-height: calc(100% - $footer-height);
   // TODO:了解100%和100vh的不同，100%可以撐滿，vh會讓footer飄在中間
   // TODO:當main標籤內容物少時，能保持最小高度，避免footer漂浮在main中間;當main標籤內容物多時，又會擋在中間．．．怎解？
+
+  @media (max-width: 1366px) {
+    padding-top: 6rem;
+  }
 }
 
 footer {

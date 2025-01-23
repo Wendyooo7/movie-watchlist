@@ -338,10 +338,15 @@
 }
 .noList__flexContainer .noList__flexItem {
   width: 1100px;
-  padding: 10rem;
+  padding: 16rem;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+}
+@media (max-width: 1366px) {
+  .noList__flexContainer .noList__flexItem {
+    padding: 10rem;
+  }
 }
 .noList__flexContainer .noList__text {
   width: 100%;

@@ -12,8 +12,13 @@
   flex-wrap: wrap;
 }
 .main__flexContainer .main__flexItem .main__flexItem__h3 {
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   font-weight: 500;
+}
+@media (max-width: 1440px) {
+  .main__flexContainer .main__flexItem .main__flexItem__h3 {
+    font-size: 1.2rem;
+  }
 }
 
 .searchResultSummary {
@@ -43,7 +48,7 @@
   padding: 0.5rem 0;
 }
 .eachMovieArea .eachMovieDiv .eachMovieDetailDiv > * {
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
 .eachMovieArea .eachMovieDiv .eachMovieDetailDiv .eachMovieDetailDiv__title:hover {
   opacity: 0.6;

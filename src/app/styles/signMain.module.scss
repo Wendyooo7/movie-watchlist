@@ -22,14 +22,14 @@ $theme-color-background: rgba(197, 177, 249, 0.2);
 
 .authTab {
   width: 100%;
-  padding: 10px 20px;
-  cursor: pointer;
+  padding: 0.625rem 1.25rem;
   font-size: 1rem;
   background: none;
   // 拿掉button灰色背景色
   border: 1px solid $theme-color-light;
   // border: none; 會取消button的醜border，或直接用其他屬性覆寫也可
   border-radius: 2px;
+  cursor: pointer;
 }
 
 .authTab.active {
@@ -39,7 +39,7 @@ $theme-color-background: rgba(197, 177, 249, 0.2);
 
 .authForm {
   width: 100%;
-  font-size: 16px;
+  font-size: 1rem;
 
   div {
     width: 100%;
@@ -56,7 +56,7 @@ $theme-color-background: rgba(197, 177, 249, 0.2);
 
     .authForm__nonPassword__input {
       width: 100%;
-      padding: 10px;
+      padding: 0.625rem;
       border: 1px solid #ccc;
       border-radius: 5px;
       margin-top: 1.25rem;
@@ -64,7 +64,7 @@ $theme-color-background: rgba(197, 177, 249, 0.2);
 
     button {
       width: 30%;
-      padding: 10px;
+      padding: 0.625rem;
       background-color: $theme-color-light;
       color: white;
       border: none;
@@ -77,22 +77,22 @@ $theme-color-background: rgba(197, 177, 249, 0.2);
 
 .authForm__instant__errMsg {
   color: red;
-  font-size: 14px;
+  font-size: 0.875rem;
   width: 100%;
   margin-top: 0.2rem;
 }
 
 .authForm__afterSend__errMsg {
   color: red;
-  font-size: 14px;
+  font-size: 0.875rem;
   width: 100%;
   margin-top: 1rem;
   text-align: center;
 }
 
 .authForm__afterSend__successMsg {
-  color: green; // 設定成功訊息的顏色
-  font-size: 14px;
+  color: green;
+  font-size: 0.875rem;
   width: 100%;
   margin-top: 1rem;
   text-align: center;
@@ -109,7 +109,7 @@ $theme-color-background: rgba(197, 177, 249, 0.2);
 
   .authForm__passwordContainer__input {
     width: 85%;
-    padding: 10px;
+    padding: 0.625rem;
     border: none;
     border: none;
     border-radius: 5px 0 0 5px;

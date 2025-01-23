@@ -411,18 +411,26 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
 
   .noList__flexItem {
     width: 1100px;
-    padding: 10rem;
+    padding: 16rem;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+
+    @media (max-width: 1366px) {
+      padding: 10rem;
+    }
   }
 
   .noList__text {
     width: 100%;
     color: $theme-color;
-    font-size: 1.75rem;
+    font-size: 2.25rem;
     font-weight: 550;
     text-align: center;
     margin: 0.5rem 0;
+
+    @media (max-width: 1366px) {
+      font-size: 1.75rem;
+    }
   }
 }
