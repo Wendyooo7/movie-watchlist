@@ -42,7 +42,7 @@ body {
 
 section {
   width: 100%;
-  padding: 0 2.5rem;
+  padding: 0 2.6rem;
   display: flex;
   justify-content: center;
   border-bottom: 1px solid #ddd;
@@ -102,7 +102,7 @@ section {
 nav ul {
   display: flex;
   list-style: none;
-  font-size: 1.6rem;
+  font-size: 1.55rem;
   font-weight: 450;
 
   @media (max-width: 1366px) {
@@ -118,8 +118,12 @@ nav ul {
   }
 
   li {
-    margin-left: 1.25rem;
+    margin-left: 2rem;
     cursor: pointer;
+
+    @media (max-width: 1366px) {
+      margin-left: 1.25rem;
+    }
 
     @media (max-width: 414px) {
       margin-left: 1rem;
