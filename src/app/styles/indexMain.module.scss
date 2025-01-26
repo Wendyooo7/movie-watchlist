@@ -83,7 +83,7 @@ $footer-height: 50px;
   // border: 1px solid black;
 
   @media (max-width: 1600px) {
-    font-size: 3.5rem;
+    font-size: 3rem;
   }
 
   @media (max-width: 1366px) {
@@ -307,7 +307,7 @@ $footer-height: 50px;
     // border: 1px solid black;
 
     @media (max-width: 1600px) {
-      font-size: 3.5rem;
+      font-size: 3rem;
     }
 
     @media (max-width: 1366px) {
@@ -355,7 +355,7 @@ $footer-height: 50px;
     }
 
     @media (max-width: 1600px) {
-      font-size: 2rem;
+      font-size: 1.75rem;
     }
 
     @media (max-width: 1366px) {
@@ -440,7 +440,7 @@ $footer-height: 50px;
       // border: 1px solid black;
 
       @media (max-width: 1600px) {
-        font-size: 3.5rem;
+        font-size: 3rem;
       }
 
       @media (max-width: 1366px) {
@@ -524,7 +524,7 @@ $footer-height: 50px;
     font-size: 2rem;
 
     @media (max-width: 1600px) {
-      font-size: 2rem;
+      font-size: 1.75rem;
     }
 
     @media (max-width: 1366px) {
@@ -576,7 +576,7 @@ $footer-height: 50px;
     margin-bottom: 0.25rem;
 
     @media (max-width: 1600px) {
-      font-size: 2.25rem;
+      font-size: 1.75rem;
     }
 
     @media (max-width: 1366px) {
@@ -601,6 +601,10 @@ $footer-height: 50px;
     font-weight: 450;
     color: gray;
     padding-left: 0.2rem;
+
+    @media (max-width: 1600px) {
+      font-size: 1.3rem;
+    }
 
     @media (max-width: 1366px) {
       font-size: 1rem;
@@ -720,7 +724,7 @@ $footer-height: 50px;
     // border: 1px solid black;
 
     @media (max-width: 1600px) {
-      font-size: 3.5rem;
+      font-size: 3rem;
     }
 
     @media (max-width: 1366px) {
@@ -769,7 +773,7 @@ $footer-height: 50px;
     // border: 1px solid blue;
 
     @media (max-width: 1600px) {
-      font-size: 2rem;
+      font-size: 1.75rem;
     }
 
     @media (max-width: 1366px) {
