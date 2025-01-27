@@ -419,18 +419,34 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
     @media (max-width: 1366px) {
       padding: 10rem;
     }
+
+    @media (max-width: 601px) {
+      padding: 6rem;
+    }
+
+    @media (max-width: 414px) {
+      padding: 2rem;
+    }
   }
 
   .noList__text {
     width: 100%;
     color: $theme-color;
     font-size: 2.25rem;
-    font-weight: 550;
+    font-weight: 450;
     text-align: center;
     margin: 0.5rem 0;
 
     @media (max-width: 1366px) {
       font-size: 1.75rem;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 1.4rem;
+    }
+
+    @media (max-width: 436px) {
+      font-size: 1.1rem;
     }
   }
 }
