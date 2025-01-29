@@ -16,13 +16,18 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
     display: flex;
     overflow-x: auto;
     width: 100%;
-    max-width: 1280px;
+    max-width: 1600px;
     // 上行越寬，大螢幕就能排下更多片單
     // border: 2px solid green;
+    margin-top: 0.8rem;
 
     // 適用於Firefox
     scrollbar-width: thin;
     scrollbar-color: $minor-color #f1f1f1;
+
+    @media (max-width: 1366px) {
+      margin-top: 0;
+    }
   }
 }
 
@@ -42,26 +47,32 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
 
 .listContainer {
   width: 100%;
-  max-width: 370px;
-  min-width: 370px;
+  max-width: 350px;
+  min-width: 350px;
   // TODO:檢查一下可否最大和最小都設同一個尺寸
   border-radius: 5px;
   background-color: $minor-color-background;
-  padding: 1.5rem 1rem;
+  padding: 2rem 1.5rem;
   border: 1px solid $minor-color;
-  margin: 0 0.2rem;
+  margin: 0 0.3rem;
   min-height: 225px;
 
   @media (max-width: 1366px) {
     max-width: 280px;
     min-width: 280px;
+    padding: 1.5rem 1rem;
+    margin: 0 0.2rem;
   }
 
   .listContainer__header {
     display: flex;
     align-items: center;
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.6rem;
     // border: 1px solid black;
+
+    @media (max-width: 1366px) {
+      margin-bottom: 1.25rem;
+    }
 
     .listContainer__header__title {
       width: 100%;
@@ -135,7 +146,7 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
       }
 
       .listContainer__header__ellipsisModal {
-        width: 90px;
+        width: 120px;
         background-color: white;
         position: absolute;
         top: 200%;
@@ -143,14 +154,24 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
         border-radius: 5px;
         border: 1px solid $minor-color;
 
+        @media (max-width: 1366px) {
+          width: 90px;
+        }
+
         .listContainer__header__ellipsisModalItem {
           text-align: center;
-          padding: 0.4rem 0.1rem;
+          padding: 0.5rem 0.1rem;
           cursor: pointer;
+          font-size: 1.3rem;
 
           &:hover {
             color: white;
             background-color: $theme-color-light;
+          }
+
+          @media (max-width: 1366px) {
+            padding: 0.4rem 0.1rem;
+            font-size: 1rem;
           }
         }
       }
@@ -185,6 +206,11 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
         color: $theme-color;
         // padding: 0.3rem 0.6rem;
         border-radius: 50px;
+        font-size: 1.4rem;
+
+        @media (max-width: 1366px) {
+          font-size: 1rem;
+        }
       }
 
       .movieItem__details__title {
@@ -305,15 +331,22 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
   // border: 1px solid red;
 
   .shareAllListsBtn {
-    margin-top: 2rem;
+    margin-top: 2.6rem;
     border: 1.5px solid $theme-color;
     border-radius: 3px;
-    padding: 0.4rem 0.8rem;
+    padding: 0.7rem 1.2rem;
     cursor: pointer;
+    font-size: 1.4rem;
 
     &:hover {
       color: $theme-color;
       font-weight: 550;
+    }
+
+    @media (max-width: 1366px) {
+      margin-top: 2rem;
+      padding: 0.4rem 0.8rem;
+      font-size: 1rem;
     }
   }
 }
@@ -362,8 +395,8 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
 .addNewlistArea {
   margin: 0 0.25rem;
   width: 100%;
-  max-width: 370px;
-  min-width: 370px;
+  max-width: 350px;
+  min-width: 350px;
   position: relative;
   min-height: 225px;
   // border: 2px solid red;
@@ -387,7 +420,7 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
 
   .addNewlistArea__modal {
     width: 100%;
-    max-width: 280px;
+    max-width: 350px;
     border-radius: 5px;
     background-color: $minor-color-background;
     padding: 1.25rem 2rem;
@@ -396,6 +429,10 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
     position: absolute;
     top: 0;
     right: 0;
+
+    @media (max-width: 1366px) {
+      max-width: 280px;
+    }
 
     .addNewListModal__TitleInput {
       width: 100%;
