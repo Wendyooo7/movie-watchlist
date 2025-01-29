@@ -42,8 +42,8 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
 
 .listContainer {
   width: 100%;
-  max-width: 280px;
-  min-width: 280px;
+  max-width: 370px;
+  min-width: 370px;
   // TODO:檢查一下可否最大和最小都設同一個尺寸
   border-radius: 5px;
   background-color: $minor-color-background;
@@ -51,6 +51,11 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
   border: 1px solid $minor-color;
   margin: 0 0.2rem;
   min-height: 225px;
+
+  @media (max-width: 1366px) {
+    max-width: 280px;
+    min-width: 280px;
+  }
 
   .listContainer__header {
     display: flex;
@@ -63,29 +68,41 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
       text-align: center;
       color: $theme-color;
       cursor: pointer;
-      font-size: 1.5rem;
+      font-size: 1.9rem;
       font-weight: 550;
       // border: 1px solid $theme-color;
+
+      @media (max-width: 1366px) {
+        font-size: 1.5rem;
+      }
     }
 
     .listContainer__header__title__noneditable {
       width: 100%;
       text-align: center;
       color: $theme-color;
-      font-size: 1.5rem;
+      font-size: 1.9rem;
       font-weight: 550;
+
+      @media (max-width: 1366px) {
+        font-size: 1.5rem;
+      }
     }
 
     .listContainer__header__title__editing {
       width: 100%;
       padding: 0.5rem 0;
-      font-size: 1.4rem;
+      font-size: 1.8rem;
       color: $theme-color;
       font-weight: 500;
       text-align: center;
       border: none;
       box-shadow: none; /* 移除陰影 */
       // background: none; /* 移除背景，目測為白底 */
+
+      @media (max-width: 1366px) {
+        font-size: 1.4rem;
+      }
 
       &:focus {
         outline: 2px solid $theme-color-light; /* 設置點擊時的外框 */
@@ -143,14 +160,19 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
   .movieItem {
     width: 100%;
     margin: 0.5rem 0;
-    padding: 0.7rem 0.5rem;
-    padding-left: 1rem;
+    padding: 0.9rem 1rem;
+    padding-left: 1.5rem;
     background-color: white;
     border: 1px solid $minor-color;
     border-radius: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media (max-width: 1366px) {
+      padding: 0.7rem 0.5rem;
+      padding-left: 1rem;
+    }
 
     .movieItem__details {
       display: flex;
@@ -167,12 +189,16 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
 
       .movieItem__details__title {
         margin-left: 1rem;
-        font-size: 1.05rem;
+        font-size: 1.4rem;
         //   text-align: start;
 
         &:hover {
           font-weight: 550;
           color: $theme-color;
+        }
+
+        @media (max-width: 1366px) {
+          font-size: 1.05rem;
         }
       }
     }
@@ -196,14 +222,14 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
   }
 }
 
-// 之後可能用到，先保留
+// 之後可能用到，先保留，RWD未調
 .sharelistContainer {
   width: 100%;
   max-width: 320px;
   min-width: 280px;
   border-radius: 5px;
   background-color: $minor-color-background;
-  padding: 1.5rem 1.5rem;
+  padding: 1.5rem;
   border: 1px solid $minor-color;
   margin: 0 0.2rem;
   min-height: 225px;
@@ -336,11 +362,16 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
 .addNewlistArea {
   margin: 0 0.25rem;
   width: 100%;
-  max-width: 280px;
-  min-width: 280px;
+  max-width: 370px;
+  min-width: 370px;
   position: relative;
   min-height: 225px;
   // border: 2px solid red;
+
+  @media (max-width: 1366px) {
+    max-width: 280px;
+    min-width: 280px;
+  }
 
   .addNewlistArea__Img {
     background-color: $minor-color-background;

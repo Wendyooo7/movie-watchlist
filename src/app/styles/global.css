@@ -23,7 +23,7 @@ body {
 
 section {
   width: 100%;
-  padding: 0 2.5rem;
+  padding: 0 2.6rem;
   display: flex;
   justify-content: center;
   border-bottom: 1px solid #ddd;
@@ -83,7 +83,7 @@ section header {
 nav ul {
   display: flex;
   list-style: none;
-  font-size: 1.6rem;
+  font-size: 1.55rem;
   font-weight: 450;
 }
 @media (max-width: 1366px) {
@@ -102,8 +102,13 @@ nav ul {
   }
 }
 nav ul li {
-  margin-left: 1.25rem;
+  margin-left: 2rem;
   cursor: pointer;
+}
+@media (max-width: 1366px) {
+  nav ul li {
+    margin-left: 1.25rem;
+  }
 }
 @media (max-width: 414px) {
   nav ul li {
@@ -130,6 +135,12 @@ a {
   border-radius: 5px;
   z-index: 100;
   text-align: center;
+  font-size: 1.25rem;
+}
+@media (max-width: 1366px) {
+  .alertForUnauthenticatedUser {
+    font-size: 1rem;
+  }
 }
 
 main {

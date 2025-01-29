@@ -4,6 +4,7 @@
   display: flex;
   justify-content: center;
   padding-top: 1rem;
+  padding-bottom: 0.2rem;
 }
 .main__flexContainer .main__flexItem {
   width: 100%;
