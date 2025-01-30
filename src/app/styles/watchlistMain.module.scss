@@ -334,7 +334,7 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
   // border: 1px solid red;
 
   .shareAllListsBtn {
-    margin-top: 2.6rem;
+    margin-top: 3rem;
     border: 1.5px solid $theme-color;
     border-radius: 3px;
     padding: 0.7rem 1.2rem;
@@ -362,7 +362,7 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
   padding: 0.5rem 1rem;
   border-radius: 5px;
   font-size: 1.3rem;
-  top: 16%;
+  top: 12%;
   left: 48%;
   transform: translateX(-48%); /* 水平位移讓元素居中 */
   margin-left: 1.25rem;
@@ -374,17 +374,18 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
 
   @media (max-width: 1366px) {
     font-size: 1rem;
+    top: 16%;
   }
 }
 
 .error {
-  position: absolute;
+  position: fixed;
   background-color: rgba(0, 0, 0, 0.6);
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 5px;
   font-size: 1.3rem;
-  top: 16%;
+  top: 12%;
   left: 48%;
   transform: translateX(-48%); /* 水平位移讓元素居中 */
   margin-left: 1.25rem;
@@ -396,6 +397,7 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
 
   @media (max-width: 1366px) {
     font-size: 1rem;
+    top: 16%;
   }
 }
 
@@ -405,17 +407,19 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
 }
 
 .addNewlistArea {
-  margin: 0 0.25rem;
+  margin: 0 0.35rem;
   width: 100%;
   max-width: 350px;
   min-width: 350px;
   position: relative;
-  min-height: 225px;
+  min-height: 300px;
   // border: 2px solid red;
 
   @media (max-width: 1366px) {
     max-width: 280px;
     min-width: 280px;
+    margin: 0 0.25rem;
+    min-height: 225px;
   }
 
   .addNewlistArea__Img {
