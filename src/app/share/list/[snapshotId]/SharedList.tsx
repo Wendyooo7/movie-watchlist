@@ -45,7 +45,7 @@ export default function SharedList({ snapshotId }: { snapshotId: string }) {
       {isLoading ? (
         <div className={styles.main__flexContainer}>
           <div className={styles.main__flexItem}>
-            <h3>資料讀取中......</h3>
+            <h3 className={styles.main__flexItem__h3}>資料讀取中......</h3>
           </div>
         </div>
       ) : (
