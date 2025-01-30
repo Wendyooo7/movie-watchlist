@@ -52,9 +52,13 @@ $theme-color-background: rgba(197, 177, 249, 0.2);
 
     .eachMovieDetailDiv {
       width: 100%;
-      margin: 0 1rem;
+      margin: 0 1.25rem;
       padding: 0.5rem 0;
       // border: 1px solid black;
+
+      @media (max-width: 1366px) {
+        margin: 0 1rem;
+      }
 
       > * {
         margin-bottom: 1.25rem; // 設定每個子元素的下方距離
