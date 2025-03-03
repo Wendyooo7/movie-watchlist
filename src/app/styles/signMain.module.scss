@@ -25,9 +25,9 @@ $theme-color-background: rgba(197, 177, 249, 0.2);
   padding: 0.625rem 1.25rem;
   font-size: 1rem;
   background: none;
-  // 拿掉button灰色背景色
+  // 拿掉button預設的灰色背景色
   border: 1px solid $theme-color-light;
-  // border: none; 會取消button的醜border，或直接用其他屬性覆寫也可
+  // 上行覆寫掉 button 預設的 border，不想要 border 可用 border: none; 取消
   border-radius: 2px;
   cursor: pointer;
 }

@@ -11,16 +11,21 @@
   display: flex;
   overflow-x: auto;
   width: 100%;
-  max-width: 1280px;
+  max-width: 1600px;
+  margin-top: 0.8rem;
   scrollbar-width: thin;
   scrollbar-color: rgb(197, 177, 249) #f1f1f1;
 }
+@media (max-width: 1366px) {
+  .listsContainerContainer .listsContainer {
+    margin-top: 0;
+  }
+}
 
-.sharelistsContainer {
+.sharelistContainer {
   display: flex;
   overflow-x: auto;
   width: 100%;
-  max-width: 1280px;
   justify-content: center;
   scrollbar-width: thin;
   scrollbar-color: rgb(197, 177, 249) #f1f1f1;
@@ -28,25 +33,32 @@
 
 .listContainer {
   width: 100%;
-  max-width: 370px;
-  min-width: 370px;
+  width: 350px;
+  flex-shrink: 0;
   border-radius: 5px;
   background-color: rgba(197, 177, 249, 0.1);
-  padding: 1.5rem 1rem;
+  padding: 2rem 1.5rem;
   border: 1px solid rgb(197, 177, 249);
-  margin: 0 0.2rem;
-  min-height: 225px;
+  margin: 0 0.3rem;
+  min-height: 300px;
 }
 @media (max-width: 1366px) {
   .listContainer {
-    max-width: 280px;
-    min-width: 280px;
+    width: 280px;
+    min-height: 225px;
+    padding: 1.5rem 1rem;
+    margin: 0 0.2rem;
   }
 }
 .listContainer .listContainer__header {
   display: flex;
   align-items: center;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.6rem;
+}
+@media (max-width: 1366px) {
+  .listContainer .listContainer__header {
+    margin-bottom: 1.25rem;
+  }
 }
 .listContainer .listContainer__header .listContainer__header__title {
   width: 100%;
@@ -114,7 +126,7 @@
   opacity: 1;
 }
 .listContainer .listContainer__header .listContainer__header__ellipsis__root .listContainer__header__ellipsisModal {
-  width: 90px;
+  width: 120px;
   background-color: white;
   position: absolute;
   top: 200%;
@@ -122,14 +134,26 @@
   border-radius: 5px;
   border: 1px solid rgb(197, 177, 249);
 }
+@media (max-width: 1366px) {
+  .listContainer .listContainer__header .listContainer__header__ellipsis__root .listContainer__header__ellipsisModal {
+    width: 90px;
+  }
+}
 .listContainer .listContainer__header .listContainer__header__ellipsis__root .listContainer__header__ellipsisModal .listContainer__header__ellipsisModalItem {
   text-align: center;
-  padding: 0.4rem 0.1rem;
+  padding: 0.5rem 0.1rem;
   cursor: pointer;
+  font-size: 1.3rem;
 }
 .listContainer .listContainer__header .listContainer__header__ellipsis__root .listContainer__header__ellipsisModal .listContainer__header__ellipsisModalItem:hover {
   color: white;
   background-color: #ae81ff;
+}
+@media (max-width: 1366px) {
+  .listContainer .listContainer__header .listContainer__header__ellipsis__root .listContainer__header__ellipsisModal .listContainer__header__ellipsisModalItem {
+    padding: 0.4rem 0.1rem;
+    font-size: 1rem;
+  }
 }
 .listContainer .movieItem {
   width: 100%;
@@ -152,23 +176,30 @@
 .listContainer .movieItem .movieItem__details {
   display: flex;
   align-items: center;
-  justify-content: baseline;
 }
 .listContainer .movieItem .movieItem__details .movieItem__details__serialNumber {
   background-color: white;
   color: #8440f1;
   border-radius: 50px;
+  font-size: 1.4rem;
+}
+@media (max-width: 1366px) {
+  .listContainer .movieItem .movieItem__details .movieItem__details__serialNumber {
+    font-size: 1rem;
+    margin-left: 0.2rem;
+  }
 }
 .listContainer .movieItem .movieItem__details .movieItem__details__title {
-  margin-left: 1rem;
+  margin-left: 1.2rem;
   font-size: 1.4rem;
 }
 .listContainer .movieItem .movieItem__details .movieItem__details__title:hover {
-  font-weight: 550;
+  font-weight: 450;
   color: #8440f1;
 }
 @media (max-width: 1366px) {
   .listContainer .movieItem .movieItem__details .movieItem__details__title {
+    margin-left: 1rem;
     font-size: 1.05rem;
   }
 }
@@ -188,89 +219,37 @@
   background-color: rgba(197, 177, 249, 0.1);
 }
 
-.sharelistContainer {
-  width: 100%;
-  max-width: 320px;
-  min-width: 280px;
-  border-radius: 5px;
-  background-color: rgba(197, 177, 249, 0.1);
-  padding: 1.5rem;
-  border: 1px solid rgb(197, 177, 249);
-  margin: 0 0.2rem;
-  min-height: 225px;
-}
-.sharelistContainer .listContainer__header {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-.sharelistContainer .listContainer__header .listContainer__header__title {
-  width: 100%;
-  text-align: center;
-  color: #8440f1;
-  cursor: pointer;
-}
-.sharelistContainer .listContainer__header .listContainer__header__title__noneditable {
-  width: 100%;
-  text-align: center;
-  color: #8440f1;
-  padding: 0.25rem 0;
-}
-.sharelistContainer .movieItem {
-  width: 100%;
-  margin-bottom: 0.75rem;
-  padding: 1rem 0.75rem;
-  padding-left: 1rem;
-  background-color: white;
-  border: 1px solid rgb(197, 177, 249);
-  border-radius: 5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.sharelistContainer .movieItem .movieItem__details {
-  display: flex;
-  align-items: center;
-  justify-content: baseline;
-}
-.sharelistContainer .movieItem .movieItem__details .movieItem__details__serialNumber {
-  background-color: white;
-  color: #8440f1;
-  border-radius: 50px;
-}
-.sharelistContainer .movieItem .movieItem__details .movieItem__details__title {
-  margin-left: 1rem;
-  font-size: 1.02rem;
-}
-.sharelistContainer .movieItem .movieItem__details .movieItem__details__title:hover {
-  font-weight: 550;
-  color: #8440f1;
-}
-
 .shareAllListsBtnContainer {
   position: relative;
 }
 .shareAllListsBtnContainer .shareAllListsBtn {
-  margin-top: 2rem;
+  margin-top: 3rem;
   border: 1.5px solid #8440f1;
   border-radius: 3px;
-  padding: 0.4rem 0.8rem;
+  padding: 0.7rem 1.2rem;
   cursor: pointer;
+  font-size: 1.4rem;
 }
 .shareAllListsBtnContainer .shareAllListsBtn:hover {
   color: #8440f1;
   font-weight: 550;
+}
+@media (max-width: 1366px) {
+  .shareAllListsBtnContainer .shareAllListsBtn {
+    margin-top: 2rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 1rem;
+  }
 }
 
 .notification {
   position: fixed;
   background-color: #ae81ff;
   color: #fff;
-  padding: 8px 16px;
+  padding: 0.5rem 1rem;
   border-radius: 5px;
-  font-size: 1rem;
-  top: 70%;
+  font-size: 1.3rem;
+  top: 12%;
   left: 48%;
   transform: translateX(-48%); /* 水平位移讓元素居中 */
   margin-left: 1.25rem;
@@ -280,16 +259,23 @@
   z-index: 100;
   text-align: center;
 }
+@media (max-width: 1366px) {
+  .notification {
+    font-size: 1rem;
+    top: 16%;
+  }
+}
 
 .error {
-  position: absolute;
+  position: fixed;
   background-color: rgba(0, 0, 0, 0.6);
   color: white;
-  padding: 5px 10px;
+  padding: 0.5rem 1rem;
   border-radius: 5px;
-  font-size: 1rem;
-  top: 48%;
-  left: 100%;
+  font-size: 1.3rem;
+  top: 12%;
+  left: 48%;
+  transform: translateX(-48%); /* 水平位移讓元素居中 */
   margin-left: 1.25rem;
   white-space: nowrap;
   pointer-events: none;
@@ -297,23 +283,30 @@
   z-index: 100;
   text-align: center;
 }
+@media (max-width: 1366px) {
+  .error {
+    font-size: 1rem;
+    top: 16%;
+  }
+}
 
 .MovieItemDroppable {
   height: 80%;
 }
 
 .addNewlistArea {
-  margin: 0 0.25rem;
+  margin: 0 0.35rem;
   width: 100%;
-  max-width: 370px;
-  min-width: 370px;
+  width: 350px;
+  flex-shrink: 0;
   position: relative;
-  min-height: 225px;
+  min-height: 300px;
 }
 @media (max-width: 1366px) {
   .addNewlistArea {
-    max-width: 280px;
-    min-width: 280px;
+    width: 280px;
+    margin: 0 0.25rem;
+    min-height: 225px;
   }
 }
 .addNewlistArea .addNewlistArea__Img {
@@ -328,22 +321,28 @@
 }
 .addNewlistArea .addNewlistArea__modal {
   width: 100%;
-  max-width: 280px;
+  max-width: 350px;
   border-radius: 5px;
   background-color: rgba(197, 177, 249, 0.1);
-  padding: 1.25rem 2rem;
+  padding: 1.75rem 2.5rem;
   border: 1px solid rgb(197, 177, 249);
   height: 100%;
   position: absolute;
   top: 0;
   right: 0;
 }
+@media (max-width: 1366px) {
+  .addNewlistArea .addNewlistArea__modal {
+    max-width: 280px;
+    padding: 1.5rem 2rem;
+  }
+}
 .addNewlistArea .addNewlistArea__modal .addNewListModal__TitleInput {
   width: 100%;
   padding: 0.65rem 0;
-  font-size: 20px;
+  font-size: 1.7rem;
   color: #8440f1;
-  font-weight: 550;
+  font-weight: 450;
   text-align: center;
   border: 1px solid #8440f1;
   border-radius: 5px;
@@ -353,14 +352,24 @@
   border: none;
   outline: 2px solid #ae81ff;
 }
+@media (max-width: 1366px) {
+  .addNewlistArea .addNewlistArea__modal .addNewListModal__TitleInput {
+    font-size: 1.3rem;
+  }
+}
 .addNewlistArea .addNewlistArea__modal .addNewListModal__afterTitleInput {
   display: flex;
   justify-content: flex-end;
+  margin-top: 1rem;
+}
+@media (max-width: 1366px) {
+  .addNewlistArea .addNewlistArea__modal .addNewListModal__afterTitleInput {
+    margin-top: 0.6rem;
+  }
 }
 .addNewlistArea .addNewlistArea__modal .addNewListModal__afterTitleInput .addNewListModal__afterTitleInput__item {
   background-color: white;
-  margin-left: 0.5rem;
-  margin-top: 0.5rem;
+  margin-left: 0.75rem;
   border: 1px solid #8440f1;
   border-radius: 2px;
   display: flex;
@@ -368,6 +377,11 @@
 .addNewlistArea .addNewlistArea__modal .addNewListModal__afterTitleInput .addNewListModal__afterTitleInput__item:hover {
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0.1);
+}
+@media (max-width: 1366px) {
+  .addNewlistArea .addNewlistArea__modal .addNewListModal__afterTitleInput .addNewListModal__afterTitleInput__item {
+    margin-left: 0.5rem;
+  }
 }
 
 .noList__flexContainer {

@@ -13,7 +13,6 @@ import {
   updateDoc,
   arrayUnion,
   arrayRemove,
-  serverTimestamp,
 } from "firebase/firestore";
 
 // 定義 Bookmark 元件的屬性
@@ -36,7 +35,7 @@ export default function Bookmark({
   const { user } = useAuth();
 
   useEffect(() => {
-    // TODO: 檢查此電影是否已在使用者的片單中，並更新 isBookmarked 狀態
+    // 檢查此電影是否已在使用者的片單中，並更新 isBookmarked 狀態
     const checkBookmarkStatus = async () => {
       if (!movieId || !user) return;
 
@@ -63,10 +62,9 @@ export default function Bookmark({
     checkBookmarkStatus();
   }, [movieId, user]);
 
-  // TODO: 將新的收藏狀態同步至 Firestore
+  // 將新的收藏狀態同步至 Firestore
   const toggleBookmark = async () => {
     if (!user) {
-      console.log("使用者尚未登入");
       return;
     }
 
@@ -88,7 +86,7 @@ export default function Bookmark({
 
       const movieURL = `https://cinephileslists.vercel.app/film/${movieId}`;
 
-      // 檢查 每個電影資訊 是否存在，只將存在的電影資訊加到 storeMovieDetail
+      // 檢查每個電影資訊是否存在，只將存在的電影資訊加到 storeMovieDetail
       const storeMovieDetail = {
         movieId,
         title,

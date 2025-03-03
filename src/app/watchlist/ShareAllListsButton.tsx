@@ -10,8 +10,8 @@ export default function ShareAllListsButton({ userUid }: { userUid: string }) {
   const [notification, setNotification] = useState<string | null>(null); // 控制通知顯示
 
   const handleShareAllLists = async () => {
-    setIsLoading(true); // 開始載入
-    setNotification("連結生成中"); // 顯示"連結生成中"通知
+    setIsLoading(true);
+    setNotification("連結生成中");
 
     try {
       // 讀取所有片單
@@ -38,7 +38,6 @@ export default function ShareAllListsButton({ userUid }: { userUid: string }) {
 
       // 取得 snapshotRef的id(as snapshotId)
       const snapshotId = snapshotRef.id;
-      console.log("快照已保存，ID:", snapshotId);
 
       // 將快照建立相關資料寫入該snapshot文件
       await setDoc(snapshotRef, {
@@ -69,18 +68,16 @@ export default function ShareAllListsButton({ userUid }: { userUid: string }) {
 
       // 生成分享連結
       const generatedLink = `https://cinephileslists.vercel.app/share/lists/${snapshotId}`;
-      setShareLink(generatedLink); // 更新分享連結
+      setShareLink(generatedLink);
 
       // 自動複製連結到剪貼簿
       await navigator.clipboard.writeText(generatedLink);
 
       setNotification(null);
-
-      // 顯示成功通知
       setNotification("已成功生成並複製分享連結！");
     } catch (err) {
       setNotification(null);
-      setError("Oops! 發生了點問題，請稍後再試。"); // 顯示錯誤訊息
+      setError("Oops! 發生了點問題，請稍後再試。");
       console.error("生成快照時出錯: ", err);
     } finally {
       setIsLoading(false); // 停止載入狀態

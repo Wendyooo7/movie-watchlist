@@ -8,12 +8,10 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
 } from "firebase/auth";
-import { useAuth } from "../contexts/AuthContext";
 import { useRouter } from "next/navigation";
 
 export default function SignModal() {
   const router = useRouter();
-  const { user, setUser } = useAuth();
   const [isSigningUp, setIsSigningUp] = useState(false);
 
   const [signInEmail, setSignInEmail] = useState("test@gmail.com");

@@ -22,7 +22,6 @@ export default function SearchArea() {
   const handleSearch = () => {
     if (query.trim()) {
       const formattedQuery = encodeURIComponent(query.trim()); // 將使用者輸入的內容進行編碼
-      // router.push(`/search/${formattedQuery}`); // 跳轉到 `/search/{movie name}` 路由
       router.push(`/search?query=${formattedQuery}`); // 跳轉到 `/search?query={movie name}` 路由
     }
   };

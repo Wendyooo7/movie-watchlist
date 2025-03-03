@@ -551,7 +551,6 @@
   justify-self: center;
   flex-wrap: wrap;
   overflow: hidden;
-  background-color: rgb(200, 170, 255);
   background: linear-gradient(85deg, rgb(200, 170, 255), rgba(132, 64, 241, 0.7));
 }
 @media (max-width: 1600px) {

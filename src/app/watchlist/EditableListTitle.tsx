@@ -32,7 +32,6 @@ export default function EditableListTitle({
   }, [initialTitle]);
 
   const handleBlur = async () => {
-    console.log(title.trim());
     if (!title.trim()) {
       setTitle(initialTitle);
     } else {
@@ -59,8 +58,6 @@ export default function EditableListTitle({
 
   const updateListTitle = async () => {
     if (title.trim() === initialTitle || isUpdating) return;
-    console.log("Current Title:", title.trim());
-    console.log("Initial Title:", initialTitle);
     setIsUpdating(true);
 
     try {
@@ -104,15 +101,5 @@ export default function EditableListTitle({
         title
       )}
     </h2>
-    // <h2
-    //   contentEditable={isEditing}
-    //   suppressContentEditableWarning={true}
-    //   onBlur={handleBlur}
-    //   onClick={() => setIsEditing(true)}
-    //   onKeyDown={handleKeyDown}
-    //   className={styles.listContainer__header__title}
-    // >
-    //   {title}
-    // </h2>
   );
 }

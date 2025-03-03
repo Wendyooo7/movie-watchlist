@@ -20,10 +20,6 @@ export default function Header({ fontClass }: { fontClass: string }) {
   const handleSignOut = async () => {
     await signOut(auth); // 登出 Firebase 使用者
     setUser(null); // 清除使用者狀態
-
-    // window.location.reload();
-    // 先用上行代替頁面刷新邏輯
-
     const currentUrl = `${pathname}?${searchParams.toString()}`;
     router.replace(currentUrl);
   };

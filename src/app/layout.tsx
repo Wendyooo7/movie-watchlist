@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
-import { Noto_Sans_TC, Inter, Zen_Old_Mincho } from "next/font/google";
+import { Noto_Sans_TC, Zen_Old_Mincho } from "next/font/google";
 import "./styles/global.scss";
 import Header from "./shared_components/Header";
 import Footer from "./shared_components/Footer";
 import { AuthProvider } from "./contexts/AuthContext";
 import SuspenseWrapper from "@/app/shared_components/SuspenseWrapper";
-
-// const inter = Inter({ subsets: ["latin"] });
 
 const notoSansTC = Noto_Sans_TC({
   subsets: ["latin"], // 支援英文

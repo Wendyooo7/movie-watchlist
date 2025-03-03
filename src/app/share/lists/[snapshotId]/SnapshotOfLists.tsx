@@ -4,7 +4,7 @@ import styles from "@/app/styles/watchlistMain.module.scss";
 import SnapshotOfMovieItem from "./SnapshotOfMovieItem";
 import type { List } from "@/app/watchlist/types"; // 顯式地指定為型別
 
-// TODO:搞懂React.Dispatch<React.SetStateAction<>
+// 搞懂React.Dispatch<React.SetStateAction<>
 // 定義 List 元件的 props 型別
 interface ListProps {
   lists: List[]; // 傳遞的 lists 是 List 型別的陣列

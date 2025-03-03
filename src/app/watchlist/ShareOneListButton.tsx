@@ -35,9 +35,7 @@ export default function ShareOneListButton({
 
       // 2. 創建快照文件（獨立的集合 snapshots）
       const snapshotRef = doc(collection(db, "snapshot"));
-
       const snapshotId = snapshotRef.id;
-      console.log("快照已保存，ID:", snapshotId);
 
       await setDoc(snapshotRef, {
         createdAt: new Date().toISOString(),

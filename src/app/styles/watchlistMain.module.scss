@@ -10,7 +10,6 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
   flex-wrap: wrap;
   margin: 1rem;
   margin-top: 1.25rem;
-  // border: 2px solid red;
 
   .listsContainer {
     display: flex;
@@ -18,7 +17,6 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
     width: 100%;
     max-width: 1600px;
     // 上行越寬，大螢幕就能排下更多片單
-    // border: 2px solid green;
     margin-top: 0.8rem;
 
     // 適用於Firefox
@@ -31,14 +29,12 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
   }
 }
 
-.sharelistsContainer {
+// 單一片單分享頁的片單container
+.sharelistContainer {
   display: flex;
   overflow-x: auto;
   width: 100%;
-  max-width: 1280px;
-  // 上行越寬，大螢幕就能排下更多片單
   justify-content: center;
-  // border: 2px solid green;
 
   // 適用於Firefox
   scrollbar-width: thin;
@@ -47,9 +43,9 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
 
 .listContainer {
   width: 100%;
-  max-width: 350px;
-  min-width: 350px;
-  // TODO:檢查一下可否最大和最小都設同一個尺寸
+  width: 350px;
+  flex-shrink: 0;
+  // 重要!上行可避免父層flex-box自動壓縮這層flex-item
   border-radius: 5px;
   background-color: $minor-color-background;
   padding: 2rem 1.5rem;
@@ -58,8 +54,7 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
   min-height: 300px;
 
   @media (max-width: 1366px) {
-    max-width: 280px;
-    min-width: 280px;
+    width: 280px;
     min-height: 225px;
     padding: 1.5rem 1rem;
     margin: 0 0.2rem;
@@ -69,7 +64,6 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
     display: flex;
     align-items: center;
     margin-bottom: 1.6rem;
-    // border: 1px solid black;
 
     @media (max-width: 1366px) {
       margin-bottom: 1.25rem;
@@ -82,7 +76,6 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
       cursor: pointer;
       font-size: 1.9rem;
       font-weight: 550;
-      // border: 1px solid $theme-color;
 
       @media (max-width: 1366px) {
         font-size: 1.5rem;
@@ -125,7 +118,6 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
 
     .listContainer__header__ellipsis__root {
       position: relative;
-      // border: 1px solid blue;
 
       .listContainer__header__ellipsisIcon {
         opacity: 0;
@@ -199,13 +191,10 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
     .movieItem__details {
       display: flex;
       align-items: center;
-      justify-content: baseline;
-      // TODO:是因為空間太窄了嗎？為什麼上行沒什麼用
 
       .movieItem__details__serialNumber {
         background-color: white;
         color: $theme-color;
-        // padding: 0.3rem 0.6rem;
         border-radius: 50px;
         font-size: 1.4rem;
 
@@ -218,7 +207,6 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
       .movieItem__details__title {
         margin-left: 1.2rem;
         font-size: 1.4rem;
-        //   text-align: start;
 
         &:hover {
           font-weight: 450;
@@ -236,7 +224,6 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
       opacity: 0;
       margin-left: 0.5rem;
       display: flex;
-      // TODO:搞清楚為何加了上行，原本此元素下方多的4px（此元素變得跟Img一樣是20*20px）就消失的原理
 
       @media (max-width: 768px) {
         opacity: 1;
@@ -251,87 +238,8 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
   }
 }
 
-// 之後可能用到，先保留，RWD未調
-.sharelistContainer {
-  width: 100%;
-  max-width: 320px;
-  min-width: 280px;
-  border-radius: 5px;
-  background-color: $minor-color-background;
-  padding: 1.5rem;
-  border: 1px solid $minor-color;
-  margin: 0 0.2rem;
-  min-height: 225px;
-  // display: flex;
-  // flex-direction: column;
-  // align-items: center;
-
-  .listContainer__header {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    margin-bottom: 1rem;
-    // border: 1px solid black;
-
-    .listContainer__header__title {
-      width: 100%;
-      text-align: center;
-      color: $theme-color;
-      // border: 1px solid $theme-color;
-      cursor: pointer;
-    }
-
-    .listContainer__header__title__noneditable {
-      width: 100%;
-      text-align: center;
-      color: $theme-color;
-      padding: 0.25rem 0;
-      // border: 1px solid black;
-    }
-  }
-
-  .movieItem {
-    width: 100%;
-    margin-bottom: 0.75rem;
-    padding: 1rem 0.75rem;
-    padding-left: 1rem;
-    background-color: white;
-    border: 1px solid $minor-color;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    .movieItem__details {
-      display: flex;
-      align-items: center;
-      justify-content: baseline;
-      // TODO:是因為空間太窄了嗎？為什麼上行沒什麼用
-
-      .movieItem__details__serialNumber {
-        background-color: white;
-        color: $theme-color;
-        // padding: 0.3rem 0.6rem;
-        border-radius: 50px;
-      }
-
-      .movieItem__details__title {
-        margin-left: 1rem;
-        font-size: 1.02rem;
-        //   text-align: start;
-
-        &:hover {
-          font-weight: 550;
-          color: $theme-color;
-        }
-      }
-    }
-  }
-}
-
 .shareAllListsBtnContainer {
   position: relative;
-  // border: 1px solid red;
 
   .shareAllListsBtn {
     margin-top: 3rem;
@@ -403,21 +311,19 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
 
 .MovieItemDroppable {
   height: 80%;
-  // border: 1px solid green;
 }
 
 .addNewlistArea {
   margin: 0 0.35rem;
   width: 100%;
-  max-width: 350px;
-  min-width: 350px;
+  width: 350px;
+  flex-shrink: 0;
+  // 注意！加上上行才會跑版
   position: relative;
   min-height: 300px;
-  // border: 2px solid red;
 
   @media (max-width: 1366px) {
-    max-width: 280px;
-    min-width: 280px;
+    width: 280px;
     margin: 0 0.25rem;
     min-height: 225px;
   }
@@ -482,7 +388,6 @@ $minor-color-background: rgba(197, 177, 249, 0.1);
       }
 
       .addNewListModal__afterTitleInput__item {
-        // padding: 0.1rem;
         background-color: white;
         margin-left: 0.75rem;
         border: 1px solid $theme-color;

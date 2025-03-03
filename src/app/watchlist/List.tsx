@@ -17,7 +17,6 @@ import MovieItem from "./MovieItem";
 import EllipsisIcon from "./EllipsisIcon";
 import type { List } from "./types"; // 顯式地指定為型別
 
-// TODO:搞懂React.Dispatch<React.SetStateAction<>
 // 定義 List 元件的 props 型別
 interface ListProps {
   lists: List[]; // 傳遞的 lists 是 List 型別的陣列
@@ -35,15 +34,13 @@ export default function List({
   const handleOnDragEnd = async (result: DropResult) => {
     if (!user) return;
     const userUid = user.uid;
-
-    console.log(result);
     const { destination, source, type } = result;
 
     // 檢查有無目的地
     if (!destination) {
-      console.log("No destination");
       return;
     }
+
     // 如果目的地與來源一樣，不做動作
     if (
       destination.droppableId === source.droppableId &&
@@ -120,59 +117,6 @@ export default function List({
     } catch (error) {
       console.error("Error updating lists: ", error);
     }
-
-    // // 先註解掉的handleOnDragEnd邏輯2
-    // // 找出被拖曳的電影項目位在全部片單的索引
-    // const sourceListIndex = lists.findIndex(
-    //   (list) => list.id === source.droppableId
-    // );
-    // // 找出被放置拖曳後電影項目的片單位在全部片單的索引
-    // const destListIndex = lists.findIndex(
-    //   (list) => list.id === destination.droppableId
-    // );
-
-    // if (sourceListIndex === -1 || destListIndex === -1) return;
-
-    // // 選定被拖曳的電影項目的起始片單
-    // const sourceList = lists[sourceListIndex];
-    // // 選定被拖曳的電影項目的結束片單
-    // const destList = lists[destListIndex];
-
-    // // 將被拖曳的電影從起始片單中移除
-    // const [movedMovie] = sourceList.movies.splice(source.index, 1);
-    // // 將被拖曳的電影從移至決定放置的片單
-    // destList.movies.splice(destination.index, 0, movedMovie);
-
-    // // 複製lists成為更新的片單們
-    // const updatedLists = Array.from(lists);
-
-    // // 若開始移動的片單與最後放置的片單相同，僅更新順序
-    // if (sourceListIndex === destListIndex) {
-    //   updatedLists[sourceListIndex] = { ...sourceList };
-    //   setLists(updatedLists);
-
-    //   try {
-    //     const sourceListRef = doc(db, "users", userUid, "lists", sourceList.id);
-    //     await updateDoc(sourceListRef, { movies: sourceList.movies });
-    //   } catch (error) {
-    //     console.error("Error updating lists: ", error);
-    //   }
-    // } else {
-    //   updatedLists[sourceListIndex] = { ...sourceList };
-    //   updatedLists[destListIndex] = { ...destList };
-    //   setLists(updatedLists);
-
-    //   try {
-    //     // 將更新後的順序存回 Firestore
-    //     const sourceListRef = doc(db, "users", userUid, "lists", sourceList.id);
-    //     const destListRef = doc(db, "users", userUid, "lists", destList.id);
-
-    //     await updateDoc(sourceListRef, { movies: sourceList.movies });
-    //     await updateDoc(destListRef, { movies: destList.movies });
-    //   } catch (error) {
-    //     console.error("Error updating lists: ", error);
-    //   }
-    // }
   };
 
   // 刪除片單

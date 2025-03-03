@@ -7,14 +7,7 @@ import { doc, setDoc, collection } from "firebase/firestore";
 import Image from "next/image";
 import { List } from "./types";
 
-// // TODO:搞懂React.Dispatch<React.SetStateAction<>
-// // 定義 List 元件的 props 型別
-// interface ListProps {
-//   lists: List[]; // 傳遞的 lists 是 List 型別的陣列
-//   setLists: React.Dispatch<React.SetStateAction<List[]>>;
-// }
-
-// TODO:搞懂用userUid的邏輯
+// 搞懂用userUid的邏輯
 interface AddListModalProps {
   userUid: string;
   lists: List[];

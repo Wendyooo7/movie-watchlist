@@ -4,7 +4,7 @@ import styles from "@/app/styles/watchlistMain.module.scss";
 import SnapshotOfMovieItem from "./SnapshotOfMovieItem";
 import type { List } from "@/app/watchlist/types"; // 顯式地指定為型別
 
-// TODO:搞懂React.Dispatch<React.SetStateAction<>
+// 搞懂React.Dispatch<React.SetStateAction<>
 // 定義 List 元件的 props 型別
 interface ListProps {
   list: List; // 傳遞的 lists 是 List 型別的陣列
@@ -13,7 +13,7 @@ interface ListProps {
 export default function SnapshotOfLists({ list }: ListProps) {
   return (
     <div className={styles.listsContainerContainer}>
-      <div className={styles.sharelistsContainer}>
+      <div className={styles.sharelistContainer}>
         <div className={styles.listContainer} key={list.id}>
           <div className={styles.listContainer__header}>
             <h2 className={styles.listContainer__header__title__noneditable}>

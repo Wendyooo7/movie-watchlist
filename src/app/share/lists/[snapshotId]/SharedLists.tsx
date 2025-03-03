@@ -27,7 +27,6 @@ export default function SharedLists({ snapshotId }: { snapshotId: string }) {
         }));
 
         setLists(listsData);
-        console.log(listsData);
       } catch (error) {
         console.error("Error fetching snapshot: ", error);
       } finally {

@@ -111,7 +111,7 @@ async function getMovieOTTlinkTW(movieId: string): Promise<OTTlistTW> {
   };
 
   const res = await fetch(
-    // TODO:有時間試試能否運用Append To Response，和上面其中一個請求合併fetch
+    // 有時間試試能否運用Append To Response，和上面其中一個請求合併fetch
     // https://developer.themoviedb.org/docs/append-to-response
     `https://api.themoviedb.org/3/movie/${movieId}/watch/providers`,
     options
@@ -146,7 +146,6 @@ export default async function MoviePage(props: { params: Params }) {
 
   // 處理OTT res，只抓取result中的TW的link部分
   const OTTlist = await getMovieOTTlinkTW(movieId);
-  // const OTTlistresult = OTTlist.results;
   const OTTlistTWlink = OTTlist.results.TW?.link;
 
   return (
@@ -158,14 +157,6 @@ export default async function MoviePage(props: { params: Params }) {
               <Image src={posterPath} alt="電影海報" width={250} height={379} />
             </div>
 
-            {/* <div className={styles.imageContainer}>
-        <Image
-          src={`https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`}
-          alt="電影劇照"
-          layout="fill"
-          objectFit="cover"
-        />
-      </div> */}
             <div className={styles.innerFlexItem__movieBio}>
               <div className={styles.movieBio__titleArea}>
                 <div className={styles.movieBio__titleArea__titles}>
@@ -220,9 +211,7 @@ export default async function MoviePage(props: { params: Params }) {
                   </Link>
                 )}
               </div>
-              {/* <Link href={`https://www.youtube.com/watch?v=${key}`}>
-              播放預告片
-            </Link> */}
+
               <div className={styles.movieBio__overviewArea}>
                 {movie.tagline && (
                   <p className={styles.movieBio__overviewArea__tagline}>
@@ -241,7 +230,6 @@ export default async function MoviePage(props: { params: Params }) {
                 )}
               </div>
 
-              {/* <div className={styles.movieBio__ExternalLinksArea}> */}
               <div
                 className={`${styles.movieBio__otherMovieDBarea} ${styles.fontSizeNormal}`}
               >
@@ -290,11 +278,19 @@ export default async function MoviePage(props: { params: Params }) {
                   </Link>
                 </div>
               )}
-              {/* </div> */}
             </div>
           </div>
         </div>
       </div>
+      {/* 將來可能會放劇照 */}
+      {/* <div className={styles.stillsWrapper}>
+        <Image
+          src={`https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`}
+          alt="電影劇照"
+          layout="fill"
+          objectFit="cover"
+        />
+      </div> */}
     </main>
   );
 }

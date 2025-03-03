@@ -178,7 +178,7 @@
   padding: 5px 10px;
   border-radius: 5px;
   font-size: 12px;
-  top: 130%; /* 100%開始會顯示在元素的下方 */
+  top: 130%; /* 100%即顯示在元素的下方 */
   left: 50%;
   transform: translateX(-50%);
   white-space: nowrap;

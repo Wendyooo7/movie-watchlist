@@ -16,7 +16,7 @@
   font-size: 1.6rem;
   font-weight: 500;
 }
-@media (max-width: 1440px) {
+@media (max-width: 1366px) {
   .main__flexContainer .main__flexItem .main__flexItem__h3 {
     font-size: 1.2rem;
   }
@@ -30,7 +30,7 @@
 .keyword {
   -webkit-text-decoration: underline #8440f1;
           text-decoration: underline #8440f1;
-  text-underline-offset: 7px; /* 調整此值來改變底線與文字的距離 */
+  text-underline-offset: 7px; /* 改變底線與文字的距離 */
 }
 
 .eachMovieArea {
@@ -45,8 +45,13 @@
 }
 .eachMovieArea .eachMovieDiv .eachMovieDetailDiv {
   width: 100%;
-  margin: 0 1rem;
+  margin: 0 1.25rem;
   padding: 0.5rem 0;
+}
+@media (max-width: 1366px) {
+  .eachMovieArea .eachMovieDiv .eachMovieDetailDiv {
+    margin: 0 1rem;
+  }
 }
 .eachMovieArea .eachMovieDiv .eachMovieDetailDiv > * {
   margin-bottom: 1.25rem;

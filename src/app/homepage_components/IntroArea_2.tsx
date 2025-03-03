@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import styles from "@/app/styles/indexMain.module.scss";
 import { useInView } from "react-intersection-observer";
 

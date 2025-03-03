@@ -16,13 +16,10 @@ $theme-color-background: rgba(197, 177, 249, 0.2);
   display: flex;
   justify-content: center;
   padding-top: 0.5rem;
-  // border: 1px solid black;
 
   .main__flexItem {
     width: 100%;
     max-width: 1150px;
-    // flex: 1; // 讓 main 填滿剩餘空間
-    // border: 1px solid red;
   }
 }
 
@@ -30,7 +27,6 @@ $theme-color-background: rgba(197, 177, 249, 0.2);
   width: 100%;
   display: flex;
   justify-content: center;
-  // border: 1px solid black;
 
   @media (max-width: 800px) {
     flex-wrap: wrap;
@@ -48,12 +44,9 @@ $theme-color-background: rgba(197, 177, 249, 0.2);
     width: 100%;
     max-width: 800px;
     margin-left: 2%;
-    // border: 1px solid red;
 
     > * {
       margin: 2%;
-      // border: 1px solid pink;
-      // padding-right: 2%;
 
       @media (max-width: 600px) {
         margin: 3%;
@@ -61,16 +54,10 @@ $theme-color-background: rgba(197, 177, 249, 0.2);
     }
 
     .movieBio__titleArea {
-      // border: 1px solid red;
       display: flex;
       justify-content: space-between;
 
       .movieBio__titleArea__titles {
-        // display: flex;
-        // align-items: baseline;
-        // white-space: nowrap;
-        // TODO:有空回來再確認超長標題的斷行問題
-
         > * {
           margin-bottom: 0.25%;
         }
@@ -89,8 +76,7 @@ $theme-color-background: rgba(197, 177, 249, 0.2);
 
   .movieBio__detailArea {
     display: flex;
-    // align-items: center;
-    // gap: 1%; /* 設置間距 */
+
     > * {
       margin-right: 2.25%;
 
@@ -101,7 +87,6 @@ $theme-color-background: rgba(197, 177, 249, 0.2);
   }
 
   .movieBio__overviewArea {
-    // border: 1px solid black;
     line-height: 2.25rem;
     font-size: 1.25rem;
 
@@ -112,7 +97,6 @@ $theme-color-background: rgba(197, 177, 249, 0.2);
 
     > * {
       margin-bottom: 2%;
-      // padding-right: 20%;
     }
 
     .movieBio__overviewArea__tagline {
@@ -136,12 +120,6 @@ $theme-color-background: rgba(197, 177, 249, 0.2);
       }
     }
   }
-
-  // .movieBio__ExternalLinksArea {
-  //   display: flex;
-  //   justify-content: space-between;
-  //   align-items: center;
-  // }
 
   .movieBio__otherMovieDBarea,
   .movieBio__OTTarea {
@@ -174,7 +152,6 @@ $theme-color-background: rgba(197, 177, 249, 0.2);
   display: flex;
   align-items: center;
   color: $theme-color;
-  // border: 1px solid red;
 
   &:hover {
     opacity: 0.8;
@@ -183,7 +160,6 @@ $theme-color-background: rgba(197, 177, 249, 0.2);
   .movieBio__detailArea__trailerArea__imgWrapper {
     display: flex;
     margin-right: 5px;
-    // border: 1px solid black;
   }
 }
 
@@ -206,7 +182,6 @@ $theme-color-background: rgba(197, 177, 249, 0.2);
 
   &.disabled {
     cursor: not-allowed;
-    // opacity: 0.9;
 
     /* 將 pointer-events 移至 img 和文字 div 上，使 tooltip 顯示但無法點擊 */
     > img,
@@ -215,7 +190,9 @@ $theme-color-background: rgba(197, 177, 249, 0.2);
     }
   }
 }
-// .imageContainer {
+
+// // 將來可能有劇照
+// .stillsWrapper {
 //   position: relative;
 //   width: 100%;
 //   padding-top: 56.25%; /* 16:9 比例 */
@@ -229,7 +206,7 @@ $theme-color-background: rgba(197, 177, 249, 0.2);
   padding: 5px 10px;
   border-radius: 5px;
   font-size: 12px;
-  top: 130%; /* 100%開始會顯示在元素的下方 */
+  top: 130%; /* 100%即顯示在元素的下方 */
   left: 50%;
   transform: translateX(-50%);
   white-space: nowrap;
