@@ -69,7 +69,7 @@ export default function AddListModal({
     <div className={styles.addNewlistArea}>
       <div className={styles.addNewlistArea__Img} onClick={handleAddNewList}>
         <Image
-          src="/watchlist/add_30dp_8440F1.svg"
+          src="/watchlist/add-30dp-8440F1.svg"
           width={25}
           height={25}
           alt="新增片單"
@@ -91,7 +91,7 @@ export default function AddListModal({
               onClick={handleCreateList}
             >
               <Image
-                src="/watchlist/check_30dp_8440F1.svg"
+                src="/watchlist/check-30dp-8440F1.svg"
                 width={25}
                 height={25}
                 alt="創建片單"
@@ -103,7 +103,7 @@ export default function AddListModal({
               onClick={handleModalClose}
             >
               <Image
-                src="/watchlist/close_30dp_8440F1.svg"
+                src="/watchlist/close-30dp-8440F1.svg"
                 width={25}
                 height={25}
                 alt="取消創建片單"

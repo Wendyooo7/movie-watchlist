@@ -52,7 +52,7 @@ export default function EllipsisIcon({
         onClickCapture={toggleMenu} // 用這個屬性而非onClick屬性，因為希望在捕獲階段處理
       >
         <Image
-          src="/watchlist/ellipsis_8440F1.svg"
+          src="/watchlist/ellipsis-8440F1.svg"
           width={18}
           height={18}
           alt="展開片單選項"

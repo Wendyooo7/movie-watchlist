@@ -201,7 +201,7 @@ export default async function MoviePage(props: { params: Params }) {
                       }
                     >
                       <Image
-                        src="/film/play_circle_30dp_8440F1.svg"
+                        src="/film/play-circle-30dp-8440F1.svg"
                         alt="播放預告片"
                         width={22}
                         height={22}

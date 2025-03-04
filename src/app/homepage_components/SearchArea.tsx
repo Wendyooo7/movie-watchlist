@@ -50,7 +50,7 @@ export default function SearchArea() {
         />
         <div className={styles.imgWrapper} onClick={handleSearch}>
           <Image
-            src="/index/search_30dp_AE81FF.svg"
+            src="/index/search-30dp-AE81FF.svg"
             width={30}
             height={30}
             alt="點擊以檢索片名"

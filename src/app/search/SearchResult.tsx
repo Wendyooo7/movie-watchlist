@@ -71,7 +71,7 @@ export default function SearchResult() {
       pageButtons.push(
         <button key="first" onClick={() => handlePageChange(1)}>
           <Image
-            src="/search/first_page_icon.svg"
+            src="/search/first-page-icon.svg"
             width={20}
             height={20}
             alt="回到第一頁"
@@ -85,7 +85,7 @@ export default function SearchResult() {
       pageButtons.push(
         <button key="prev" onClick={() => handlePageChange(currentPage - 1)}>
           <Image
-            src="/search/chevron_left_icon.svg"
+            src="/search/chevron-left-icon.svg"
             width={20}
             height={20}
             alt="回到上一頁"
@@ -112,7 +112,7 @@ export default function SearchResult() {
       pageButtons.push(
         <button key="next" onClick={() => handlePageChange(currentPage + 1)}>
           <Image
-            src="/search/chevron_right_icon.svg"
+            src="/search/chevron-right-icon.svg"
             width={20}
             height={20}
             alt="前往下一頁"
@@ -126,7 +126,7 @@ export default function SearchResult() {
       pageButtons.push(
         <button key="last" onClick={() => handlePageChange(totalPages)}>
           <Image
-            src="/search/last_page_icon.svg"
+            src="/search/last-page-icon.svg"
             width={20}
             height={20}
             alt="回到第一頁"

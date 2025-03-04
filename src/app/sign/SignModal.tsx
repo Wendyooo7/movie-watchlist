@@ -206,14 +206,14 @@ export default function SignModal() {
                 >
                   {showSignInPassword ? (
                     <Image
-                      src="/sign/visibility_off_24dp_8440F1.svg"
+                      src="/sign/visibility-off-24dp-8440F1.svg"
                       width={18}
                       height={18}
                       alt="隱藏密碼"
                     ></Image>
                   ) : (
                     <Image
-                      src="/sign/visibility_24dp_8440F1.svg"
+                      src="/sign/visibility-24dp-8440F1.svg"
                       width={18}
                       height={18}
                       alt="查看密碼"
@@ -280,14 +280,14 @@ export default function SignModal() {
                 >
                   {showSignUpPassword ? (
                     <Image
-                      src="/sign/visibility_off_24dp_8440F1.svg"
+                      src="/sign/visibility-off-24dp-8440F1.svg"
                       width={18}
                       height={18}
                       alt="隱藏密碼"
                     ></Image>
                   ) : (
                     <Image
-                      src="/sign/visibility_24dp_8440F1.svg"
+                      src="/sign/visibility-24dp-8440F1.svg"
                       width={18}
                       height={18}
                       alt="查看密碼"

@@ -137,8 +137,8 @@ export default function Bookmark({
       <Image
         src={
           isBookmarked
-            ? "/film/bookmark_solid_2XL_8440F1.svg"
-            : "/film/bookmark_reqular_2XL_8440F1.svg"
+            ? "/film/bookmark-solid-2XL-8440F1.svg"
+            : "/film/bookmark-reqular-2XL-8440F1.svg"
         }
         width={22}
         height={22}

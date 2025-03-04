@@ -54,7 +54,7 @@ export default function MovieItem({
             }}
           >
             <Image
-              src="/watchlist/close_30dp_8440F1.svg"
+              src="/watchlist/close-30dp-8440F1.svg"
               width={20}
               height={20}
               alt="刪除電影"

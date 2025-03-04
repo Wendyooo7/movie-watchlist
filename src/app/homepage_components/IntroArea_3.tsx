@@ -57,7 +57,7 @@ export default function IntroArea_3() {
           >
             <div className={styles.iconWrapper}>
               <Image
-                src="/index/heart_plus_30dp_FFFFFF.svg"
+                src="/index/heart-plus-30dp-FFFFFF.svg"
                 width={30}
                 height={30}
                 alt="bullet point"
@@ -69,7 +69,7 @@ export default function IntroArea_3() {
           <div className={styles.introArea__3__text__detail__item}>
             <div className={styles.iconWrapper}>
               <Image
-                src="/index/heart_plus_30dp_FFFFFF.svg"
+                src="/index/heart-plus-30dp-FFFFFF.svg"
                 width={30}
                 height={30}
                 alt="bullet point"

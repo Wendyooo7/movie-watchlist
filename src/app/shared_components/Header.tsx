@@ -39,7 +39,7 @@ export default function Header({ fontClass }: { fontClass: string }) {
       <header>
         <Link href="/" className={`${styles.logoTitleContainer} ${fontClass}`}>
           <div className={styles.logoContainer}>
-            <Image src="/logo_64x64.png" width={48} height={48} alt="logo" />
+            <Image src="/logo-64x64.png" width={48} height={48} alt="logo" />
           </div>
           影迷的計畫
         </Link>

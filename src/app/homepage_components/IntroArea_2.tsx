@@ -22,33 +22,33 @@ export default function IntroArea_2() {
       id: "tab-1",
       title: "功能 1：新增片單",
       description: "點擊片單頁的加號圖示，即可新增片單",
-      gif: "/index/arrange_1_add-new-list.gif",
+      gif: "/index/arrange-1-add-new-list.gif",
     },
     {
       id: "tab-2",
       title: "功能 2：拖曳電影或片單",
       description:
         "點按即可「拖曳」電影或片單，支援「同片單拖曳電影」、「跨片單拖曳電影」和「拖曳片單」3 種模式",
-      gif: "/index/arrange_2_drag-movie-and-list.gif",
+      gif: "/index/arrange-2-drag-movie-and-list.gif",
     },
     {
       id: "tab-3",
       title: "功能 3：刪除電影或片單",
       description:
         "將鼠標移至電影或片單最右方，將顯示刪除圖示或選項（平板和手機為直接顯示），點擊即可刪除該電影或片單",
-      gif: "/index/arrange_3_delete-movie-and-list.gif",
+      gif: "/index/arrange-3-delete-movie-and-list.gif",
     },
     {
       id: "tab-4",
       title: "功能 4：重新命名既有片單",
       description: "點擊片單名稱，即可重新命名既有片單",
-      gif: "/index/arrange_4_rename-list.gif",
+      gif: "/index/arrange-4-rename-list.gif",
     },
     {
       id: "tab-5",
       title: "功能 5：重溫電影介紹",
       description: "點擊電影項目，即可重溫電影介紹",
-      gif: "/index/arrange_5_link-to-movie-info.gif",
+      gif: "/index/arrange-5-link-to-movie-info.gif",
     },
   ];
 
