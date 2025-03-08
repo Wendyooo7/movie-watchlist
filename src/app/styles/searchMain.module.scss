@@ -77,9 +77,10 @@ $theme-color-background: rgba(197, 177, 249, 0.2);
     justify-content: center;
 
     > * {
+      display: flex;
       cursor: pointer;
       margin: 0.3rem;
-      padding: 0.5rem;
+      padding: 0.4rem 0.5rem;
       border: 1px solid #ddd;
       font-size: 1rem;
 
