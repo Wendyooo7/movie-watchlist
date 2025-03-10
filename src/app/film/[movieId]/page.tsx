@@ -14,6 +14,17 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { movieId } = await params;
   const movie = await getMovieDetail(movieId);
+  if (movie === null) {
+    return {
+      title: "下架的電影資訊 | 影迷的計畫",
+    };
+  }
+
+  if (movie === undefined) {
+    return {
+      title: "無法載入的電影資訊 | 影迷的計畫",
+    };
+  }
 
   return {
     title: `${movie.title} | 影迷的計畫`,
@@ -56,7 +67,9 @@ interface OTTlistTW {
 }
 
 // 在 Server Components 中執行資料抓取
-async function getMovieDetail(movieId: string): Promise<Movie> {
+async function getMovieDetail(
+  movieId: string
+): Promise<Movie | null | undefined> {
   const API_ACCESS_TOKEN = process.env.TMDB_API_ACCESS_TOKEN!;
   const options = {
     method: "GET",
@@ -66,16 +79,22 @@ async function getMovieDetail(movieId: string): Promise<Movie> {
     },
   };
 
-  const res = await fetch(
-    `https://api.themoviedb.org/3/movie/${movieId}?language=zh-TW`,
-    options
-  );
+  try {
+    const res = await fetch(
+      `https://api.themoviedb.org/3/movie/${movieId}?language=zh-TW`,
+      options
+    );
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch movie data");
+    if (!res.ok) {
+      console.error("可請求API但回傳資料有問題", res.status);
+      return null;
+    }
+
+    return res.json();
+  } catch (err) {
+    console.error("無法請求API", err);
+    return undefined;
   }
-
-  return res.json();
 }
 
 async function getMovieVideos(movieId: string): Promise<Video> {
@@ -130,6 +149,32 @@ export default async function MoviePage(props: { params: Params }) {
   const params = await props.params;
   const { movieId } = params;
   const movie = await getMovieDetail(movieId);
+  if (movie === null) {
+    return (
+      <main>
+        <div className={styles.removedMovieBlock}>
+          <div className={styles.removedMovieData}>電影資訊已下架（•᷄⌓•᷅）</div>
+          <div className={styles.removedMovieData}>
+            別難過......還有更多好電影等著你去探索！
+          </div>
+        </div>
+      </main>
+    );
+  }
+
+  if (movie === undefined) {
+    return (
+      <main>
+        <div className={styles.removedMovieBlock}>
+          <div className={styles.removedMovieData}>無法載入電影資訊 Σ(⊙_⊙)</div>
+          <div className={styles.removedMovieData}>
+            請檢查網路連線，或稍後再試
+          </div>
+        </div>
+      </main>
+    );
+  }
+
   const releaseYear = movie.release_date.split("-")[0];
   const poster = movie.poster_path;
   let posterPath = `https://image.tmdb.org/t/p/w780${movie.poster_path}`;
