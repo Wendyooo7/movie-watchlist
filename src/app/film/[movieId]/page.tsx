@@ -13,7 +13,7 @@ export async function generateMetadata({
   params: Params;
 }): Promise<Metadata> {
   const { movieId } = await params;
-  const movie = await getMovieDetail(movieId);
+  const movie = await getMovieDetails(movieId);
   if (movie === null) {
     return {
       title: "下架的電影資訊 | 影迷的計畫",
@@ -67,7 +67,7 @@ interface OTTlistTW {
 }
 
 // 在 Server Components 中執行資料抓取
-async function getMovieDetail(
+async function getMovieDetails(
   movieId: string
 ): Promise<Movie | null | undefined> {
   const API_ACCESS_TOKEN = process.env.TMDB_API_ACCESS_TOKEN!;
@@ -86,18 +86,20 @@ async function getMovieDetail(
     );
 
     if (!res.ok) {
-      console.error("可請求API但回傳資料有問題", res.status);
+      console.error("可請求 Movie Details API 但回傳資料有問題", res.status);
       return null;
     }
 
     return res.json();
   } catch (err) {
-    console.error("無法請求API", err);
+    console.error("無法請求 Movie Details API: ", err);
     return undefined;
   }
 }
 
-async function getMovieVideos(movieId: string): Promise<Video> {
+async function getMovieVideos(
+  movieId: string
+): Promise<Video | null | undefined> {
   const API_ACCESS_TOKEN = process.env.TMDB_API_ACCESS_TOKEN!;
   const options = {
     method: "GET",
@@ -107,19 +109,27 @@ async function getMovieVideos(movieId: string): Promise<Video> {
     },
   };
 
-  const res = await fetch(
-    `https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`,
-    options
-  );
+  try {
+    const res = await fetch(
+      `https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`,
+      options
+    );
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch movie videos");
+    if (!res.ok) {
+      console.error("可請求 Movie Videos API 但回傳資料有問題", res.status);
+      return null;
+    }
+
+    return res.json();
+  } catch (err) {
+    console.error("無法請求 Movie Videos API: ", err);
+    return undefined;
   }
-
-  return res.json();
 }
 
-async function getMovieOTTlinkTW(movieId: string): Promise<OTTlistTW> {
+async function getMovieOTTlinkTW(
+  movieId: string
+): Promise<OTTlistTW | null | undefined> {
   const API_ACCESS_TOKEN = process.env.TMDB_API_ACCESS_TOKEN!;
   const options = {
     method: "GET",
@@ -129,18 +139,27 @@ async function getMovieOTTlinkTW(movieId: string): Promise<OTTlistTW> {
     },
   };
 
-  const res = await fetch(
-    // 有時間試試能否運用Append To Response，和上面其中一個請求合併fetch
-    // https://developer.themoviedb.org/docs/append-to-response
-    `https://api.themoviedb.org/3/movie/${movieId}/watch/providers`,
-    options
-  );
+  try {
+    const res = await fetch(
+      // 有時間試試能否運用Append To Response，和上面其中一個請求合併fetch
+      // https://developer.themoviedb.org/docs/append-to-response
+      `https://api.themoviedb.org/3/movie/${movieId}/watch/providers`,
+      options
+    );
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch movie OTT list");
+    if (!res.ok) {
+      console.error(
+        "可請求 Movie Watch Providers API 但回傳資料有問題",
+        res.status
+      );
+      return null;
+    }
+
+    return res.json();
+  } catch (err) {
+    console.error("無法請求 Movie Watch Providers API: ", err);
+    return undefined;
   }
-
-  return res.json();
 }
 
 // 動態路由處理和頁面渲染
@@ -148,7 +167,7 @@ export default async function MoviePage(props: { params: Params }) {
   // 處理片介res
   const params = await props.params;
   const { movieId } = params;
-  const movie = await getMovieDetail(movieId);
+  const movie = await getMovieDetails(movieId);
   if (movie === null) {
     return (
       <main>
@@ -186,11 +205,65 @@ export default async function MoviePage(props: { params: Params }) {
 
   // 處理預告片res
   const videos = await getMovieVideos(movieId); // 取得影片資料
+  if (videos === null) {
+    return (
+      <main>
+        <div className={styles.removedMovieBlock}>
+          <div className={styles.removedMovieData}>預告片已下架（•᷄⌓•᷅）</div>
+          <div className={styles.removedMovieData}>
+            別難過......還有更多好電影等著你去探索！
+          </div>
+        </div>
+      </main>
+    );
+  }
+
+  if (videos === undefined) {
+    return (
+      <main>
+        <div className={styles.removedMovieBlock}>
+          <div className={styles.removedMovieData}>
+            無法載入預告片資訊 Σ(⊙_⊙)
+          </div>
+          <div className={styles.removedMovieData}>
+            請檢查網路連線，或稍後再試
+          </div>
+        </div>
+      </main>
+    );
+  }
   const trailer = videos.results.find((result) => result.type === "Trailer");
   const key = trailer ? trailer.key : "";
 
   // 處理OTT res，只抓取result中的TW的link部分
   const OTTlist = await getMovieOTTlinkTW(movieId);
+  if (OTTlist === null) {
+    return (
+      <main>
+        <div className={styles.removedMovieBlock}>
+          <div className={styles.removedMovieData}>OTT 列表已下架（•᷄⌓•᷅）</div>
+          <div className={styles.removedMovieData}>
+            別難過......還有更多好電影等著你去探索！
+          </div>
+        </div>
+      </main>
+    );
+  }
+
+  if (OTTlist === undefined) {
+    return (
+      <main>
+        <div className={styles.removedMovieBlock}>
+          <div className={styles.removedMovieData}>
+            無法載入 OTT 列表資訊 Σ(⊙_⊙)
+          </div>
+          <div className={styles.removedMovieData}>
+            請檢查網路連線，或稍後再試
+          </div>
+        </div>
+      </main>
+    );
+  }
   const OTTlistTWlink = OTTlist.results.TW?.link;
 
   return (
