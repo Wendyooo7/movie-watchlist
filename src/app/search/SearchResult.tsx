@@ -30,14 +30,18 @@ export default function SearchResult() {
     if (query) {
       const fetchData = async () => {
         setIsLoading(true); // 發送請求前將 isLoading 設為 true
+        setError(null); // 清除舊錯誤，避免影響新的請求
 
         try {
           const res = await fetch(
             `/api/search?query=${encodeURIComponent(query)}&page=${currentPage}`
           );
           if (!res.ok) {
-            throw new Error(`Failed to fetch movie data: ${res.statusText}`);
+            throw new Error(
+              `Failed to fetch movie data: ${res.status} ${res.statusText}`
+            );
           }
+
           const data = await res.json();
           setResults(data.results || []);
           setTotalResults(data.total_results || 0);
@@ -54,7 +58,16 @@ export default function SearchResult() {
   }, [query, currentPage]);
 
   if (error) {
-    return <p>Error: {error}</p>;
+    return (
+      <main>
+        <div className={styles.errorMsgBlock}>
+          <div className={styles.errorMsgTest}>
+            查詢過程發生了一點問題 Σ(⊙_⊙)
+          </div>
+          <div className={styles.errorMsgTest}>請檢查網路連線，或稍後再試</div>
+        </div>
+      </main>
+    );
   }
 
   return (

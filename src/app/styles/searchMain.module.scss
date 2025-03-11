@@ -91,3 +91,20 @@ $theme-color-background: rgba(197, 177, 249, 0.2);
     }
   }
 }
+
+.errorMsgBlock {
+  width: 100%;
+  height: 72vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .errorMsgTest {
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 425;
+    margin-bottom: 0.75rem;
+  }
+}
