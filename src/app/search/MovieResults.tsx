@@ -6,7 +6,11 @@ export default function MovieResults({ results }: { results: any[] }) {
   return (
     <div className={styles.eachMovieArea}>
       {results.map((movie) => {
-        const releaseYear = movie.release_date.split("-")[0];
+        const releaseYearMonthDate = movie.release_date;
+        const releaseYear = releaseYearMonthDate
+          ? releaseYearMonthDate.split("-")[0]
+          : "";
+
         const poster = movie.poster_path;
         let posterPath = `https://image.tmdb.org/t/p/w154${poster}`;
         if (!poster) {
@@ -25,7 +29,9 @@ export default function MovieResults({ results }: { results: any[] }) {
                 >
                   {movie.title}
                 </h3>
-                <h3 className={styles.main__flexItem__h3}>{releaseYear}</h3>
+                {releaseYear && (
+                  <h3 className={styles.main__flexItem__h3}>{releaseYear}</h3>
+                )}
               </div>
             </div>
           </Link>
