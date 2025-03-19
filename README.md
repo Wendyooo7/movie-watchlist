@@ -20,10 +20,14 @@
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 ![SCSS](https://img.shields.io/badge/SCSS-CC6699?style=for-the-badge&logo=Sass&logoColor=white)
+![@hello-pangea/dnd](https://img.shields.io/badge/hello--pangea--dnd-FFCC00?style=for-the-badge)(@hello-pangea/dnd)
+![react-intersection-observer](https://img.shields.io/badge/React--Intersection--Observer-61DAFB?style=for-the-badge)
 
-### 後端
-![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=white)
-![Firestore](https://img.shields.io/badge/Firestore-FFA000?style=for-the-badge&logo=firebase&logoColor=white)  
+
+### API 與第三方服務
+![TMDB API](https://img.shields.io/badge/TMDB%20API-01B4E4?style=for-the-badge&logo=themoviedatabase&logoColor=white)
+![Firebase Authentication](https://img.shields.io/badge/Firebase%20Authentication-FFCA28?style=for-the-badge&logo=firebase&logoColor=white)
+![Firebase Firestore](https://img.shields.io/badge/Firebase%20Firestore-FFA000?style=for-the-badge&logo=firebase&logoColor=white)
 
 ### 測試
 ![Jest](https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white)
@@ -32,5 +36,5 @@
 ![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
 ### 開發工具
-![Prettier](https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=Prettier&logoColor=white)
+![Prettier](https://img.shields.io/badge/Prettier-5A6772?style=for-the-badge&logo=Prettier&logoColor=white)
 ![Chrome DevTools](https://img.shields.io/badge/Chrome%20DevTools-4285F4?style=for-the-badge&logo=GoogleChrome&logoColor=white)
