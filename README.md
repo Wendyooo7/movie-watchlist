@@ -9,8 +9,14 @@
 <img src="" width="700" />
 （上圖由左至由分別為 1920px × 1080px 的桌機版、768px × 1024px 的平板版和 360px × 640px 的手機版）
 
-### 2. 關鍵字查詢 Keyword Search
+### . 關鍵字查詢 Keyword Search
 <img src="" width="700" />
+
+### . 純 CSS 打字動畫 Typing Animation with Pure CSS
+
+### . 滾動監測動畫 Scroll-triggered Animations
+
+### . 拖曳功能 Drag and Drop
 
 <br/>
 
@@ -20,8 +26,8 @@
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 ![SCSS](https://img.shields.io/badge/SCSS-CC6699?style=for-the-badge&logo=Sass&logoColor=white)
-![@hello-pangea/dnd](https://img.shields.io/badge/hello--pangea--dnd-FFCC00?style=for-the-badge)(@hello-pangea/dnd)
 ![react-intersection-observer](https://img.shields.io/badge/React--Intersection--Observer-61DAFB?style=for-the-badge)
+![@hello-pangea/dnd](https://img.shields.io/badge/hello--pangea--dnd-FFCC00?style=for-the-badge)(@hello-pangea/dnd)
 
 
 ### API 與第三方服務
@@ -36,5 +42,6 @@
 ![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
 ### 開發工具
-![Prettier](https://img.shields.io/badge/Prettier-5A6772?style=for-the-badge&logo=Prettier&logoColor=white)
 ![Chrome DevTools](https://img.shields.io/badge/Chrome%20DevTools-4285F4?style=for-the-badge&logo=GoogleChrome&logoColor=white)
+![Prettier](https://img.shields.io/badge/Prettier-5A6772?style=for-the-badge&logo=Prettier&logoColor=white) (使用 VS Code 插件)
+![ESLint](https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white) (使用 Next.js 預設規則)
