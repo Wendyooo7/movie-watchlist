@@ -6,21 +6,18 @@
 
 ## 重點展示
 ### 1. 響應式網頁設計，支援小至 360px、大至 1920px 寬的瀏覽器視窗 Responsive Web Design, Supporting Browser Viewports from 360px to 1920px in Width
-<img src="" width="700" />
-（上圖由左至由分別為 1920px × 1080px 的桌機版、768px × 1024px 的平板版和 360px × 640px 的手機版）
 
-### . 串接多支 API 獲取所需資料 Fetching Data from Multiple APIs
-<img src="" width="700" />
+### 2. 串接多支 API 獲取所需資料 Fetching Data from Multiple APIs
 
-### . 搭配 API 請求的分頁機制 Pagination Mechanism with API Requests
+### 3. 搭配 API 請求的分頁機制 Pagination Mechanism with API Requests
 
-### . 拖曳功能 Drag and Drop
+### 4. 拖曳功能 Drag and Drop
 
-### . 純 CSS 打字特效 Typing Effect with Pure CSS
+### 5. 純 CSS 打字特效 Typing Effect with Pure CSS
 
-### . 滾動監測動畫 Scroll-triggered Animations
+### 6. 滾動監測動畫 Scroll-triggered Animations
 
-### . 資料庫增刪改查，以片單和電影為例 Managing Movie Lists and Films with Database CRUD Operations
+### 7. 資料庫增刪改查，以片單和電影為例 Managing Movie Lists and Films with Database CRUD Operations
 
 <br/>
 
