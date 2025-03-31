@@ -6,18 +6,32 @@
 
 ## 重點展示
 ### 1. 響應式網頁設計，支援小至 360px、大至 1920px 寬的瀏覽器視窗 Responsive Web Design, Supporting Browser Viewports from 360px to 1920px in Width
+<img src="https://res.cloudinary.com/dw2ix0vr3/image/upload/cinephileslists-RWD_tisp5k.webp"  width="700"/>
 
 ### 2. 串接多支 API 獲取所需資料 Fetching Data from Multiple APIs
+<img src="https://res.cloudinary.com/dw2ix0vr3/image/upload/fetching-data-from-multiple-APIs_qd8h1j.webp"  width="600"/>
 
-### 3. 搭配 API 請求的分頁機制 Pagination Mechanism with API Requests
+### 3. 拖曳功能 Drag and Drop
+<img src="https://res.cloudinary.com/dw2ix0vr3/image/upload/drag-movies-and-lists_hsluhz.webp"  width="600"/>
 
-### 4. 拖曳功能 Drag and Drop
+### 4. 純 CSS 打字特效 Typing Effect with Pure CSS
+<img src="https://res.cloudinary.com/dw2ix0vr3/image/upload/typing-effect_khp0ut.webp"  width="600"/>
 
-### 5. 純 CSS 打字特效 Typing Effect with Pure CSS
+### 5. 滾動監測動畫 Scroll-triggered Animations
+<img src="https://res.cloudinary.com/dw2ix0vr3/image/upload/scroll-triggered-animations_lyn7mv.webp"  width="600"/>
 
-### 6. 滾動監測動畫 Scroll-triggered Animations
+### 6. 資料庫增刪改查，以片單和電影為例 Managing Movie Lists and movies with Database CRUD Operations
+#### C - 新增資料，以新增片單為例｜CREATE: Create a New Movie List
+<img src="https://res.cloudinary.com/dw2ix0vr3/image/upload/C_add-new-list_ihea3m.webp"  width="600"/>
 
-### 7. 資料庫增刪改查，以片單和電影為例 Managing Movie Lists and Films with Database CRUD Operations
+#### R - 讀取資料，以讀取片單為例｜READ: Retrieve Movie Lists
+<img src="https://res.cloudinary.com/dw2ix0vr3/image/upload/R_share-list_p6mk5h.webp"  width="600"/>
+
+#### U - 更新資料，以更新片單名稱為例｜UPDATE: Rename a Movie List
+<img src="https://res.cloudinary.com/dw2ix0vr3/image/upload/U_rename-list_e7l9wn.webp"  width="600"/>
+
+#### D - 刪除資料，以刪除片單和電影為例｜DELETE: Remove a Movie List or Movie
+<img src="https://res.cloudinary.com/dw2ix0vr3/image/upload/D_delete-movie-and-list_chtbpw.webp"  width="600"/>
 
 <br/>
 
